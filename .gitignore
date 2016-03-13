@@ -29,3 +29,12 @@
 
 # Debug files
 *.dSYM/
+
+# Binary Packages
+*.deb
+
+# Output Directory
+out
+out/*
+.bootstrap
+.check
