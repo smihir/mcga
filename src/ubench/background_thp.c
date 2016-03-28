@@ -25,6 +25,5 @@ int main(int argc, char **argv) {
         ((char *)p[i])[0] = 'a';
     }
 
-    sleep(600);
     return 0;
 }

@@ -19,7 +19,6 @@ int main(int argc, char **argv) {
     // page fault is what we want to profile
     ((char *)p)[0] = 'a';
 
-    sleep(600);
     free(p);
     return 0;
 }
