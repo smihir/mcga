@@ -4,6 +4,14 @@
 # such functions have a probing point when they are called
 # and when they return.
 
+global redis_server
+probe begin {
+    redis_server = $1
+    printf("Start...\n")
+    printf("Redis Binary: ")
+    printf("%s\n", redis_server)
+}
+
 function trace(entry_p)
 {
   printf("%s%s%s\n",
@@ -47,6 +55,8 @@ probe kernel.function("__alloc_pages_nodemask").call {
 probe kernel.function("__alloc_pages_nodemask").return {
     if ((pid() == target())) {
         trace(-1)
+	if ($order == 9) {
+	}
     }
 }
 
@@ -92,4 +102,19 @@ probe kernel.statement("do_mmap_pgoff@mm/mmap.c:1305") {
 #    if (pid() == target()) {
 #        trace(-1)
 #    }
+#}
+#global proc_count=0
+probe process($1).function("arena_chunk_alloc").call,
+      process($1).function("createClient").call,
+      process($1).function("setCommand").call {
+	trace(1)
+}
+
+probe process($1).function("arena_chunk_alloc").return,
+      process($1).function("createClient").return,
+      process($1).function("setCommand").return {
+	trace(-1)
+}
+#probe end {
+#	printf("count is %lu\n", proc_count)
 #}
