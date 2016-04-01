@@ -1,0 +1,95 @@
+#! /usr/bin/env stap
+
+# This section contains code to probe non-inline functions
+# such functions have a probing point when they are called
+# and when they return.
+
+function trace(entry_p)
+{
+  printf("%s%s%s\n",
+         thread_indent (entry_p),
+         (entry_p>0?"->":"<-"),
+         ppfunc ())
+}
+
+probe kernel.function("handle_mm_fault").call,
+      kernel.function("sys_mmap").call,
+      kernel.function("do_huge_pmd_anonymous_page").call,
+      kernel.function("do_huge_pmd_wp_page").call,
+      kernel.function("copy_user_huge_page").call,
+      kernel.function("clear_huge_page").call {
+    if (pid() == target()) {
+        trace(1)
+    }
+}
+
+probe kernel.function("handle_mm_fault").return,
+      kernel.function("sys_mmap").return,
+      kernel.function("do_huge_pmd_anonymous_page").return,
+      kernel.function("do_huge_pmd_wp_page").return,
+      kernel.function("copy_user_huge_page").return,
+      kernel.function("clear_huge_page").return {
+    if (pid() == target()) {
+        trace(-1)
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").call {
+    if ((pid() == target())) {
+        entry_p = 1
+  	    printf("%s%s%s args %s\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), $$parms)
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").return {
+    if ((pid() == target())) {
+        trace(-1)
+    }
+}
+
+global final_addr
+
+probe kernel.function("do_mmap_pgoff").call {
+    if ((pid() == target())) {
+        entry_p = 1
+  	    printf("%s%s%s address 0x%x len %u\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), $addr, $len)
+		final_addr = $addr
+    }
+}
+
+probe kernel.function("do_mmap_pgoff").return {
+    if ((pid() == target())) {
+        entry_p = -1
+  	    printf("%s%s%s address 0x%x len %u\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), final_addr, $len)
+    }
+}
+
+probe kernel.statement("do_mmap_pgoff@mm/mmap.c:1305") {
+    if ((pid() == target())) {
+	final_addr = $addr
+    }
+}
+
+#probe kernel.function("alloc_pages_current").call {
+      #kernel.function("new_slab").call,
+      #kernel.function("slab_alloc_node").inline {
+#    if (pid() == target()) {
+#	print_backtrace()
+#    }
+#}
+
+#probe kernel.function("alloc_pages_current").return,
+#      kernel.function("new_slab").return {
+#    if (pid() == target()) {
+#        trace(-1)
+#    }
+#}
