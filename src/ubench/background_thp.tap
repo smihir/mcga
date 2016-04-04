@@ -19,6 +19,9 @@ function trace(entry_p)
 
 probe kernel.function("handle_mm_fault").call,
       kernel.function("sys_mmap").call,
+      kernel.function("mmap_region").call,
+      kernel.function("vma_merge").call,
+      kernel.function("khugepaged_enter_vma_merge").call,
       kernel.function("do_huge_pmd_anonymous_page").call,
       kernel.function("do_huge_pmd_wp_page").call,
       kernel.function("copy_user_huge_page").call,
@@ -30,6 +33,9 @@ probe kernel.function("handle_mm_fault").call,
 
 probe kernel.function("handle_mm_fault").return,
       kernel.function("sys_mmap").return,
+      kernel.function("mmap_region").return,
+      kernel.function("vma_merge").return,
+      kernel.function("khugepaged_enter_vma_merge").return,
       kernel.function("do_huge_pmd_anonymous_page").return,
       kernel.function("do_huge_pmd_wp_page").return,
       kernel.function("copy_user_huge_page").return,
@@ -87,22 +93,22 @@ global mm_slot_addr
 probe kernel.function("__khugepaged_enter").call {
     if ((pid() == target())) {
         trace(1)
-        mm_slot_addr = 0
+        mm_slot_addr = "None"
     }
 }
 
 probe kernel.function("__khugepaged_enter").return {
     if ((pid() == target())) {
         entry_p = -1
-  	    printf("%s%s%s mm_slot address 0x%x\n",
+  	    printf("%s%s%s mm_slot address %s\n",
                thread_indent (entry_p),
                (entry_p>0?"->":"<-"),
                ppfunc (), mm_slot_addr)
     }
 }
 
-probe kernel.statement("__khugepaged_enter@mm/huge_memory.c:2036") {
+probe kernel.statement("__khugepaged_enter@mm/huge_memory.c:2032") {
     if ((pid() == target())) {
-	    mm_slot_addr = $mm_slot
+	    mm_slot_addr = $$vars
     }
 }
