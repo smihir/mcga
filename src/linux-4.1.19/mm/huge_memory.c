@@ -1114,8 +1114,10 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	get_user_huge_page(page);
 	spin_unlock(ptl);
 alloc:
+	//if (transparent_hugepage_enabled(vma) &&
+	 //   !transparent_hugepage_debug_cow()) {
 	if (transparent_hugepage_enabled(vma) &&
-	    !transparent_hugepage_debug_cow()) {
+	    !transparent_hugepage_debug_cow() && 0) {
 		huge_gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		new_page = alloc_hugepage_vma(huge_gfp, vma, haddr, HPAGE_PMD_ORDER);
 	} else
@@ -1126,8 +1128,10 @@ alloc:
 			split_huge_page_pmd(vma, address, pmd);
 			ret |= VM_FAULT_FALLBACK;
 		} else {
-			ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
-					pmd, orig_pmd, page, haddr);
+	//		ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
+	//				pmd, orig_pmd, page, haddr);
+			printk("splitting huge page in COW %ld\n", address);
+			ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
 				ret |= VM_FAULT_FALLBACK;
