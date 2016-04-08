@@ -1726,7 +1726,7 @@ struct task_struct {
 	unsigned long	task_state_change;
 #endif
 //ABH
-	int abhinav;
+	//int abhinav;
 };
 
 /* Future-safe accessor for struct task_struct's cpus_allowed. */

@@ -1128,12 +1128,14 @@ alloc:
 			split_huge_page_pmd(vma, address, pmd);
 			ret |= VM_FAULT_FALLBACK;
 		} else {
+	//	ABH2
 	//		ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
 	//				pmd, orig_pmd, page, haddr);
 			printk("splitting huge page in COW %ld\n", address);
 			ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
+				khugepaged_enter(vma, vma->vm_flags);
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
