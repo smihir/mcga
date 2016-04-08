@@ -1,0 +1,27 @@
+#! /usr/bin/env stap
+
+# This section contains code to probe non-inline functions
+# such functions have a probing point when they are called
+# and when they return.
+
+probe begin {
+    printf("Start...\n")
+        printf("Redis Binary: \n")
+}
+
+function trace(entry_p,extra)
+{
+    printf("%s%s%s\t%s\n",thread_indent (entry_p),
+                        (entry_p>0?"->":"<-"),    
+                        ppfunc (),extra)
+}
+
+probe process($1).function("test1").call{
+    trace(1,$$parms$$)
+}
+
+probe process($1).function("test1").return {
+    trace(-1,$$return)
+}
+
+#probe process("./t").statement("test1@test1.c:12") { println($$parms) }
