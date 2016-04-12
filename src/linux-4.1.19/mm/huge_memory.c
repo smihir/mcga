@@ -1135,7 +1135,8 @@ alloc:
 			ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
-				khugepaged_enter(vma, vma->vm_flags);
+				printk(" adding VMA to be TESTING2\n");
+				khugepaged_enter_vma_merge(vma, vma->vm_flags);
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);

@@ -1,0 +1,53 @@
+#! /usr/bin/env stap
+
+# This section contains code to probe non-inline functions
+# such functions have a probing point when they are called
+# and when they return.
+
+function fn_trace_entry() {
+    printf("enter function %s at %lu\n", ppfunc(), gettimeofday_ns())
+}
+
+function fn_trace_exit() {
+    printf("exit function %s at %lu\n", ppfunc(), gettimeofday_ns())
+}
+
+probe kernel.function("do_huge_pmd_anonymous_page").call,
+      kernel.function("do_huge_pmd_wp_page").call,
+      kernel.function("copy_user_huge_page").call,
+      kernel.function("clear_huge_page").call {
+    if (pid() == target()) {
+        fn_trace_entry()
+    }
+}
+
+probe kernel.function("do_huge_pmd_anonymous_page").return,
+      kernel.function("do_huge_pmd_wp_page").return,
+      kernel.function("copy_user_huge_page").return,
+      kernel.function("clear_huge_page").return {
+    if (pid() == target()) {
+        fn_trace_exit()
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").call {
+    if ((pid() == target()) && ($order == 9)) {
+        printf("enter function %s at %lu order %u\n", ppfunc(),
+               gettimeofday_ns(), $order)
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").return {
+    if ((pid() == target()) && ($order == 9)) {
+        fn_trace_exit()
+    }
+}
+
+# This section is used to get the time for allocating a huge page
+#probe kernel.statement("*@mm/huge_memory.c:829") {
+#    printf("enter function alloc_hugepage_vma at %lu\n", gettimeofday_ns())
+#}
+
+#probe kernel.statement("*@mm/huge_memory.c:830") {
+#    printf("exit function alloc_hugepage_vma at %lu\n", gettimeofday_ns())
+#}

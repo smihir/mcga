@@ -1,0 +1,125 @@
+#! /usr/bin/env stap
+
+# This section contains code to probe non-inline functions
+# such functions have a probing point when they are called
+# and when they return.
+
+global redis_server
+probe begin {
+    printf("Start...\n")
+}
+
+function trace(entry_p)
+{
+  printf("%s%s%s\n",
+         thread_indent (entry_p),
+         (entry_p>0?"->":"<-"),
+         ppfunc ())
+}
+probe kernel.function("khugepaged_scan_mm_slot").inline, 
+      kernel.function("khugepaged_do_scan").inline, 
+      kernel.function("khugepaged_wait_work").inline {
+	trace(1)
+}
+
+#probe kernel.function("khugepaged_do_scan").return, 
+#      kernel.function("khugepaged_wait_work").return {
+#	trace(-1)
+#}
+#kernel.function("khugepaged_scan_mm_slot").return, 
+
+probe kernel.function("handle_mm_fault").call,
+      kernel.function("sys_mmap").call,
+      kernel.function("mmap_region").call,
+      kernel.function("vma_merge").call,
+      kernel.function("khugepaged_enter_vma_merge").call,
+      kernel.function("do_huge_pmd_anonymous_page").call,
+      kernel.function("do_huge_pmd_wp_page").call,
+      kernel.function("copy_user_huge_page").call,
+      kernel.function("clear_huge_page").call {
+    if (pid() == target()) {
+        trace(1)
+    }
+}
+
+probe kernel.function("handle_mm_fault").return,
+      kernel.function("sys_mmap").return,
+      kernel.function("mmap_region").return,
+      kernel.function("vma_merge").return,
+      kernel.function("khugepaged_enter_vma_merge").return,
+      kernel.function("do_huge_pmd_anonymous_page").return,
+      kernel.function("do_huge_pmd_wp_page").return,
+      kernel.function("copy_user_huge_page").return,
+      kernel.function("clear_huge_page").return {
+    if (pid() == target()) {
+        trace(-1)
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").call {
+    if ((pid() == target())) {
+        entry_p = 1
+  	    printf("%s%s%s args %s\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), $$parms)
+    }
+}
+
+probe kernel.function("__alloc_pages_nodemask").return {
+    if ((pid() == target())) {
+        trace(-1)
+    }
+}
+
+global final_addr
+probe kernel.function("do_mmap_pgoff").call {
+    if ((pid() == target())) {
+        entry_p = 1
+  	    printf("%s%s%s address 0x%x len %u\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), $addr, $len)
+		final_addr = $addr
+    }
+}
+
+probe kernel.function("do_mmap_pgoff").return {
+    if ((pid() == target())) {
+        entry_p = -1
+  	    printf("%s%s%s address 0x%x len %u\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), final_addr, $len)
+    }
+}
+
+probe kernel.statement("do_mmap_pgoff@mm/mmap.c:1305") {
+    if ((pid() == target())) {
+	    final_addr = $addr
+    }
+}
+
+global mm_slot_addr
+probe kernel.function("__khugepaged_enter").call {
+    if ((pid() == target())) {
+        trace(1)
+        mm_slot_addr = "None"
+    }
+}
+
+probe kernel.function("__khugepaged_enter").return {
+    if ((pid() == target())) {
+        entry_p = -1
+  	    printf("%s%s%s mm_slot address %s\n",
+               thread_indent (entry_p),
+               (entry_p>0?"->":"<-"),
+               ppfunc (), mm_slot_addr)
+    }
+}
+
+probe kernel.statement("__khugepaged_enter@mm/huge_memory.c:2034") {
+    if ((pid() == target())) {
+	    mm_slot_addr = $$vars
+    }
+}
