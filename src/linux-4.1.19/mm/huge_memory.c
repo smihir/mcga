@@ -1131,12 +1131,13 @@ alloc:
 	//	ABH2
 	//		ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
 	//				pmd, orig_pmd, page, haddr);
-			printk("splitting huge page in COW %ld\n", address);
+			mm->split_hugepage = 2;
+			printk("splitting huge page in COW mm = %p %d\n", mm, mm->split_hugepage);
 			ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
-				printk(" adding VMA to be TESTING2\n");
-				khugepaged_enter_vma_merge(vma, vma->vm_flags);
+//				printk(" adding VMA to be TESTING2\n");
+//				khugepaged_enter_vma_merge(vma, vma->vm_flags);
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
@@ -2640,6 +2641,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
+	printk("ABH2 %s collapsing mm %p ret=%d\n",__func__, mm, ret);
 	if (ret) {
 		node = khugepaged_find_target_node();
 		/* collapse_huge_page will return with the mmap_sem released */
@@ -2774,6 +2776,7 @@ breakouterloop_mmap_sem:
 			khugepaged_full_scans++;
 		}
 
+		trace_printk("ABH deleting mm_slot %ld\n",mm_slot);
 		collect_mm_slot(mm_slot);
 	}
 

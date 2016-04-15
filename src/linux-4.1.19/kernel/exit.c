@@ -59,6 +59,9 @@
 #include <asm/pgtable.h>
 #include <asm/mmu_context.h>
 
+//ABH2
+#include <linux/khugepaged.h>
+
 static void exit_mm(struct task_struct *tsk);
 
 static void __unhash_process(struct task_struct *p, bool group_dead)
@@ -388,6 +391,7 @@ static void exit_mm(struct task_struct *tsk)
 {
 	struct mm_struct *mm = tsk->mm;
 	struct core_state *core_state;
+	struct task_struct *ptsk;
 
 	mm_release(tsk, mm);
 	if (!mm)
@@ -435,6 +439,15 @@ static void exit_mm(struct task_struct *tsk)
 	task_unlock(tsk);
 	mm_update_next_owner(mm);
 	mmput(mm);
+//ABH2
+	ptsk  = tsk->real_parent;
+	if(ptsk) {
+		if(ptsk->mm && (ptsk->mm->split_hugepage == 2)) {
+			printk("COW ABH adding parents mm to khugepaged mm=%p\n", ptsk->mm);
+			__khugepaged_enter(ptsk->mm);
+		}
+	}
+//ABH2
 	if (test_thread_flag(TIF_MEMDIE))
 		unmark_oom_victim();
 }

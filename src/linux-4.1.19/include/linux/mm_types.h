@@ -457,6 +457,8 @@ struct mm_struct {
 	/* address of the bounds directory */
 	void __user *bd_addr;
 #endif
+//ABH2
+	int split_hugepage;
 };
 
 static inline void mm_init_cpumask(struct mm_struct *mm)

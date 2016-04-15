@@ -1070,7 +1070,6 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	struct task_struct *tsk_child;
 
 	tsk = current;
-	//ABH
 	/*
 	if(!list_empty(&tsk->children)) {
 		tsk_child = list_entry(tsk->children.next, struct task_struct,
@@ -1080,6 +1079,7 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	}
 	printk("val in child is %d ABH\n", tsk->abhinav);
 	*/
+	//ABH
 	mm = tsk->mm;
 
 

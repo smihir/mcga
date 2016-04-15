@@ -16,17 +16,55 @@ function trace(entry_p)
          (entry_p>0?"->":"<-"),
          ppfunc ())
 }
-probe kernel.function("khugepaged_scan_mm_slot").inline, 
-      kernel.function("khugepaged_do_scan").inline, 
-      kernel.function("khugepaged_wait_work").inline {
+
+global pid
+
+
+probe kernel.statement("khugepaged_scan_mm_slot@mm/huge_memory.c:2699"){
+	pid=$mm->owner->pid
+	#if (pid == target()) {
+    		printf("Pid: %d\t Target: %d\n",pid,target())
+	#}
+	
+}
+probe kernel.statement("khugepaged_scan_pmd@mm/huge_memory.c:2583"){ 
 	trace(1)
 }
 
-#probe kernel.function("khugepaged_do_scan").return, 
-#      kernel.function("khugepaged_wait_work").return {
+
+probe #kernel.statement("khugepaged_scan_mm_slot@mm/huge_memory.c:2761"), 
+	 #kernel.statement("khugepaged_scan_mm_slot@mm/huge_memory.c:2777"), 
+	# kernel.statement("khugepaged_scan_mm_slot@mm/huge_memory.c:2714"),	// This works 
+      kernel.statement("khugepaged_do_scan@mm/huge_memory.c:2826"), 
+      #kernel.statement("khugepaged_wait_work@mm/huge_memory.c:2844"), 
+      kernel.statement("khugepaged_scan_pmd@mm/huge_memory.c:2639"), 
+      kernel.statement("collect_mm_slot@mm/huge_memory.c:2673") {
+	trace(-1)
+}
+
+probe kernel.statement("khugepaged_wait_work@mm/huge_memory.c:2844"){
+  	entry_p=-1
+	printf("%s%s%s :2844\n",
+         thread_indent (entry_p),
+         (entry_p>0?"->":"<-"),
+         ppfunc () )
+}
+probe kernel.statement("khugepaged_wait_work@mm/huge_memory.c:2837"){
+  	entry_p=-1
+	printf("%s%s%s :2837\n",
+         thread_indent (entry_p),
+         (entry_p>0?"->":"<-"),
+         ppfunc () )
+}
+#probe kernel.statement("*@mm/huge_memory.c:2653"){
+#	print("2653: exit\n")
+#	trace(-1) 
+#	
+#}
+#probe kernel.statement("*@mm/huge_memory.c:2673"){
+#    	print("2673: Exit\n")
 #	trace(-1)
 #}
-#kernel.function("khugepaged_scan_mm_slot").return, 
 
 probe kernel.function("handle_mm_fault").call,
       kernel.function("sys_mmap").call,
@@ -36,6 +74,7 @@ probe kernel.function("handle_mm_fault").call,
       kernel.function("do_huge_pmd_anonymous_page").call,
       kernel.function("do_huge_pmd_wp_page").call,
       kernel.function("copy_user_huge_page").call,
+      #kernel.function("khugepaged_scan_pmd").call,
       kernel.function("clear_huge_page").call {
     if (pid() == target()) {
         trace(1)
