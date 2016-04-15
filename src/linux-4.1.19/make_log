@@ -1,0 +1,10 @@
+  CHK     include/config/kernel.release
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  Building modules, stage 2.
+Kernel: arch/x86/boot/bzImage is ready  (#2)
+  MODPOST 4369 modules

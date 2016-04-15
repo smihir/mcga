@@ -1,0 +1,2 @@
+sh ./arch/x86/boot/install.sh 4.1.19vik arch/x86/boot/bzImage \
+		System.map "/boot"
