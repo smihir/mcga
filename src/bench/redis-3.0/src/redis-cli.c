@@ -1122,8 +1122,8 @@ static void latencyMode(void) {
             tot += latency;
             avg = (double) tot/count;
         }
-        printf("\x1b[0G\x1b[2Kmin: %lld, max: %lld, avg: %.2f (%lld samples)",
-            min, max, avg, count);
+        printf("latency: %lld, min: %lld, max: %lld, avg: %.2f (%lld samples)\n",
+            latency, min, max, avg, count);
         fflush(stdout);
         if (config.latency_history && mstime()-history_start > history_interval)
         {
