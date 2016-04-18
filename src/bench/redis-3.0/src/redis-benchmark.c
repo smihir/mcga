@@ -420,6 +420,7 @@ static int compareLatency(const void *a, const void *b) {
 static void showLatencyReport(void) {
     int i, curlat = 0;
     float perc, reqpersec;
+    FILE *fp;
 
     reqpersec = (float)config.requests_finished/((float)config.totlatency/1000);
     if (!config.quiet && !config.csv) {
@@ -430,6 +431,14 @@ static void showLatencyReport(void) {
         printf("  %d bytes payload\n", config.datasize);
         printf("  keep alive: %d\n", config.keepalive);
         printf("\n");
+
+	fp = fopen("benchmark.log", "w");
+	if (fp != NULL) {
+		for (i = 0; i < config.requests; i++) {
+		   fprintf(fp, "%lld\n", config.latency[i]);
+		}
+	}
+	fclose(fp);
 
         qsort(config.latency,config.requests,sizeof(long long),compareLatency);
         for (i = 0; i < config.requests; i++) {
