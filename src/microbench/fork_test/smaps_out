@@ -1,0 +1,30 @@
+#!/bin/bash
+
+CLI="mfork"
+PID=`ps -e | grep $CLI | awk '{print $1}'`
+DATE=`date +%T`
+echo pid is $PID cmd is $CLI
+while read CMD; do
+	[ -z "$CMD" ] && continue
+	case "$CMD" in
+	E)
+	echo input is E
+	cp /proc/$PID/smaps fork_results/bef_fork$DATE
+	;;
+	F)
+	echo input is F
+	CPID=`ps -e | grep $CLI | tail -n 1 | awk '{print $1}'`
+	cp /proc/$PID/smaps fork_results/af_fork_par$DATE
+	cp /proc/$CPID/smaps fork_results/af_fork_ch$DATE
+	;;
+	D)
+	echo input is D
+	CPID=`ps -e | grep $CLI | tail -n 1 | awk '{print $1}'`
+	cp /proc/$PID/smaps fork_results/af_dir_par$DATE
+	cp /proc/$CPID/smaps fork_results/af_dir_ch$DATE
+	;;
+	*)
+		echo "invalid"
+	;;
+esac
+done

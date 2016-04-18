@@ -2,8 +2,8 @@
   INSTALL arch/x86/crypto/aesni-intel.ko
   INSTALL arch/x86/crypto/blowfish-x86_64.ko
   INSTALL arch/x86/crypto/camellia-aesni-avx-x86_64.ko
-  INSTALL arch/x86/crypto/camellia-x86_64.ko
   INSTALL arch/x86/crypto/camellia-aesni-avx2.ko
+  INSTALL arch/x86/crypto/camellia-x86_64.ko
   INSTALL arch/x86/crypto/cast5-avx-x86_64.ko
   INSTALL arch/x86/crypto/cast6-avx-x86_64.ko
   INSTALL arch/x86/crypto/crc32-pclmul.ko
@@ -104,9 +104,9 @@
   INSTALL drivers/acpi/sbs.ko
   INSTALL drivers/acpi/sbshc.ko
   INSTALL drivers/acpi/video.ko
+  INSTALL drivers/ata/acard-ahci.ko
   INSTALL drivers/ata/ahci.ko
   INSTALL drivers/ata/ahci_platform.ko
-  INSTALL drivers/ata/acard-ahci.ko
   INSTALL drivers/ata/libahci.ko
   INSTALL drivers/ata/libahci_platform.ko
   INSTALL drivers/ata/pata_acpi.ko
@@ -120,10 +120,10 @@
   INSTALL drivers/ata/pata_cypress.ko
   INSTALL drivers/ata/pata_efar.ko
   INSTALL drivers/ata/pata_hpt366.ko
+  INSTALL drivers/ata/pata_hpt37x.ko
   INSTALL drivers/ata/pata_hpt3x2n.ko
   INSTALL drivers/ata/pata_hpt3x3.ko
   INSTALL drivers/ata/pata_it8213.ko
-  INSTALL drivers/ata/pata_hpt37x.ko
   INSTALL drivers/ata/pata_it821x.ko
   INSTALL drivers/ata/pata_jmicron.ko
   INSTALL drivers/ata/pata_legacy.ko
@@ -220,8 +220,8 @@
   INSTALL drivers/block/pmem.ko
   INSTALL drivers/block/rbd.ko
   INSTALL drivers/block/rsxx/rsxx.ko
-  INSTALL drivers/block/skd.ko
   INSTALL drivers/block/sx8.ko
+  INSTALL drivers/block/skd.ko
   INSTALL drivers/block/umem.ko
   INSTALL drivers/block/xen-blkback/xen-blkback.ko
   INSTALL drivers/block/zram/zram.ko
@@ -238,8 +238,8 @@
   INSTALL drivers/bluetooth/btsdio.ko
   INSTALL drivers/bluetooth/btuart_cs.ko
   INSTALL drivers/bluetooth/btusb.ko
-  INSTALL drivers/bluetooth/btwilink.ko
   INSTALL drivers/bluetooth/dtl1_cs.ko
+  INSTALL drivers/bluetooth/btwilink.ko
   INSTALL drivers/bluetooth/hci_uart.ko
   INSTALL drivers/bluetooth/hci_vhci.ko
   INSTALL drivers/char/agp/sis-agp.ko
@@ -543,9 +543,9 @@
   INSTALL drivers/hwmon/f71882fg.ko
   INSTALL drivers/hwmon/f75375s.ko
   INSTALL drivers/hwmon/fam15h_power.ko
+  INSTALL drivers/hwmon/fschmd.ko
   INSTALL drivers/hwmon/g760a.ko
   INSTALL drivers/hwmon/g762.ko
-  INSTALL drivers/hwmon/fschmd.ko
   INSTALL drivers/hwmon/gl518sm.ko
   INSTALL drivers/hwmon/gl520sm.ko
   INSTALL drivers/hwmon/gpio-fan.ko
@@ -601,8 +601,8 @@
   INSTALL drivers/hwmon/menf21bmc_hwmon.ko
   INSTALL drivers/hwmon/nct6683.ko
   INSTALL drivers/hwmon/nct6775.ko
-  INSTALL drivers/hwmon/nct7802.ko
   INSTALL drivers/hwmon/nct7904.ko
+  INSTALL drivers/hwmon/nct7802.ko
   INSTALL drivers/hwmon/ntc_thermistor.ko
   INSTALL drivers/hwmon/pc87360.ko
   INSTALL drivers/hwmon/pc87427.ko
@@ -662,8 +662,8 @@
   INSTALL drivers/i2c/busses/i2c-amd8111.ko
   INSTALL drivers/i2c/busses/i2c-cbus-gpio.ko
   INSTALL drivers/i2c/busses/i2c-cros-ec-tunnel.ko
-  INSTALL drivers/i2c/busses/i2c-designware-core.ko
   INSTALL drivers/i2c/busses/i2c-designware-pci.ko
+  INSTALL drivers/i2c/busses/i2c-designware-core.ko
   INSTALL drivers/i2c/busses/i2c-designware-platform.ko
   INSTALL drivers/i2c/busses/i2c-diolan-u2c.ko
   INSTALL drivers/i2c/busses/i2c-dln2.ko
@@ -675,9 +675,9 @@
   INSTALL drivers/i2c/busses/i2c-nforce2-s4985.ko
   INSTALL drivers/i2c/busses/i2c-nforce2.ko
   INSTALL drivers/i2c/busses/i2c-ocores.ko
+  INSTALL drivers/i2c/busses/i2c-parport-light.ko
   INSTALL drivers/i2c/busses/i2c-parport.ko
   INSTALL drivers/i2c/busses/i2c-pca-platform.ko
-  INSTALL drivers/i2c/busses/i2c-parport-light.ko
   INSTALL drivers/i2c/busses/i2c-piix4.ko
   INSTALL drivers/i2c/busses/i2c-robotfuzz-osif.ko
   INSTALL drivers/i2c/busses/i2c-scmi.ko
@@ -967,8 +967,8 @@
   INSTALL drivers/input/misc/retu-pwrbutton.ko
   INSTALL drivers/input/misc/rotary_encoder.ko
   INSTALL drivers/input/misc/soc_button_array.ko
-  INSTALL drivers/input/misc/tps65218-pwrbutton.ko
   INSTALL drivers/input/misc/twl4030-pwrbutton.ko
+  INSTALL drivers/input/misc/tps65218-pwrbutton.ko
   INSTALL drivers/input/misc/twl4030-vibra.ko
   INSTALL drivers/input/misc/twl6040-vibra.ko
   INSTALL drivers/input/misc/wm831x-on.ko
@@ -1089,9 +1089,9 @@
   INSTALL drivers/isdn/hardware/mISDN/mISDNipac.ko
   INSTALL drivers/isdn/hardware/mISDN/mISDNisar.ko
   INSTALL drivers/isdn/hardware/mISDN/netjet.ko
+  INSTALL drivers/isdn/hardware/mISDN/speedfax.ko
   INSTALL drivers/isdn/hardware/mISDN/w6692.ko
   INSTALL drivers/isdn/hisax/avma1_cs.ko
-  INSTALL drivers/isdn/hardware/mISDN/speedfax.ko
   INSTALL drivers/isdn/hisax/elsa_cs.ko
   INSTALL drivers/isdn/hisax/hfc4s8s_l1.ko
   INSTALL drivers/isdn/hisax/hfc_usb.ko
@@ -1178,8 +1178,8 @@
   INSTALL drivers/md/dm-verity.ko
   INSTALL drivers/md/dm-zero.ko
   INSTALL drivers/md/faulty.ko
-  INSTALL drivers/md/linear.ko
   INSTALL drivers/md/md-cluster.ko
+  INSTALL drivers/md/linear.ko
   INSTALL drivers/md/multipath.ko
   INSTALL drivers/md/persistent-data/dm-persistent-data.ko
   INSTALL drivers/md/raid0.ko
@@ -1258,8 +1258,8 @@
   INSTALL drivers/media/dvb-frontends/s921.ko
   INSTALL drivers/media/dvb-frontends/si2165.ko
   INSTALL drivers/media/dvb-frontends/si2168.ko
-  INSTALL drivers/media/dvb-frontends/sp2.ko
   INSTALL drivers/media/dvb-frontends/si21xx.ko
+  INSTALL drivers/media/dvb-frontends/sp2.ko
   INSTALL drivers/media/dvb-frontends/sp8870.ko
   INSTALL drivers/media/dvb-frontends/sp887x.ko
   INSTALL drivers/media/dvb-frontends/stb0899.ko
@@ -1335,8 +1335,8 @@
   INSTALL drivers/media/i2c/tea6415c.ko
   INSTALL drivers/media/i2c/tea6420.ko
   INSTALL drivers/media/i2c/tvaudio.ko
-  INSTALL drivers/media/i2c/tw2804.ko
   INSTALL drivers/media/i2c/tvp5150.ko
+  INSTALL drivers/media/i2c/tw2804.ko
   INSTALL drivers/media/i2c/tw9903.ko
   INSTALL drivers/media/i2c/tw9906.ko
   INSTALL drivers/media/i2c/uda1342.ko
@@ -1456,9 +1456,9 @@
   INSTALL drivers/media/rc/keymaps/rc-alink-dtu-m.ko
   INSTALL drivers/media/rc/keymaps/rc-anysee.ko
   INSTALL drivers/media/rc/keymaps/rc-apac-viewcomp.ko
+  INSTALL drivers/media/rc/keymaps/rc-asus-pc39.ko
   INSTALL drivers/media/rc/keymaps/rc-asus-ps3-100.ko
   INSTALL drivers/media/rc/keymaps/rc-ati-tv-wonder-hd-600.ko
-  INSTALL drivers/media/rc/keymaps/rc-asus-pc39.ko
   INSTALL drivers/media/rc/keymaps/rc-ati-x10.ko
   INSTALL drivers/media/rc/keymaps/rc-avermedia-a16d.ko
   INSTALL drivers/media/rc/keymaps/rc-avermedia-cardbus.ko
@@ -1623,9 +1623,9 @@
   INSTALL drivers/media/usb/dvb-usb-v2/dvb_usb_v2.ko
   INSTALL drivers/media/usb/dvb-usb-v2/mxl111sf-demod.ko
   INSTALL drivers/media/usb/dvb-usb-v2/mxl111sf-tuner.ko
-  INSTALL drivers/media/usb/dvb-usb/dvb-usb-a800.ko
   INSTALL drivers/media/usb/dvb-usb/dvb-usb-af9005-remote.ko
   INSTALL drivers/media/usb/dvb-usb/dvb-usb-af9005.ko
+  INSTALL drivers/media/usb/dvb-usb/dvb-usb-a800.ko
   INSTALL drivers/media/usb/dvb-usb/dvb-usb-az6027.ko
   INSTALL drivers/media/usb/dvb-usb/dvb-usb-cinergyT2.ko
   INSTALL drivers/media/usb/dvb-usb/dvb-usb-cxusb.ko
@@ -1672,8 +1672,8 @@
   INSTALL drivers/media/usb/gspca/gspca_main.ko
   INSTALL drivers/media/usb/gspca/gspca_mars.ko
   INSTALL drivers/media/usb/gspca/gspca_mr97310a.ko
-  INSTALL drivers/media/usb/gspca/gspca_ov519.ko
   INSTALL drivers/media/usb/gspca/gspca_nw80x.ko
+  INSTALL drivers/media/usb/gspca/gspca_ov519.ko
   INSTALL drivers/media/usb/gspca/gspca_ov534.ko
   INSTALL drivers/media/usb/gspca/gspca_ov534_9.ko
   INSTALL drivers/media/usb/gspca/gspca_pac207.ko
@@ -1810,9 +1810,9 @@
   INSTALL drivers/misc/ad525x_dpot-i2c.ko
   INSTALL drivers/misc/ad525x_dpot-spi.ko
   INSTALL drivers/misc/ad525x_dpot.ko
+  INSTALL drivers/misc/altera-stapl/altera-stapl.ko
   INSTALL drivers/misc/apds9802als.ko
   INSTALL drivers/misc/apds990x.ko
-  INSTALL drivers/misc/altera-stapl/altera-stapl.ko
   INSTALL drivers/misc/bh1770glc.ko
   INSTALL drivers/misc/bh1780gli.ko
   INSTALL drivers/misc/bmp085-i2c.ko
@@ -1838,8 +1838,8 @@
   INSTALL drivers/misc/ics932s401.ko
   INSTALL drivers/misc/ioc4.ko
   INSTALL drivers/misc/isl29003.ko
-  INSTALL drivers/misc/lattice-ecp3-config.ko
   INSTALL drivers/misc/isl29020.ko
+  INSTALL drivers/misc/lattice-ecp3-config.ko
   INSTALL drivers/misc/lis3lv02d/lis3lv02d.ko
   INSTALL drivers/misc/lis3lv02d/lis3lv02d_i2c.ko
   INSTALL drivers/misc/mei/mei-me.ko
@@ -1890,8 +1890,8 @@
   INSTALL drivers/mtd/devices/block2mtd.ko
   INSTALL drivers/mtd/devices/docg3.ko
   INSTALL drivers/mtd/devices/m25p80.ko
-  INSTALL drivers/mtd/devices/mtdram.ko
   INSTALL drivers/mtd/devices/mtd_dataflash.ko
+  INSTALL drivers/mtd/devices/mtdram.ko
   INSTALL drivers/mtd/devices/phram.ko
   INSTALL drivers/mtd/devices/pmc551.ko
   INSTALL drivers/mtd/devices/slram.ko
@@ -2103,8 +2103,8 @@
   INSTALL drivers/net/ethernet/sun/sunhme.ko
   INSTALL drivers/net/ethernet/tehuti/tehuti.ko
   INSTALL drivers/net/ethernet/ti/cpsw_ale.ko
-  INSTALL drivers/net/ethernet/via/via-rhine.ko
   INSTALL drivers/net/ethernet/ti/tlan.ko
+  INSTALL drivers/net/ethernet/via/via-rhine.ko
   INSTALL drivers/net/ethernet/via/via-velocity.ko
   INSTALL drivers/net/ethernet/wiznet/w5100.ko
   INSTALL drivers/net/ethernet/wiznet/w5300.ko
@@ -2234,9 +2234,9 @@
   INSTALL drivers/net/usb/zaurus.ko
   INSTALL drivers/net/veth.ko
   INSTALL drivers/net/vmxnet3/vmxnet3.ko
+  INSTALL drivers/net/vxlan.ko
   INSTALL drivers/net/wan/dlci.ko
   INSTALL drivers/net/wan/dscc4.ko
-  INSTALL drivers/net/vxlan.ko
   INSTALL drivers/net/wan/farsync.ko
   INSTALL drivers/net/wan/hdlc.ko
   INSTALL drivers/net/wan/hdlc_cisco.ko
@@ -2346,8 +2346,8 @@
   INSTALL drivers/net/wireless/rtlwifi/rtl8192c/rtl8192c-common.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8192ce/rtl8192ce.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8192cu/rtl8192cu.ko
-  INSTALL drivers/net/wireless/rtlwifi/rtl8192de/rtl8192de.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8192ee/rtl8192ee.ko
+  INSTALL drivers/net/wireless/rtlwifi/rtl8192de/rtl8192de.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8192se/rtl8192se.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8723ae/rtl8723ae.ko
   INSTALL drivers/net/wireless/rtlwifi/rtl8723be/rtl8723be.ko
@@ -2635,12 +2635,12 @@
   INSTALL drivers/rtc/rtc-m48t59.ko
   INSTALL drivers/rtc/rtc-m48t86.ko
   INSTALL drivers/rtc/rtc-max6900.ko
+  INSTALL drivers/rtc/rtc-max6902.ko
   INSTALL drivers/rtc/rtc-max8907.ko
   INSTALL drivers/rtc/rtc-max8925.ko
-  INSTALL drivers/rtc/rtc-max6902.ko
-  INSTALL drivers/rtc/rtc-max8997.ko
   INSTALL drivers/rtc/rtc-max8998.ko
   INSTALL drivers/rtc/rtc-mc13xxx.ko
+  INSTALL drivers/rtc/rtc-max8997.ko
   INSTALL drivers/rtc/rtc-mcp795.ko
   INSTALL drivers/rtc/rtc-msm6242.ko
   INSTALL drivers/rtc/rtc-palmas.ko
@@ -2653,8 +2653,8 @@
   INSTALL drivers/rtc/rtc-pcf8563.ko
   INSTALL drivers/rtc/rtc-pcf8583.ko
   INSTALL drivers/rtc/rtc-r9701.ko
-  INSTALL drivers/rtc/rtc-rc5t583.ko
   INSTALL drivers/rtc/rtc-rp5c01.ko
+  INSTALL drivers/rtc/rtc-rc5t583.ko
   INSTALL drivers/rtc/rtc-rs5c348.ko
   INSTALL drivers/rtc/rtc-rs5c372.ko
   INSTALL drivers/rtc/rtc-rv3029c2.ko
@@ -2738,8 +2738,8 @@
   INSTALL drivers/scsi/osst.ko
   INSTALL drivers/scsi/pcmcia/aha152x_cs.ko
   INSTALL drivers/scsi/pcmcia/fdomain_cs.ko
-  INSTALL drivers/scsi/pcmcia/qlogic_cs.ko
   INSTALL drivers/scsi/pcmcia/sym53c500_cs.ko
+  INSTALL drivers/scsi/pcmcia/qlogic_cs.ko
   INSTALL drivers/scsi/pm8001/pm80xx.ko
   INSTALL drivers/scsi/pmcraid.ko
   INSTALL drivers/scsi/ppa.ko
@@ -2762,16 +2762,16 @@
   INSTALL drivers/scsi/ufs/ufshcd-pci.ko
   INSTALL drivers/scsi/ufs/ufshcd-pltfrm.ko
   INSTALL drivers/scsi/ufs/ufshcd.ko
-  INSTALL drivers/scsi/vmw_pvscsi.ko
   INSTALL drivers/scsi/virtio_scsi.ko
+  INSTALL drivers/scsi/vmw_pvscsi.ko
   INSTALL drivers/scsi/wd719x.ko
   INSTALL drivers/scsi/xen-scsifront.ko
   INSTALL drivers/spi/spi-altera.ko
   INSTALL drivers/spi/spi-bitbang.ko
   INSTALL drivers/spi/spi-butterfly.ko
   INSTALL drivers/spi/spi-cadence.ko
-  INSTALL drivers/spi/spi-dw-midpci.ko
   INSTALL drivers/spi/spi-dln2.ko
+  INSTALL drivers/spi/spi-dw-midpci.ko
   INSTALL drivers/spi/spi-dw-mmio.ko
   INSTALL drivers/spi/spi-dw.ko
   INSTALL drivers/spi/spi-gpio.ko
@@ -2781,9 +2781,9 @@
   INSTALL drivers/spi/spi-pxa2xx-platform.ko
   INSTALL drivers/spi/spi-sc18is602.ko
   INSTALL drivers/spi/spi-tle62x0.ko
-  INSTALL drivers/spi/spi-xcomm.ko
   INSTALL drivers/spi/spidev.ko
   INSTALL drivers/spmi/spmi.ko
+  INSTALL drivers/spi/spi-xcomm.ko
   INSTALL drivers/ssb/ssb.ko
   INSTALL drivers/staging/comedi/comedi.ko
   INSTALL drivers/staging/comedi/comedi_pci.ko
@@ -2799,8 +2799,8 @@
   INSTALL drivers/staging/comedi/drivers/addi_apci_2032.ko
   INSTALL drivers/staging/comedi/drivers/addi_apci_2200.ko
   INSTALL drivers/staging/comedi/drivers/addi_apci_3120.ko
-  INSTALL drivers/staging/comedi/drivers/addi_apci_3xxx.ko
   INSTALL drivers/staging/comedi/drivers/addi_apci_3501.ko
+  INSTALL drivers/staging/comedi/drivers/addi_apci_3xxx.ko
   INSTALL drivers/staging/comedi/drivers/addi_watchdog.ko
   INSTALL drivers/staging/comedi/drivers/adl_pci6208.ko
   INSTALL drivers/staging/comedi/drivers/adl_pci7x3x.ko
@@ -2856,8 +2856,8 @@
   INSTALL drivers/staging/comedi/drivers/dt2817.ko
   INSTALL drivers/staging/comedi/drivers/dt282x.ko
   INSTALL drivers/staging/comedi/drivers/dt3000.ko
-  INSTALL drivers/staging/comedi/drivers/dyna_pci10xx.ko
   INSTALL drivers/staging/comedi/drivers/dt9812.ko
+  INSTALL drivers/staging/comedi/drivers/dyna_pci10xx.ko
   INSTALL drivers/staging/comedi/drivers/fl512.ko
   INSTALL drivers/staging/comedi/drivers/gsc_hpdi.ko
   INSTALL drivers/staging/comedi/drivers/icp_multi.ko
@@ -2944,8 +2944,8 @@
   INSTALL drivers/staging/fbtft/fb_uc1701.ko
   INSTALL drivers/staging/fbtft/fb_upd161704.ko
   INSTALL drivers/staging/fbtft/fb_watterott.ko
-  INSTALL drivers/staging/fbtft/fbtft.ko
   INSTALL drivers/staging/fbtft/fbtft_device.ko
+  INSTALL drivers/staging/fbtft/fbtft.ko
   INSTALL drivers/staging/fbtft/flexfb.ko
   INSTALL drivers/staging/ft1000/ft1000-pcmcia/ft1000_pcmcia.ko
   INSTALL drivers/staging/ft1000/ft1000-usb/ft1000.ko
@@ -2956,12 +2956,12 @@
   INSTALL drivers/staging/gs_fpgaboot/gs_fpga.ko
   INSTALL drivers/staging/iio/accel/adis16201.ko
   INSTALL drivers/staging/iio/accel/adis16203.ko
-  INSTALL drivers/staging/iio/accel/adis16204.ko
   INSTALL drivers/staging/iio/accel/adis16209.ko
+  INSTALL drivers/staging/iio/accel/adis16204.ko
   INSTALL drivers/staging/iio/accel/adis16220.ko
+  INSTALL drivers/staging/iio/accel/adis16240.ko
   INSTALL drivers/staging/iio/accel/lis3l02dq.ko
   INSTALL drivers/staging/iio/accel/sca3000.ko
-  INSTALL drivers/staging/iio/accel/adis16240.ko
   INSTALL drivers/staging/iio/adc/ad7192.ko
   INSTALL drivers/staging/iio/adc/ad7280a.ko
   INSTALL drivers/staging/iio/adc/ad7606.ko
@@ -2983,10 +2983,10 @@
   INSTALL drivers/staging/iio/light/tsl2583.ko
   INSTALL drivers/staging/iio/light/tsl2x7x_core.ko
   INSTALL drivers/staging/iio/magnetometer/hmc5843_core.ko
-  INSTALL drivers/staging/iio/magnetometer/hmc5843_i2c.ko
   INSTALL drivers/staging/iio/magnetometer/hmc5843_spi.ko
   INSTALL drivers/staging/iio/meter/ade7753.ko
   INSTALL drivers/staging/iio/meter/ade7754.ko
+  INSTALL drivers/staging/iio/magnetometer/hmc5843_i2c.ko
   INSTALL drivers/staging/iio/meter/ade7758.ko
   INSTALL drivers/staging/iio/meter/ade7759.ko
   INSTALL drivers/staging/iio/meter/ade7854-i2c.ko
@@ -3101,16 +3101,16 @@
   INSTALL drivers/tty/serial/jsm/jsm.ko
   INSTALL drivers/tty/serial/max3100.ko
   INSTALL drivers/tty/serial/men_z135_uart.ko
-  INSTALL drivers/tty/serial/sc16is7xx.ko
   INSTALL drivers/tty/serial/rp2.ko
+  INSTALL drivers/tty/serial/sc16is7xx.ko
   INSTALL drivers/tty/synclink.ko
   INSTALL drivers/tty/synclink_gt.ko
   INSTALL drivers/tty/synclinkmp.ko
   INSTALL drivers/uio/uio.ko
   INSTALL drivers/uio/uio_aec.ko
   INSTALL drivers/uio/uio_cif.ko
-  INSTALL drivers/uio/uio_dmem_genirq.ko
   INSTALL drivers/uio/uio_mf624.ko
+  INSTALL drivers/uio/uio_dmem_genirq.ko
   INSTALL drivers/uio/uio_netx.ko
   INSTALL drivers/uio/uio_pci_generic.ko
   INSTALL drivers/uio/uio_pdrv_genirq.ko
@@ -3119,8 +3119,8 @@
   INSTALL drivers/usb/atm/speedtch.ko
   INSTALL drivers/usb/atm/ueagle-atm.ko
   INSTALL drivers/usb/atm/usbatm.ko
-  INSTALL drivers/usb/atm/xusbatm.ko
   INSTALL drivers/usb/c67x00/c67x00.ko
+  INSTALL drivers/usb/atm/xusbatm.ko
   INSTALL drivers/usb/chipidea/ci_hdrc.ko
   INSTALL drivers/usb/chipidea/ci_hdrc_msm.ko
   INSTALL drivers/usb/chipidea/ci_hdrc_pci.ko
@@ -3363,8 +3363,8 @@
   INSTALL drivers/video/fbdev/arcfb.ko
   INSTALL drivers/video/fbdev/arkfb.ko
   INSTALL drivers/video/fbdev/aty/aty128fb.ko
-  INSTALL drivers/video/fbdev/aty/atyfb.ko
   INSTALL drivers/video/fbdev/aty/radeonfb.ko
+  INSTALL drivers/video/fbdev/aty/atyfb.ko
   INSTALL drivers/video/fbdev/auo_k1900fb.ko
   INSTALL drivers/video/fbdev/auo_k1901fb.ko
   INSTALL drivers/video/fbdev/auo_k190x.ko
@@ -3475,8 +3475,8 @@
   INSTALL drivers/watchdog/pc87413_wdt.ko
   INSTALL drivers/watchdog/pcwd_pci.ko
   INSTALL drivers/watchdog/pcwd_usb.ko
-  INSTALL drivers/watchdog/rn5t618_wdt.ko
   INSTALL drivers/watchdog/retu_wdt.ko
+  INSTALL drivers/watchdog/rn5t618_wdt.ko
   INSTALL drivers/watchdog/sbc60xxwdt.ko
   INSTALL drivers/watchdog/sbc_epx_c3.ko
   INSTALL drivers/watchdog/sbc_fitpc2_wdt.ko
@@ -3506,8 +3506,8 @@
   INSTALL fs/9p/9p.ko
   INSTALL fs/adfs/adfs.ko
   INSTALL fs/affs/affs.ko
-  INSTALL fs/afs/kafs.ko
   INSTALL fs/autofs4/autofs4.ko
+  INSTALL fs/afs/kafs.ko
   INSTALL fs/befs/befs.ko
   INSTALL fs/bfs/bfs.ko
   INSTALL fs/binfmt_misc.ko
@@ -3697,9 +3697,9 @@
   INSTALL net/bridge/netfilter/ebt_arp.ko
   INSTALL net/bridge/netfilter/ebt_arpreply.ko
   INSTALL net/bridge/netfilter/ebt_dnat.ko
+  INSTALL net/bridge/netfilter/ebt_ip.ko
   INSTALL net/bridge/netfilter/ebt_ip6.ko
   INSTALL net/bridge/netfilter/ebt_limit.ko
-  INSTALL net/bridge/netfilter/ebt_ip.ko
   INSTALL net/bridge/netfilter/ebt_log.ko
   INSTALL net/bridge/netfilter/ebt_mark.ko
   INSTALL net/bridge/netfilter/ebt_mark_m.ko
@@ -3809,8 +3809,8 @@
   INSTALL net/ipv6/ip6_gre.ko
   INSTALL net/ipv6/ip6_tunnel.ko
   INSTALL net/ipv6/ip6_udp_tunnel.ko
-  INSTALL net/ipv6/ipcomp6.ko
   INSTALL net/ipv6/ip6_vti.ko
+  INSTALL net/ipv6/ipcomp6.ko
   INSTALL net/ipv6/mip6.ko
   INSTALL net/ipv6/netfilter/ip6_tables.ko
   INSTALL net/ipv6/netfilter/ip6t_MASQUERADE.ko
@@ -3825,9 +3825,9 @@
   INSTALL net/ipv6/netfilter/ip6t_mh.ko
   INSTALL net/ipv6/netfilter/ip6t_rpfilter.ko
   INSTALL net/ipv6/netfilter/ip6t_rt.ko
+  INSTALL net/ipv6/netfilter/ip6table_filter.ko
   INSTALL net/ipv6/netfilter/ip6table_mangle.ko
   INSTALL net/ipv6/netfilter/ip6table_nat.ko
-  INSTALL net/ipv6/netfilter/ip6table_filter.ko
   INSTALL net/ipv6/netfilter/ip6table_raw.ko
   INSTALL net/ipv6/netfilter/ip6table_security.ko
   INSTALL net/ipv6/netfilter/nf_conntrack_ipv6.ko
@@ -3906,9 +3906,9 @@
   INSTALL net/netfilter/nf_conntrack_ftp.ko
   INSTALL net/netfilter/nf_conntrack_h323.ko
   INSTALL net/netfilter/nf_conntrack_irc.ko
-  INSTALL net/netfilter/nf_conntrack_netbios_ns.ko
   INSTALL net/netfilter/nf_conntrack_netlink.ko
   INSTALL net/netfilter/nf_conntrack_pptp.ko
+  INSTALL net/netfilter/nf_conntrack_netbios_ns.ko
   INSTALL net/netfilter/nf_conntrack_proto_dccp.ko
   INSTALL net/netfilter/nf_conntrack_proto_gre.ko
   INSTALL net/netfilter/nf_conntrack_proto_sctp.ko
@@ -3972,9 +3972,9 @@
   INSTALL net/netfilter/xt_SECMARK.ko
   INSTALL net/netfilter/xt_TCPMSS.ko
   INSTALL net/netfilter/xt_TCPOPTSTRIP.ko
-  INSTALL net/netfilter/xt_TEE.ko
   INSTALL net/netfilter/xt_TPROXY.ko
   INSTALL net/netfilter/xt_TRACE.ko
+  INSTALL net/netfilter/xt_TEE.ko
   INSTALL net/netfilter/xt_addrtype.ko
   INSTALL net/netfilter/xt_bpf.ko
   INSTALL net/netfilter/xt_cgroup.ko
@@ -4066,8 +4066,8 @@
   INSTALL net/sched/cls_rsvp.ko
   INSTALL net/sched/cls_rsvp6.ko
   INSTALL net/sched/cls_tcindex.ko
-  INSTALL net/sched/em_canid.ko
   INSTALL net/sched/cls_u32.ko
+  INSTALL net/sched/em_canid.ko
   INSTALL net/sched/em_cmp.ko
   INSTALL net/sched/em_ipset.ko
   INSTALL net/sched/em_meta.ko
@@ -4075,8 +4075,8 @@
   INSTALL net/sched/em_text.ko
   INSTALL net/sched/em_u32.ko
   INSTALL net/sched/sch_atm.ko
-  INSTALL net/sched/sch_choke.ko
   INSTALL net/sched/sch_cbq.ko
+  INSTALL net/sched/sch_choke.ko
   INSTALL net/sched/sch_codel.ko
   INSTALL net/sched/sch_drr.ko
   INSTALL net/sched/sch_dsmark.ko
@@ -4162,17 +4162,17 @@
   INSTALL sound/i2c/other/snd-ak4113.ko
   INSTALL sound/i2c/other/snd-ak4114.ko
   INSTALL sound/i2c/other/snd-ak4117.ko
-  INSTALL sound/i2c/other/snd-ak4xxx-adda.ko
   INSTALL sound/i2c/other/snd-pt2258.ko
+  INSTALL sound/i2c/other/snd-ak4xxx-adda.ko
   INSTALL sound/i2c/snd-cs8427.ko
   INSTALL sound/i2c/snd-i2c.ko
   INSTALL sound/isa/sb/snd-sb-common.ko
   INSTALL sound/pci/ac97/snd-ac97-codec.ko
   INSTALL sound/pci/ali5451/snd-ali5451.ko
   INSTALL sound/pci/asihpi/snd-asihpi.ko
-  INSTALL sound/pci/au88x0/snd-au8810.ko
   INSTALL sound/pci/au88x0/snd-au8820.ko
   INSTALL sound/pci/au88x0/snd-au8830.ko
+  INSTALL sound/pci/au88x0/snd-au8810.ko
   INSTALL sound/pci/aw2/snd-aw2.ko
   INSTALL sound/pci/ca0106/snd-ca0106.ko
   INSTALL sound/pci/cs46xx/snd-cs46xx.ko
@@ -4239,9 +4239,9 @@
   INSTALL sound/pci/snd-es1938.ko
   INSTALL sound/pci/snd-es1968.ko
   INSTALL sound/pci/snd-fm801.ko
-  INSTALL sound/pci/snd-intel8x0.ko
   INSTALL sound/pci/snd-intel8x0m.ko
   INSTALL sound/pci/snd-maestro3.ko
+  INSTALL sound/pci/snd-intel8x0.ko
   INSTALL sound/pci/snd-rme32.ko
   INSTALL sound/pci/snd-rme96.ko
   INSTALL sound/pci/snd-sonicvibes.ko
@@ -4279,8 +4279,8 @@
   INSTALL sound/soc/codecs/snd-soc-pcm512x-i2c.ko
   INSTALL sound/soc/codecs/snd-soc-pcm512x-spi.ko
   INSTALL sound/soc/codecs/snd-soc-pcm512x.ko
-  INSTALL sound/soc/codecs/snd-soc-rl6231.ko
   INSTALL sound/soc/codecs/snd-soc-rt286.ko
+  INSTALL sound/soc/codecs/snd-soc-rl6231.ko
   INSTALL sound/soc/codecs/snd-soc-rt5631.ko
   INSTALL sound/soc/codecs/snd-soc-rt5640.ko
   INSTALL sound/soc/codecs/snd-soc-rt5645.ko
@@ -4346,9 +4346,9 @@
   INSTALL sound/soc/intel/boards/snd-soc-sst-haswell.ko
   INSTALL sound/soc/intel/common/snd-soc-sst-acpi.ko
   INSTALL sound/soc/intel/common/snd-soc-sst-dsp.ko
-  INSTALL sound/soc/intel/common/snd-soc-sst-ipc.ko
   INSTALL sound/soc/intel/haswell/snd-soc-sst-haswell-pcm.ko
   INSTALL sound/soc/snd-soc-core.ko
+  INSTALL sound/soc/intel/common/snd-soc-sst-ipc.ko
   INSTALL sound/soc/xtensa/snd-soc-xtfpga-i2s.ko
   INSTALL sound/soundcore.ko
   INSTALL sound/synth/emux/snd-emux-synth.ko

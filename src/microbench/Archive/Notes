@@ -1,0 +1,35 @@
+List all traces
+sudo trace-cmd list  | greo kmem
+
+Record a trace
+trace-cmd record mm_page_alloc
+
+Useful link - for functions associated with HugePages
+https://access.redhat.com/solutions/46111
+http://developerblog.redhat.com/2014/03/10/examining-huge-pages-or-transparent-huge-pages-performance/
+
+Anon HugePages == TransHuge Pages
+
+
+Benchmarks:
+http://www.azulsystems.com/events/javaone_2002/microbenchmarks.pdf
+https://en.wikipedia.org/wiki/Benchmark_%28computing%29
+
+
+1. HINT - https://en.wikipedia.org/wiki/Hierarchical_INTegration
+	Rates the machines based on slowest access times, (i.e. the entire computer instead of individual components). It measures the full range of performance, mostly based on the amount of work a computer can perform over time.
+	http://www.cs.kent.edu/~farrell/cc11/reference/hint/hint.c
+
+
+
+2. NBench - https://en.wikipedia.org/wiki/NBench
+	Runs a set of 10 workloads. Originally written for MS. Current, UNIX based test 
+	the geometric mean of the tests string sort, bitfield, and assignment makes up the new memory index.
+
+
+	 
+3. STREAM - https://www.cs.virginia.edu/stream/
+	Test the working of CPU for workloads with high cache miss.
+
+Obtain Anonymous page requests from /proc/*/ FS 
+sudo grep -e AnonHugePages  /proc/*/smaps | awk  '{ if($2>4) print $0} '

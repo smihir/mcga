@@ -16,6 +16,7 @@ fi
 '
 
 time make -j `nproc` | tee make_log
+exit
 # Check if vagrant is up
 :'
 start()

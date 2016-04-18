@@ -2641,7 +2641,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	printk("ABH2 %s collapsing mm %p ret=%d\n",__func__, mm, ret);
+	trace_printk("ABH2 %s collapsing mm %p ret=%d PID: %d\n",__func__, mm, ret,mm->owner->pid);
 	if (ret) {
 		node = khugepaged_find_target_node();
 		/* collapse_huge_page will return with the mmap_sem released */

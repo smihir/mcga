@@ -442,7 +442,9 @@ static void exit_mm(struct task_struct *tsk)
 //ABH2
 	ptsk  = tsk->real_parent;
 	if(ptsk) {
+		trace_printk("trace1\n");	
 		if(ptsk->mm && (ptsk->mm->split_hugepage == 2)) {
+			trace_printk("trace2 %p\n",ptsk->mm);	
 			printk("COW ABH adding parents mm to khugepaged mm=%p\n", ptsk->mm);
 			__khugepaged_enter(ptsk->mm);
 		}
