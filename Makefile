@@ -22,6 +22,9 @@ linux: .check .bootstrap
 	cd src/linux-4.1.19; make -j $(CPUS) deb-pkg LOCALVERSION=-superpages
 	mv -f src/*.deb out/install
 
+redis: .check
+	cd src/bench/redis-3.0; make -j $(CPUS)
+
 .check:
 ifneq ($(OS), Ubuntu)
 	$(error Only Ubuntu supported, detected OS is $(OS))
