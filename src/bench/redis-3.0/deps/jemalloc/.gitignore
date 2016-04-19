@@ -7,7 +7,7 @@
 /config.stamp
 /config.log
 /config.status
-/configure
+#/configure
 
 /doc/html.xsl
 /doc/manpages.xsl
