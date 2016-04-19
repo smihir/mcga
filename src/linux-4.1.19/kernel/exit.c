@@ -392,6 +392,7 @@ static void exit_mm(struct task_struct *tsk)
 	struct mm_struct *mm = tsk->mm;
 	struct core_state *core_state;
 	struct task_struct *ptsk;
+	int split_hugepage = mm->split_hugepage;
 
 	mm_release(tsk, mm);
 	if (!mm)
@@ -442,10 +443,9 @@ static void exit_mm(struct task_struct *tsk)
 //ABH2
 	ptsk  = tsk->real_parent;
 	if(ptsk) {
-		trace_printk("trace1\n");	
-		if(ptsk->mm && (ptsk->mm->split_hugepage == 2)) {
-			trace_printk("trace2 %p\n",ptsk->mm);	
-			printk("COW ABH adding parents mm to khugepaged mm=%p\n", ptsk->mm);
+		trace_printk("trace1 in child pid %d parent pid %d child split %d par split %d\n", tsk->pid, ptsk->pid, split_hugepage, ptsk->mm->split_hugepage);	
+		if(ptsk->mm && (split_hugepage == 2 || ptsk->mm->split_hugepage == 2)) {
+			trace_printk("COW ABH adding parents mm %p to khugepaged\n", ptsk->mm);
 			__khugepaged_enter(ptsk->mm);
 		}
 	}

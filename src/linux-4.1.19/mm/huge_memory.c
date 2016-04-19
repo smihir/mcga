@@ -1132,7 +1132,7 @@ alloc:
 	//		ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
 	//				pmd, orig_pmd, page, haddr);
 			mm->split_hugepage = 2;
-			printk("splitting huge page in COW mm = %p %d\n", mm, mm->split_hugepage);
+			trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage,mm->owner->pid);
 			ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
@@ -2594,6 +2594,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	if (!pmd)
 		goto out;
 
+	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n", mm->owner->pid,vma->vm_start, vma->vm_end);
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
 	for (_address = address, _pte = pte; _pte < pte+HPAGE_PMD_NR;
@@ -2602,17 +2603,27 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		if (pte_none(pteval) || is_zero_pfn(pte_pfn(pteval))) {
 			if (++none_or_zero <= khugepaged_max_ptes_none)
 				continue;
-			else
+			else {
+				trace_printk("huge_mem: %d\n", __LINE__);
 				goto out_unmap;
+			}
 		}
-		if (!pte_present(pteval))
+		if (!pte_present(pteval)) {
+			trace_printk("huge_mem: %d\n", __LINE__);
 			goto out_unmap;
-		if (pte_write(pteval))
+		}
+		if (pte_write(pteval)) {
 			writable = true;
+			trace_printk("huge_mem: %d pte writebale=1\n", __LINE__);
+		} else {
+			trace_printk("huge_mem: %d pte writebale=0\n", __LINE__);
+		}
 
 		page = vm_normal_page(vma, _address, pteval);
-		if (unlikely(!page))
+		if (unlikely(!page)) {
+			trace_printk("huge_mem: %d\n", __LINE__);
 			goto out_unmap;
+		}
 		/*
 		 * Record which node the original page is from and save this
 		 * information to khugepaged_node_load[].
@@ -2620,23 +2631,30 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		 * hit record.
 		 */
 		node = page_to_nid(page);
-		if (khugepaged_scan_abort(node))
+		if (khugepaged_scan_abort(node)) {
+			trace_printk("huge_mem: %d\n", __LINE__);
 			goto out_unmap;
+		}
 		khugepaged_node_load[node]++;
 		VM_BUG_ON_PAGE(PageCompound(page), page);
-		if (!PageLRU(page) || PageLocked(page) || !PageAnon(page))
+		if (!PageLRU(page) || PageLocked(page) || !PageAnon(page)) {
+			trace_printk("huge_mem: %d\n", __LINE__);
 			goto out_unmap;
+		}
 		/*
 		 * cannot use mapcount: can't collapse if there's a gup pin.
 		 * The page must only be referenced by the scanned process
 		 * and page swap cache.
 		 */
-		if (page_count(page) != 1 + !!PageSwapCache(page))
+		if (page_count(page) != 1 + !!PageSwapCache(page)) {
+			trace_printk("huge_mem: %d\n", __LINE__);
 			goto out_unmap;
+		}
 		if (pte_young(pteval) || PageReferenced(page) ||
 		    mmu_notifier_test_young(vma->vm_mm, address))
 			referenced = true;
 	}
+	trace_printk("ref: %d write: %d\n", referenced, writable);
 	if (referenced && writable)
 		ret = 1;
 out_unmap:
