@@ -9,19 +9,19 @@ while read CMD; do
 	case "$CMD" in
 	E)
 	echo input is E
-	cp /proc/$PID/smaps fork_results/bef_fork_par$DATE
+	cp /proc/$PID/smaps fork_results/1_bef_fork_par$DATE
 	;;
 	F)
 	echo input is F
 	CPID=`ps -e | grep $CLI | tail -n 1 | awk '{print $1}'`
-	cp /proc/$PID/smaps fork_results/af_fork_par$DATE
-	cp /proc/$CPID/smaps fork_results/af_fork_ch$DATE
+	cp /proc/$PID/smaps fork_results/2_af_fork_par$DATE
+	cp /proc/$CPID/smaps fork_results/2_af_fork_ch$DATE
 	;;
 	D)
 	echo input is D
 	CPID=`ps -e | grep $CLI | tail -n 1 | awk '{print $1}'`
-	cp /proc/$PID/smaps fork_results/af_dir_par$DATE
-	cp /proc/$CPID/smaps fork_results/af_dir_ch$DATE
+	cp /proc/$PID/smaps fork_results/3_af_dir_par$DATE
+	cp /proc/$CPID/smaps fork_results/3_af_dir_ch$DATE
 	;;
 	W)
 	echo input is W
@@ -32,7 +32,7 @@ while read CMD; do
 	M)
 	echo input is M
 	CPID=`ps -e | grep $CLI | tail -n 1 | awk '{print $1}'`
-	cp /proc/$PID/smaps fork_results/af_merge_par$DATE
+	cp /proc/$PID/smaps fork_results/4_af_merge_par$DATE
 	;;
 	*)
 		echo "invalid $CMD"

@@ -4,6 +4,7 @@
 #include<string.h>
 #include<sys/wait.h>
 #include<sys/types.h>
+#include <sys/prctl.h>
 
 #define INPUT2 1000
 #define TOMB (2*1024*1024 - 1000)
@@ -16,7 +17,8 @@ main(int argc, char* argv[])
 	int input = atoi(argv[1]);
 	int count = 0, pid = 0;
 	char *a = NULL;
-	posix_memalign(&a,(2*1024*1024),input);
+	prctl(47, 1, 0, 0, 0);
+	posix_memalign((void **)&a,(2*1024*1024),input);
 	//char *a = (char *)malloc(input);
 	//char *b = (char *)malloc(input);
 	//char c[80];
@@ -33,11 +35,11 @@ main(int argc, char* argv[])
 		sleep(SLEEP*2);
 		a[TOMB] = 'b';
 		sleep(SLEEP*3);
-		printf("W\n");
+		printf("D\n");
 		fflush(stdout);
 		sleep(SLEEP);
 		wait(NULL);
-		sleep(SLEEP*300);
+		sleep(SLEEP*30);
 		printf("M\n");
 		fflush(stdout);
 		sleep(SLEEP);
@@ -47,7 +49,7 @@ main(int argc, char* argv[])
 		fflush(stdout);
 		printf("F\n");
 		fflush(stdout);
-		sleep(SLEEP*20);
+		sleep(SLEEP*20);	//sleep to allow parent to dirty page	
 		exit(0);
 	}
 	return 0;
