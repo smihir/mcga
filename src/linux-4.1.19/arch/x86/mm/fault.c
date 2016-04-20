@@ -1066,9 +1066,22 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	struct mm_struct *mm;
 	int fault, major = 0;
 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
+	//ABH
+	struct task_struct *tsk_child;
 
 	tsk = current;
+	/*
+	if(!list_empty(&tsk->children)) {
+		tsk_child = list_entry(tsk->children.next, struct task_struct,
+			children);
+		tsk_child->abhinav = 97;
+		printk("setting val in child ABH\n");
+	}
+	printk("val in child is %d ABH\n", tsk->abhinav);
+	*/
+	//ABH
 	mm = tsk->mm;
+
 
 	/*
 	 * Detect and handle instructions that would cause a page fault for

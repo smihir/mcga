@@ -1,0 +1,11 @@
+#!/bin/bash
+x=0
+echo $1
+mkdir -p fork_results
+gcc -Wall memfork.c -o mfork
+rm -rf fork_results/*
+while [ $x -lt 1 ]
+do
+	./mfork 4000000 | ./smaps_out
+	x=$(($x+1))
+done
