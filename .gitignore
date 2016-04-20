@@ -38,3 +38,6 @@ out
 out/*
 .bootstrap
 .check
+
+# Log Files
+*.log
