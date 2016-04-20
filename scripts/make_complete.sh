@@ -5,9 +5,9 @@ echo "\n\n\n\n"
 echo "=============================================="
 echo "Make Step"
 echo "=============================================="
-cd ~/vagrant/superpages/src/linux-4.1.19/
+cd src/linux-4.1.19/
 
-time make -j `nproc` | tee ../make_log
+time make -j `nproc` | tee linux-make.log
 # Copy the Binaries
 vagrant ssh -c "cd /vagrant/superpages/src/linux-4.1.19/; 
 		sudo cp arch/x86_64/boot/bzImage /boot/vmlinuz-4.1.19vik;
