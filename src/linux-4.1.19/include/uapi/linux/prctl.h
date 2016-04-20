@@ -190,4 +190,8 @@ struct prctl_mm_map {
 # define PR_FP_MODE_FR		(1 << 0)	/* 64b FP registers */
 # define PR_FP_MODE_FRE		(1 << 1)	/* 32b compatibility */
 
+/*Tell the kernel to start demoting thp on cow fault*/
+#define PR_SET_THP_MCGA         47
+
+
 #endif /* _LINUX_PRCTL_H */

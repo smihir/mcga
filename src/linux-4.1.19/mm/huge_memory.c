@@ -1114,10 +1114,8 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	get_user_huge_page(page);
 	spin_unlock(ptl);
 alloc:
-	//if (transparent_hugepage_enabled(vma) &&
-	 //   !transparent_hugepage_debug_cow()) {
 	if (transparent_hugepage_enabled(vma) &&
-	    !transparent_hugepage_debug_cow() && 0) {
+	    !transparent_hugepage_debug_cow() && !mm->split_hugepage) {
 		huge_gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		new_page = alloc_hugepage_vma(huge_gfp, vma, haddr, HPAGE_PMD_ORDER);
 	} else
@@ -1128,16 +1126,14 @@ alloc:
 			split_huge_page_pmd(vma, address, pmd);
 			ret |= VM_FAULT_FALLBACK;
 		} else {
-	//	ABH2
-	//		ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
-	//				pmd, orig_pmd, page, haddr);
-			mm->split_hugepage = 2;
-			trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage,mm->owner->pid);
-			ret |= VM_FAULT_OOM;
+			if (!mm->split_hugepage)
+				ret = do_huge_pmd_wp_page_fallback(mm, vma, address,
+						pmd, orig_pmd, page, haddr);
+			else
+				ret |= VM_FAULT_OOM;
+			trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage, mm->owner->pid);
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
-//				printk(" adding VMA to be TESTING2\n");
-//				khugepaged_enter_vma_merge(vma, vma->vm_flags);
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);

@@ -442,15 +442,14 @@ static void exit_mm(struct task_struct *tsk)
 	mm_update_next_owner(mm);
 	mmput(mm);
 //ABH2
-	if(tsk) {
+	if (tsk) {
 		ptsk  = tsk->real_parent;
-		if(ptsk && ptsk->mm) {
-			trace_printk("trace1 in child split %d par split\n",  split_hugepage);// ptsk->mm->split_hugepage);	
-			//if(ptsk->mm && (split_hugepage == 2 || ptsk->mm->split_hugepage == 2)) {
-			//	if(ptsk->mm && (split_hugepage == 2)) {
-			//		trace_printk("COW ABH adding parents mm %p to khugepaged\n", ptsk->mm);
-			//		__khugepaged_enter(ptsk->mm);
-			//	}
+		if (ptsk && ptsk->mm) {
+			trace_printk("Trace1: in child split %d par split\n", split_hugepage);
+			if (ptsk->mm && split_hugepage == 1) {
+				trace_printk("Trace2: COW ABH adding parents mm %p to khugepaged\n", ptsk->mm);
+				__khugepaged_enter(ptsk->mm);
+			}
 		}
 	}
 //ABH2

@@ -457,7 +457,6 @@ struct mm_struct {
 	/* address of the bounds directory */
 	void __user *bd_addr;
 #endif
-//ABH2
 	int split_hugepage;
 };
 
