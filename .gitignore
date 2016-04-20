@@ -41,3 +41,7 @@ out/*
 
 # Log Files
 *.log
+
+# Project Files
+.vagrant/*
+.venvinit
