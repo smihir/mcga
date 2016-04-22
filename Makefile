@@ -35,7 +35,7 @@ linux: .check .bootstrap src/linux-4.1.19/.config
 redis: .check
 	cd src/bench/redis-3.0; make -j $(CPUS)
 
-venv: .bootstrap linux Vagrantfile
+venv: .bootstrap linux
 	vagrant up --provider virtualbox
 	vagrant ssh -c "cd /vagrant/src/linux-4.1.19; \
 	    sudo make modules_install; sudo make install"
@@ -59,9 +59,6 @@ venv-de:
 	@test -f .venvinit || { echo "\nNo venv present! Exiting..."; exit 1;}
 	vagrant destroy
 	rm -rf .venvinit
-
-Vagrantfile: .bootstrap
-	vagrant init ubuntu/trusty64
 
 .check:
 ifneq ($(OS), Ubuntu)
