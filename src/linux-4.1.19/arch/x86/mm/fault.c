@@ -1066,30 +1066,10 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	struct mm_struct *mm;
 	int fault, major = 0;
 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
-	//ABH
-	struct task_struct *tsk_child;
 
 	tsk = current;
-#if 0
-	
-	if(tsk->mm->split_hugepage == 1) {
-			if (!&tsk->children){
-					if(!list_empty(&tsk->children)) {
-							tsk_child = list_first_entry(&tsk->children, struct task_struct, children);
-							tsk_child->mm->split_hugepage = 97;
-							trace_printk("1_val in child is %d parent is %d ABH\n", tsk_child->mm->split_hugepage, tsk->mm->split_hugepage);
-					} else {
-							trace_printk("2_we are in child val is %d ABH\n", tsk->mm->split_hugepage);
-					}
-			}
-			else{
-					trace_printk("no children\n");
-			}
-	}
-#endif
-	//ABH
-	mm = tsk->mm;
 
+	mm = tsk->mm;
 
 	/*
 	 * Detect and handle instructions that would cause a page fault for
