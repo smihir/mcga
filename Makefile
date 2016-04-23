@@ -5,8 +5,7 @@ ARCH := $(shell uname -m | sed 's/x86_//;s/i[3-6]86/32/')
 VER := $(shell lsb_release -sr)
 
 VENV_READY_MSG :=  "Virtual Environment is ready. Check Vagrants documentation\
-for help. And restart the vitual machine using vagrant to boot into the new \
-kernel"
+for help. SSH into the machine using vagrant ssh"
 
 .bootstrap: .check
 	sudo apt-get install -y git build-essential kernel-package fakeroot \
@@ -42,6 +41,8 @@ venv: .bootstrap linux
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
 	touch .venvinit
+	vagrant halt
+	vagrant up
 	@echo "=============================================="
 	@echo $(VENV_READY_MSG)
 	@echo "=============================================="
@@ -54,6 +55,8 @@ venv-re: .bootstrap linux
 	    sudo cp System.map /boot/System.map-4.1.19"
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
+	vagrant halt
+	vagrant up
 
 venv-de:
 	@test -f .venvinit || { echo "\nNo venv present! Exiting..."; exit 1;}
