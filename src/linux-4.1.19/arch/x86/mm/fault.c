@@ -1070,15 +1070,23 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	struct task_struct *tsk_child;
 
 	tsk = current;
-	/*
-	if(!list_empty(&tsk->children)) {
-		tsk_child = list_entry(tsk->children.next, struct task_struct,
-			children);
-		tsk_child->abhinav = 97;
-		printk("setting val in child ABH\n");
+#if 0
+	
+	if(tsk->mm->split_hugepage == 1) {
+			if (!&tsk->children){
+					if(!list_empty(&tsk->children)) {
+							tsk_child = list_first_entry(&tsk->children, struct task_struct, children);
+							tsk_child->mm->split_hugepage = 97;
+							trace_printk("1_val in child is %d parent is %d ABH\n", tsk_child->mm->split_hugepage, tsk->mm->split_hugepage);
+					} else {
+							trace_printk("2_we are in child val is %d ABH\n", tsk->mm->split_hugepage);
+					}
+			}
+			else{
+					trace_printk("no children\n");
+			}
 	}
-	printk("val in child is %d ABH\n", tsk->abhinav);
-	*/
+#endif
 	//ABH
 	mm = tsk->mm;
 

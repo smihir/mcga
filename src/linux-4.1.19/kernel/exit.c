@@ -447,8 +447,14 @@ static void exit_mm(struct task_struct *tsk)
 		if (ptsk && ptsk->mm) {
 			trace_printk("Trace1: in child split %d par split\n", split_hugepage);
 			if (ptsk->mm && split_hugepage == 1) {
-				trace_printk("Trace2: COW ABH adding parents mm %p to khugepaged\n", ptsk->mm);
+					
+			
+				trace_printk("Trace2: COW adding parent's mm %p to khugepaged\n", ptsk->mm);
+				trace_printk("Trace3: Parent's splithuge page mm: %d\n", ptsk->mm->split_hugepage);
 				__khugepaged_enter(ptsk->mm);
+			}
+			else if (ptsk->mm && split_hugepage==5){
+				trace_printk("Trace4:kernel/exit.c This value was set by parent!\n");
 			}
 		}
 	}

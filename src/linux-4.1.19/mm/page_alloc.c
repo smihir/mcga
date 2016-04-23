@@ -656,8 +656,10 @@ static inline int free_pages_check(struct page *page)
 	const char *bad_reason = NULL;
 	unsigned long bad_flags = 0;
 
-	if (unlikely(page_mapcount(page)))
+	if (unlikely(page_mapcount(page))){
 		bad_reason = "nonzero mapcount";
+		trace_printk("3_mm/ipage_alloc.c: Bad page for map count, Map Count: %d Page: %p\n",page_mapcount(page),page);
+	}
 	if (unlikely(page->mapping != NULL))
 		bad_reason = "non-NULL mapping";
 	if (unlikely(atomic_read(&page->_count) != 0))
@@ -792,10 +794,12 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 
 	if (PageAnon(page))
 		page->mapping = NULL;
+	trace_printk("1_mm/page_alloc.c: %d Page: %p\n",__LINE__,page);
 	bad += free_pages_check(page);
 	for (i = 1; i < (1 << order); i++) {
 		if (compound)
 			bad += free_tail_pages_check(page, page + i);
+		trace_printk("2_mm/page_alloc.c: %d %d\n",__LINE__, i);
 		bad += free_pages_check(page + i);
 	}
 	if (bad)
