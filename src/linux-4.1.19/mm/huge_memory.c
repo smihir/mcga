@@ -765,7 +765,6 @@ static int __do_huge_pmd_anonymous_page(struct mm_struct *mm,
 	return 0;
 }
 
-#if 1
 static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 					struct vm_area_struct *vma,
 					unsigned long haddr, pmd_t *pmd,
@@ -774,89 +773,54 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	struct mem_cgroup *memcg;
 	pgtable_t pgtable;
 	spinlock_t *ptl;
-
-#if 0
 	pgd_t *pgd;
 	pud_t *pud;
-	pmd_t *pmd;
-	pte_t *pte;
-#endif
-
-	trace_printk("%d....\n",__LINE__);
-	//token = pmd_pgtable(*pmd);
+	pmd_t entry;
 	pgtable = pmd_pgtable(*pmd);
 
-#if 0
-	pgd = pgd_offset(mm, address);
-	pud = pud_alloc(mm, pgd, address);
-	if (!pud)
+	down_write(&mm->mmap_sem);
+	if (mem_cgroup_try_charge(page, mm, gfp, &memcg)) {
+		trace_printk("fail to commit charge...bad\n");
 		return VM_FAULT_OOM;
-	pmd = pmd_alloc(mm, pud, address);
-	if (!pmd)
+	}
+	pmd_clear(pmd);
+	atomic_long_dec(&mm->nr_ptes);
+	pte_free(mm, pgtable);
+
+	pgd = pgd_offset(mm, haddr);
+	pud = pud_alloc(mm, pgd,haddr);
+	if (!pud) {
+		trace_printk("pud is NULL...bad\n");
+		mem_cgroup_cancel_charge(page, memcg);
+		up_write(&mm->mmap_sem);
 		return VM_FAULT_OOM;
-#endif
+	}
+	pmd = pmd_alloc(mm, pud, haddr);
+	if (!pmd) {
+		trace_printk("pmd is NULL...bad\n");
+		mem_cgroup_cancel_charge(page, memcg);
+		up_write(&mm->mmap_sem);
+		return VM_FAULT_OOM;
+	}
+	pgtable = pmd_pgtable(*pmd);
 
 	VM_BUG_ON_PAGE(!PageCompound(page), page);
 
-	if (mem_cgroup_try_charge(page, mm, gfp, &memcg))
-		return VM_FAULT_OOM;
-
-#if 0
-	pgtable = pte_alloc_one(mm, haddr);
-	if (unlikely(!pgtable)) {
-		mem_cgroup_cancel_charge(page, memcg);
-		return VM_FAULT_OOM;
-	}
-#endif
-
-	/*
-	 * The memory barrier inside __SetPageUptodate makes sure that
-	 * clear_huge_page writes become visible before the set_pmd_at()
-	 * write.
-	 */
-	__SetPageUptodate(page);
-
 	ptl = pmd_lock(mm, pmd);
-#if 0
-	if (unlikely(!pmd_none(*pmd))) {
-		spin_unlock(ptl);
-		mem_cgroup_cancel_charge(page, memcg);
-		put_page(page);
-		pte_free(mm, pgtable);
-	} else {
-		pmd_t entry;
-		entry = mk_huge_pmd(page, vma->vm_page_prot);
-		entry = maybe_pmd_mkwrite(pmd_mkdirty(entry), vma);
-		page_add_new_anon_rmap(page, vma, haddr);
-		mem_cgroup_commit_charge(page, memcg, false);
-		lru_cache_add_active_or_unevictable(page, vma);
-		pgtable_trans_huge_deposit(mm, pmd, pgtable);
-		set_pmd_at(mm, haddr, pmd, entry);
-		add_mm_counter(mm, MM_ANONPAGES, HPAGE_PMD_NR);
-		atomic_long_inc(&mm->nr_ptes);
-		spin_unlock(ptl);
-	}
-#endif
-		do {
-		pmd_t entry;
-		//pte_free(mm, pgtable);
-		trace_printk("%d....\n",__LINE__);
-		entry = pmd_mkhuge(*pmd);
-		entry = maybe_pmd_mkwrite(pmd_mkdirty(entry), vma);
-		page_add_new_anon_rmap(page, vma, haddr);
-		mem_cgroup_commit_charge(page, memcg, false);
-		lru_cache_add_active_or_unevictable(page, vma);
-		pgtable_trans_huge_deposit(mm, pmd, pgtable);
-		set_pmd_at(mm, haddr, pmd, entry);
-		add_mm_counter(mm, MM_ANONPAGES, HPAGE_PMD_NR);
-		//atomic_long_inc(&mm->nr_ptes);
-		spin_unlock(ptl);
-		} while(0);
+	entry = pmd_mkhuge(*pmd);
+	entry = maybe_pmd_mkwrite(pmd_mkdirty(entry), vma);
+	page_add_new_anon_rmap(page, vma, haddr);
+	mem_cgroup_commit_charge(page, memcg, false);
+	lru_cache_add_active_or_unevictable(page, vma);
+	pgtable_trans_huge_deposit(mm, pmd, pgtable);
+	set_pmd_at(mm, haddr, pmd, entry);
+	add_mm_counter(mm, MM_ANONPAGES, HPAGE_PMD_NR);
+	atomic_long_inc(&mm->nr_ptes);
+	spin_unlock(ptl);
 
+	up_write(&mm->mmap_sem);
 	return 0;
 }
-
-#endif
 
 static inline gfp_t alloc_hugepage_gfpmask(int defrag, gfp_t extra_gfp)
 {
@@ -1224,14 +1188,10 @@ alloc:
 						pmd, orig_pmd, page, haddr);
 			else
 				ret |= VM_FAULT_OOM;
-			trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage, mm->owner->pid);
+			if (!mm->split_hugepage)
+				trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage, mm->owner->pid);
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
-				if (!PageCompound(page)) {
-					trace_printk("%s Not a compond page\n", __func__);
-				} else {
-					trace_printk("%s Is a compond page\n", __func__);
-				}
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
@@ -2680,7 +2640,9 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	unsigned long _address;
 	spinlock_t *ptl;
 	int node = NUMA_NO_NODE;
-	bool writable = false, referenced = false;
+	bool writable = false, referenced = false, aligned = false;
+	bool contiguous = true;
+	unsigned long old_pfn, new_pfn;
 
 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
 
@@ -2690,19 +2652,28 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-	//first_pte = pte_offset_map_lock(mm, pmd, 0, &ptl);
-	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n", mm->owner->pid,vma->vm_start, vma->vm_end);
+	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
+		mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
+	if (first_pmd_pte == pte) {
+		aligned = true;
+	}
+
+	new_pfn = pte_pfn(*first_pmd_pte);
+	old_pfn = new_pfn - 1;
+
 	for (_address = address, _pte = pte; _pte < pte+HPAGE_PMD_NR;
 	     _pte++, _address += PAGE_SIZE) {
 		pte_t pteval = *_pte;
-		trace_printk("huge_mem: PID: %d address %lu, pmd pfn %lu, pfn %lu\n", mm->owner->pid, _address, pte_pfn(*first_pmd_pte), pte_pfn(pteval));
+		new_pfn = pte_pfn(pteval);
+		if (mm->split_hugepage == 1)
+			trace_printk("huge_mem: PID: %d address %lu, pmd pfn %05lx, pfn %05lx\n",
+			    mm->owner->pid, _address, pte_pfn(*first_pmd_pte), pte_pfn(pteval));
 		if (pte_none(pteval) || is_zero_pfn(pte_pfn(pteval))) {
 			if (++none_or_zero <= khugepaged_max_ptes_none)
 				continue;
-			else {
+			else
 				goto out_unmap;
-			}
 		}
 		if (!pte_present(pteval)) {
 			goto out_unmap;
@@ -2713,11 +2684,6 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		page = vm_normal_page(vma, _address, pteval);
 		if (unlikely(!page)) {
 			goto out_unmap;
-		}
-		if (!PageCompound(page)) {
-			trace_printk("%s Not a compond page\n", __func__);
-		} else {
-			trace_printk("%s Is a compond page\n", __func__);
 		}
 		/*
 		 * Record which node the original page is from and save this
@@ -2745,25 +2711,31 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		if (pte_young(pteval) || PageReferenced(page) ||
 		    mmu_notifier_test_young(vma->vm_mm, address))
 			referenced = true;
+		if (old_pfn == new_pfn - 1 && contiguous == true)
+			old_pfn = new_pfn;
+		else
+			contiguous = false;
 	}
 	if (referenced && writable)
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	if (mm->split_hugepage) {
+	if (mm->split_hugepage == 1)
+		trace_printk("aligned = %d, none_or_zero = %d referenced = %d, cont = %d\n",
+					  aligned, none_or_zero, referenced, contiguous);
+	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
+		referenced && contiguous) {
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;
 		struct page *first_page = pfn_to_page(pte_pfn(*first_pmd_pte));
-		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 
+		up_read(&mm->mmap_sem);
+
+		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		prep_compound_page(first_page, 9);
-		if (!PageCompound(first_page)) {
-			trace_printk("2 Not a compond page\n");
-		} else {
-			trace_printk("2 Is a compond page\n");
-		}
-		// Coalasce pages in a list before calling
-		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, page, gfp);
+		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
+		ret = 1;
+		goto out;
 	}
 	if (ret) {
 		node = khugepaged_find_target_node();
@@ -2899,7 +2871,6 @@ breakouterloop_mmap_sem:
 			khugepaged_full_scans++;
 		}
 
-		trace_printk("ABH deleting mm_slot %ld\n",mm_slot);
 		collect_mm_slot(mm_slot);
 	}
 
