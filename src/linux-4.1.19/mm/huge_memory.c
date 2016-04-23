@@ -778,7 +778,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	pmd_t entry;
 	pgtable = pmd_pgtable(*pmd);
 
-	//down_write(&mm->mmap_sem);
+	down_write(&mm->mmap_sem);
 	if (mem_cgroup_try_charge(page, mm, gfp, &memcg)) {
 		trace_printk("fail to commit charge...bad\n");
 		return VM_FAULT_OOM;
@@ -792,14 +792,14 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	if (!pud) {
 		trace_printk("pud is NULL...bad\n");
 		mem_cgroup_cancel_charge(page, memcg);
-		//up_write(&mm->mmap_sem);
+		up_write(&mm->mmap_sem);
 		return VM_FAULT_OOM;
 	}
 	pmd = pmd_alloc(mm, pud, haddr);
 	if (!pmd) {
 		trace_printk("pmd is NULL...bad\n");
 		mem_cgroup_cancel_charge(page, memcg);
-		//up_write(&mm->mmap_sem);
+		up_write(&mm->mmap_sem);
 		return VM_FAULT_OOM;
 	}
 	pgtable = pmd_pgtable(*pmd);
@@ -818,7 +818,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	atomic_long_inc(&mm->nr_ptes);
 	spin_unlock(ptl);
 
-	//up_write(&mm->mmap_sem);
+	up_write(&mm->mmap_sem);
 	return 0;
 }
 
@@ -2652,7 +2652,6 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-	//first_pte = pte_offset_map_lock(mm, pmd, 0, &ptl);
 	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
 		mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
@@ -2730,12 +2729,12 @@ out_unmap:
 		gfp_t gfp;
 		struct page *first_page = pfn_to_page(pte_pfn(*first_pmd_pte));
 
-		//up_read(&mm->mmap_sem);
+		up_read(&mm->mmap_sem);
 
 		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		prep_compound_page(first_page, 9);
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
-		//ret = 0;
+		ret = 1;
 		goto out;
 	}
 	if (ret) {
