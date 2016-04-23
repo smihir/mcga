@@ -794,12 +794,10 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 
 	if (PageAnon(page))
 		page->mapping = NULL;
-	trace_printk("1_mm/page_alloc.c: %d Page: %p\n",__LINE__,page);
 	bad += free_pages_check(page);
 	for (i = 1; i < (1 << order); i++) {
 		if (compound)
 			bad += free_tail_pages_check(page, page + i);
-		trace_printk("2_mm/page_alloc.c: %d %d\n",__LINE__, i);
 		bad += free_pages_check(page + i);
 	}
 	if (bad)
