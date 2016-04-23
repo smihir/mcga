@@ -1147,6 +1147,7 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
 	gfp_t huge_gfp;			/* for allocation and charge */
+	struct task_struct *ctsk;		// Child Task Structure
 
 	ptl = pmd_lockptr(mm, pmd);
 	VM_BUG_ON_VMA(!vma->anon_vma, vma);
@@ -1192,6 +1193,15 @@ alloc:
 				trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage, mm->owner->pid);
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
+				if (mm->split_hugepage == 1) {
+					// Set child's hugepage split here
+						struct list_head *list;
+						list_for_each(list, &current->children) {
+								ctsk = list_entry(list, struct task_struct, sibling);
+								/* task now points to one of current’s children */
+								trace_printk("Trace5:mm/huge_memory.c %d, line :%d\n",ctsk->mm->split_hugepage,__LINE__);
+						}
+				}
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
