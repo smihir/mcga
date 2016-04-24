@@ -446,12 +446,10 @@ static void exit_mm(struct task_struct *tsk)
 		ptsk  = tsk->real_parent;
 		if (ptsk && ptsk->mm) {
 			if (ptsk->mm && split_hugepage == 2) {
-				trace_printk("Trace2: COW ABH adding parents mm %p to khugepaged\n", ptsk->mm);
 				__khugepaged_enter(ptsk->mm);
 			}
 		}
 	}
-
 	if (test_thread_flag(TIF_MEMDIE))
 		unmark_oom_victim();
 }

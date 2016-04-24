@@ -3304,6 +3304,12 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	pud_t *pud;
 	pmd_t *pmd;
 	pte_t *pte;
+	struct list_head *list;
+	struct task_struct *ctsk;	//Child's task struct
+	struct mm_struct *cmm;	//Child's mm struct
+	struct vm_area_struct *cvma;	//Child's vma struct
+	pmd_t *cpmd;	//Child's pmd struct
+	int ret;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
 		return hugetlb_fault(mm, vma, address, flags);
@@ -3324,7 +3330,6 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 			return ret;
 	} else {
 		pmd_t orig_pmd = *pmd;
-		int ret;
 
 		barrier();
 		if (pmd_trans_huge(orig_pmd)) {
@@ -3343,8 +3348,20 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 							     orig_pmd, pmd);
 
 			if (dirty && !pmd_write(orig_pmd)) {
-				ret = do_huge_pmd_wp_page(mm, vma, address, pmd,
-							  orig_pmd);
+				if (mm->split_hugepage == 1) {
+					// Set child's hugepage split here
+						list_for_each(list, &current->children) {
+								ctsk = list_entry(list, struct task_struct, sibling);
+								/* task now points to one of current’s children */
+								cmm = ctsk->mm;
+								down_read(&cmm->mmap_sem);
+								cvma = find_vma(cmm, address);
+								ret = __handle_mm_fault(cmm, cvma, address, flags);
+								up_read(&cmm->mmap_sem);
+								return ret;
+						}
+				} 	
+				ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd); 
 				if (!(ret & VM_FAULT_FALLBACK))
 					return ret;
 			} else {

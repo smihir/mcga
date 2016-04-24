@@ -1147,6 +1147,7 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
 	gfp_t huge_gfp;			/* for allocation and charge */
+	struct task_struct *ctsk;		// Child Task Structure
 
 	ptl = pmd_lockptr(mm, pmd);
 	VM_BUG_ON_VMA(!vma->anon_vma, vma);
@@ -1188,10 +1189,18 @@ alloc:
 						pmd, orig_pmd, page, haddr);
 			else
 				ret |= VM_FAULT_OOM;
-			if (!mm->split_hugepage)
-				trace_printk("splitting huge page in COW mm = %p %d PID: %d\n", mm, mm->split_hugepage, mm->owner->pid);
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
+				if (mm->split_hugepage == 1) {
+					// Set child's hugepage split here
+						//VIK		
+						struct list_head *list;
+						list_for_each(list, &current->children) {
+								ctsk = list_entry(list, struct task_struct, sibling);
+								/* task now points to one of current’s children */
+								//trace_printk("Trace5:mm/huge_memory.c %d, line :%d\n",ctsk->mm->split_hugepage,__LINE__);
+						}
+				}
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
@@ -2652,8 +2661,8 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
-		mm->owner->pid,vma->vm_start, vma->vm_end);
+//	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
+//		mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
 	if (first_pmd_pte == pte) {
 		aligned = true;
@@ -2666,9 +2675,11 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	     _pte++, _address += PAGE_SIZE) {
 		pte_t pteval = *_pte;
 		new_pfn = pte_pfn(pteval);
+#if 0
 		if (mm->split_hugepage == 1)
 			trace_printk("huge_mem: PID: %d address %lu, pmd pfn %05lx, pfn %05lx\n",
 			    mm->owner->pid, _address, pte_pfn(*first_pmd_pte), pte_pfn(pteval));
+#endif
 		if (pte_none(pteval) || is_zero_pfn(pte_pfn(pteval))) {
 			if (++none_or_zero <= khugepaged_max_ptes_none)
 				continue;
@@ -2720,11 +2731,13 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
+	/*	Debug for contiguity
 	if (mm->split_hugepage == 1)
-		trace_printk("aligned = %d, none_or_zero = %d referenced = %d, cont = %d\n",
-					  aligned, none_or_zero, referenced, contiguous);
+		trace_printk("1_%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, mm = %p, pid = %d\n",
+					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm, mm->owner->pid);
+	*/
 	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
-		referenced && contiguous) {
+		referenced && contiguous && 0) {
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;
 		struct page *first_page = pfn_to_page(pte_pfn(*first_pmd_pte));

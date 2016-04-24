@@ -1068,7 +1068,6 @@ __do_page_fault(struct pt_regs *regs, unsigned long error_code,
 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
 
 	tsk = current;
-
 	mm = tsk->mm;
 
 	/*
