@@ -68,6 +68,8 @@ static unsigned int khugepaged_max_ptes_none __read_mostly = HPAGE_PMD_NR-1;
 static int khugepaged(void *none);
 static int khugepaged_slab_init(void);
 static void khugepaged_slab_exit(void);
+static inline int khugepaged_test_exit(struct mm_struct *mm);
+static bool hugepage_vma_check(struct vm_area_struct *vma);
 
 #define MM_SLOTS_HASH_BITS 10
 static __read_mostly DEFINE_HASHTABLE(mm_slots_hash, MM_SLOTS_HASH_BITS);
@@ -765,61 +767,116 @@ static int __do_huge_pmd_anonymous_page(struct mm_struct *mm,
 	return 0;
 }
 
+void prep_compound_mapcount(struct page *page, unsigned long order)
+{
+	int i;
+	int nr_pages = 1 << order;
+	struct page *p;
+
+	for (i = 0; i < nr_pages; i++) {
+		p = page + i;
+		atomic_dec(&p->_mapcount);
+		if (i) {
+			p->flags = 0;
+			p->mapping = NULL;
+		}
+	}
+}
+
 static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 					struct vm_area_struct *vma,
-					unsigned long haddr, pmd_t *pmd,
+					unsigned long address, pmd_t *pmd,
 					struct page *page, gfp_t gfp)
 {
-	struct mem_cgroup *memcg;
+	pmd_t _pmd;
+	pte_t *pte;
 	pgtable_t pgtable;
-	spinlock_t *ptl;
-	pgd_t *pgd;
-	pud_t *pud;
-	pmd_t entry;
-	pgtable = pmd_pgtable(*pmd);
+	struct page *new_page = page;
+	spinlock_t *pmd_ptl, *pte_ptl;
+	struct mem_cgroup *memcg;
+	unsigned long hstart, hend;
+	unsigned long mmun_start;	/* For mmu_notifiers */
+	unsigned long mmun_end;		/* For mmu_notifiers */
 
+	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
+
+	if (unlikely(mem_cgroup_try_charge(new_page, mm,
+					   gfp, &memcg)))
+		return 1;
+	mem_cgroup_promote_huge_fixup(page);
+	/*
+	 * Prevent all access to pagetables with the exception of
+	 * gup_fast later hanlded by the ptep_clear_flush and the VM
+	 * handled by the anon_vma lock + PG_lock.
+	 */
 	down_write(&mm->mmap_sem);
-	if (mem_cgroup_try_charge(page, mm, gfp, &memcg)) {
-		trace_printk("fail to commit charge...bad\n");
-		return VM_FAULT_OOM;
-	}
-	pmd_clear(pmd);
-	atomic_long_dec(&mm->nr_ptes);
-	pte_free(mm, pgtable);
+	if (unlikely(khugepaged_test_exit(mm)))
+		goto out;
 
-	pgd = pgd_offset(mm, haddr);
-	pud = pud_alloc(mm, pgd,haddr);
-	if (!pud) {
-		trace_printk("pud is NULL...bad\n");
-		mem_cgroup_cancel_charge(page, memcg);
-		up_write(&mm->mmap_sem);
-		return VM_FAULT_OOM;
-	}
-	pmd = pmd_alloc(mm, pud, haddr);
-	if (!pmd) {
-		trace_printk("pmd is NULL...bad\n");
-		mem_cgroup_cancel_charge(page, memcg);
-		up_write(&mm->mmap_sem);
-		return VM_FAULT_OOM;
-	}
-	pgtable = pmd_pgtable(*pmd);
+	hstart = (vma->vm_start + ~HPAGE_PMD_MASK) & HPAGE_PMD_MASK;
+	hend = vma->vm_end & HPAGE_PMD_MASK;
+	if (address < hstart || address + HPAGE_PMD_SIZE > hend)
+		goto out;
+	if (!hugepage_vma_check(vma))
+		goto out;
+	if (!pmd)
+		goto out;
 
-	VM_BUG_ON_PAGE(!PageCompound(page), page);
+	anon_vma_lock_write(vma->anon_vma);
 
-	ptl = pmd_lock(mm, pmd);
-	entry = pmd_mkhuge(*pmd);
-	entry = maybe_pmd_mkwrite(pmd_mkdirty(entry), vma);
-	page_add_new_anon_rmap(page, vma, haddr);
-	mem_cgroup_commit_charge(page, memcg, false);
-	lru_cache_add_active_or_unevictable(page, vma);
+	pte = pte_offset_map(pmd, address);
+	pte_ptl = pte_lockptr(mm, pmd);
+
+	mmun_start = address;
+	mmun_end   = address + HPAGE_PMD_SIZE;
+	mmu_notifier_invalidate_range_start(mm, mmun_start, mmun_end);
+	pmd_ptl = pmd_lock(mm, pmd); /* probably unnecessary */
+	/*
+	 * After this gup_fast can't run anymore. This also removes
+	 * any huge TLB entry from the CPU so we won't allow
+	 * huge and small TLB entries for the same virtual address
+	 * to avoid the risk of CPU bugs in that area.
+	 */
+	_pmd = pmdp_clear_flush(vma, address, pmd);
+	spin_unlock(pmd_ptl);
+	mmu_notifier_invalidate_range_end(mm, mmun_start, mmun_end);
+
+	/*
+	 * All pages are isolated and locked so anon_vma rmap
+	 * can't run anymore.
+	 */
+	anon_vma_unlock_write(vma->anon_vma);
+
+	pte_unmap(pte);
+	pgtable = pmd_pgtable(_pmd);
+
+	_pmd = mk_huge_pmd(new_page, vma->vm_page_prot);
+	_pmd = maybe_pmd_mkwrite(pmd_mkdirty(_pmd), vma);
+
+	/*
+	 * spin_lock() below is not the equivalent of smp_wmb(), so
+	 * this is needed to avoid the copy_huge_page writes to become
+	 * visible after the set_pmd_at() write.
+	 */
+	smp_wmb();
+
+	spin_lock(pmd_ptl);
+	BUG_ON(!pmd_none(*pmd));
+	page_add_anon_rmap(new_page, vma, address);
+	mem_cgroup_commit_charge(new_page, memcg, false);
+	lru_cache_add_active_or_unevictable(new_page, vma);
 	pgtable_trans_huge_deposit(mm, pmd, pgtable);
-	set_pmd_at(mm, haddr, pmd, entry);
-	add_mm_counter(mm, MM_ANONPAGES, HPAGE_PMD_NR);
-	atomic_long_inc(&mm->nr_ptes);
-	spin_unlock(ptl);
+	set_pmd_at(mm, address, pmd, _pmd);
+	update_mmu_cache_pmd(vma, address, pmd);
+	spin_unlock(pmd_ptl);
 
+
+out_up_write:
 	up_write(&mm->mmap_sem);
 	return 0;
+
+out:
+	goto out_up_write;
 }
 
 static inline gfp_t alloc_hugepage_gfpmask(int defrag, gfp_t extra_gfp)
@@ -2746,6 +2803,7 @@ out_unmap:
 
 		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		prep_compound_page(first_page, 9);
+		prep_compound_mapcount(first_page, 9);
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
 		ret = 1;
 		goto out;

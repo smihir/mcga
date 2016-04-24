@@ -190,6 +190,7 @@ static inline void mem_cgroup_count_vm_event(struct mm_struct *mm,
 }
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
 void mem_cgroup_split_huge_fixup(struct page *head);
+void mem_cgroup_promote_huge_fixup(struct page *head);
 #endif
 
 #else /* CONFIG_MEMCG */
@@ -367,6 +368,10 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 }
 
 static inline void mem_cgroup_split_huge_fixup(struct page *head)
+{
+}
+
+static inline void mem_cgroup_promote_huge_fixup(struct page *head)
 {
 }
 

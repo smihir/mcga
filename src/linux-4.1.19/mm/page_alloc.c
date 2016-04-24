@@ -658,7 +658,6 @@ static inline int free_pages_check(struct page *page)
 
 	if (unlikely(page_mapcount(page))){
 		bad_reason = "nonzero mapcount";
-		trace_printk("3_mm/ipage_alloc.c: Bad page for map count, Map Count: %d Page: %p\n",page_mapcount(page),page);
 	}
 	if (unlikely(page->mapping != NULL))
 		bad_reason = "non-NULL mapping";
@@ -795,13 +794,17 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 	if (PageAnon(page))
 		page->mapping = NULL;
 	bad += free_pages_check(page);
+	if (bad)
+		trace_printk("Head is bad %d\n", bad);
 	for (i = 1; i < (1 << order); i++) {
 		if (compound)
 			bad += free_tail_pages_check(page, page + i);
 		bad += free_pages_check(page + i);
 	}
-	if (bad)
+	if (bad) {
+		trace_printk("I am bad %d\n", bad);
 		return false;
+	}
 
 	reset_page_owner(page, order);
 

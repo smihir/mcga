@@ -2774,6 +2774,20 @@ void mem_cgroup_split_huge_fixup(struct page *head)
 	__this_cpu_sub(head->mem_cgroup->stat->count[MEM_CGROUP_STAT_RSS_HUGE],
 		       HPAGE_PMD_NR);
 }
+
+void mem_cgroup_promote_huge_fixup(struct page *head)
+{
+	int i;
+
+	if (mem_cgroup_disabled())
+		return;
+
+	for (i = 1; i < HPAGE_PMD_NR; i++)
+		head[i].mem_cgroup = NULL;
+
+	__this_cpu_add(head->mem_cgroup->stat->count[MEM_CGROUP_STAT_RSS_HUGE],
+		       HPAGE_PMD_NR);
+}
 #endif /* CONFIG_TRANSPARENT_HUGEPAGE */
 
 #ifdef CONFIG_MEMCG_SWAP
