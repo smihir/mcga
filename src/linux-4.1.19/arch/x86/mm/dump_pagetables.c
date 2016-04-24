@@ -16,6 +16,7 @@
 #include <linux/mm.h>
 #include <linux/module.h>
 #include <linux/seq_file.h>
+#include <linux/sched.h>
 
 #include <asm/pgtable.h>
 
@@ -27,6 +28,8 @@
 struct pg_state {
 	int level;
 	pgprot_t current_prot;
+	unsigned long start_phy_address;
+	unsigned long current_phy_address;
 	unsigned long start_address;
 	unsigned long current_address;
 	const struct addr_marker *marker;
@@ -64,6 +67,8 @@ enum address_markers_idx {
 	FIXADDR_START_NR,
 #endif
 };
+
+extern int rjm_pgt_dump_process_id;
 
 /* Address space markers hints */
 static struct addr_marker address_markers[] = {
@@ -221,9 +226,11 @@ static void note_page(struct seq_file *m, struct pg_state *st,
 		if (!st->marker->max_lines ||
 		    st->lines < st->marker->max_lines) {
 			pt_dump_seq_printf(m, st->to_dmesg,
-					   "0x%0*lx-0x%0*lx   ",
-					   width, st->start_address,
-					   width, st->current_address);
+						"0x%0*lx-0x%0*lx, phy: 0x%0*lx-0x%0*lx",
+						width, st->start_address,
+						width, st->current_address,
+						width, st->start_phy_address,
+						width, st->current_phy_address);
 
 			delta = st->current_address - st->start_address;
 			while (!(delta & 1023) && unit[1]) {
@@ -259,6 +266,7 @@ static void note_page(struct seq_file *m, struct pg_state *st,
 		}
 
 		st->start_address = st->current_address;
+		st->start_phy_address = st->current_phy_address;
 		st->current_prot = new_prot;
 		st->level = level;
 	}
@@ -269,12 +277,16 @@ static void walk_pte_level(struct seq_file *m, struct pg_state *st, pmd_t addr,
 {
 	int i;
 	pte_t *start;
+	unsigned long start_phy_addr;
+
+	start_phy_addr =  PTE_PFN_MASK & native_pmd_val(addr);
 
 	start = (pte_t *) pmd_page_vaddr(addr);
 	for (i = 0; i < PTRS_PER_PTE; i++) {
 		pgprot_t prot = pte_pgprot(*start);
 
 		st->current_address = normalize_addr(P + i * PTE_LEVEL_MULT);
+		st->current_phy_address =(start_phy_addr + i * PTE_LEVEL_MULT);
 		note_page(m, st, prot, 4);
 		start++;
 	}
@@ -287,10 +299,14 @@ static void walk_pmd_level(struct seq_file *m, struct pg_state *st, pud_t addr,
 {
 	int i;
 	pmd_t *start;
+	unsigned long start_phy_addr;
+
+	start_phy_addr =  PTE_PFN_MASK & native_pud_val(addr);
 
 	start = (pmd_t *) pud_page_vaddr(addr);
 	for (i = 0; i < PTRS_PER_PMD; i++) {
 		st->current_address = normalize_addr(P + i * PMD_LEVEL_MULT);
+		st->current_phy_address =(start_phy_addr + i * PMD_LEVEL_MULT);
 		if (!pmd_none(*start)) {
 			pgprotval_t prot = pmd_val(*start) & PTE_FLAGS_MASK;
 
@@ -318,11 +334,15 @@ static void walk_pud_level(struct seq_file *m, struct pg_state *st, pgd_t addr,
 {
 	int i;
 	pud_t *start;
+	unsigned long start_phy_addr;
+
+	start_phy_addr =  PTE_PFN_MASK & native_pgd_val(addr);
 
 	start = (pud_t *) pgd_page_vaddr(addr);
 
 	for (i = 0; i < PTRS_PER_PUD; i++) {
 		st->current_address = normalize_addr(P + i * PUD_LEVEL_MULT);
+		st->current_phy_address =(start_phy_addr + i * PUD_LEVEL_MULT);
 		if (!pud_none(*start)) {
 			pgprotval_t prot = pud_val(*start) & PTE_FLAGS_MASK;
 
@@ -346,13 +366,37 @@ static void walk_pud_level(struct seq_file *m, struct pg_state *st, pgd_t addr,
 
 void ptdump_walk_pgd_level(struct seq_file *m, pgd_t *pgd)
 {
-#ifdef CONFIG_X86_64
-	pgd_t *start = (pgd_t *) &init_level4_pgt;
-#else
-	pgd_t *start = swapper_pg_dir;
-#endif
+
 	int i;
 	struct pg_state st = {};
+	pgd_t *start;
+	unsigned long start_phy_addr;
+
+	seq_printf(m,"CR3= 0x%0lx, va_CR3 = 0x%0lx\n",
+		read_cr3(), (unsigned long)__va(read_cr3()));
+	if (rjm_pgt_dump_process_id > 0) {
+		struct task_struct* task_oe =
+			find_task_by_vpid((pid_t)rjm_pgt_dump_process_id);
+		seq_printf(m, "Page tables for process id = %d\n",
+			rjm_pgt_dump_process_id);
+
+		if (task_oe == NULL) {
+			seq_printf(m, "Process DNE!\n");
+			return;
+		}
+		start = task_oe->mm->pgd;
+	} else {
+		seq_printf(m, "Page tables for kernel");
+ #ifdef CONFIG_X86_64
+		start = (pgd_t *) &init_level4_pgt;
+ #else
+		start = swapper_pg_dir;
+ #endif
+	}
+	start_phy_addr = __pa(start);
+	seq_printf(m, "PGT localtion in memory: phs = 0x%0lx, virt  = 0x%0lx\n",
+		(unsigned long)__pa(start), (unsigned long)start);
+
 
 	if (pgd) {
 		start = pgd;
@@ -361,6 +405,7 @@ void ptdump_walk_pgd_level(struct seq_file *m, pgd_t *pgd)
 
 	for (i = 0; i < PTRS_PER_PGD; i++) {
 		st.current_address = normalize_addr(i * PGD_LEVEL_MULT);
+		st.current_phy_address = (start_phy_addr + i * PGD_LEVEL_MULT);
 		if (!pgd_none(*start)) {
 			pgprotval_t prot = pgd_val(*start) & PTE_FLAGS_MASK;
 
