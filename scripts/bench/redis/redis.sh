@@ -51,7 +51,7 @@ run_benchmark() {
 		pipeline=$1
 		exit
 	fi
-	redis-benchmark -P $1 -t $2 -r $3 -n $4 | tee $BENCHMARKDISTLOG
+	redis-benchmark -P $1 -t $2 -r $3 -n $4 > $BENCHMARKDISTLOG
 }
 
 kill_server() {
@@ -66,13 +66,27 @@ kill_server() {
 
 #http://stackoverflow.com/questions/1058047/wait-for-any-process-to-finish
 anywait() {
+	loops=0
 	while kill -0 "$1" 2> /dev/null ; do
-		sleep 0.5
+		if [ $loops -ge 60 ]; then
+			printf "More than 1 minute the process still did not exit!! Kill it.\n"
+			kill -9 $1
+			loops=0
+			continue
+		fi
+		sleep 1
+		loops=$((loops+1))
 	done
 }
 
 run_pingpong() {
 	redis-cli --latency > $PINGPONGLOG
+}
+
+kill_pingpong() {
+	CLIPID=`ps -e | grep redis-cli | awk '{print $1}'`
+	kill -9 $CLIPID
+	anywait $CLIPID
 }
 
 run_tests() {
@@ -95,11 +109,10 @@ run_tests() {
 			mkdir -p latencynosave
 			start_server redis.nosave.conf
 			run_pingpong &
-			PINGPONG_PID=$!
 			run_benchmark $PIPELINE "set" $KEYSPACE $NUMREQ
 			mv $BENCHMARKLOG latencynosave
 			mv $BENCHMARKDISTLOG latencynosave
-			kill -9 $PINGPONG_PID
+			kill_pingpong
 			mv $PINGPONGLOG latencynosave
 			kill_server	
 			mv $SERVERLOG latencynosave
@@ -122,11 +135,10 @@ run_tests() {
 			mkdir -p latencysave
 			start_server redis.nosave.conf
 			run_pingpong &
-			PINGPONG_PID=$!
 			run_benchmark $PIPELINE "set" $KEYSPACE $NUMREQ
 			mv $BENCHMARKLOG latencysave
 			mv $BENCHMARKDISTLOG latencysave
-			kill -9 $PINGPONG_PID
+			kill_pingpong
 			mv $PINGPONGLOG latencysave
 			kill_server	
 			mv $SERVERLOG latencysave
@@ -152,7 +164,6 @@ printf "System Memory is $RAM KB\n"
 populate_test_params
 printf "Test Parameters: Pipelining $PIPELINE, Keyspace $KEYSPACE, NumReq $NUMREQ\n"
 clear_cache
-sleep 10
 run_tests "nosave"
 clear_cache
 run_tests "latencynosave"
