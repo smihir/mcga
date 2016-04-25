@@ -2718,8 +2718,8 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-//	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
-//		mm->owner->pid,vma->vm_start, vma->vm_end);
+	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
+		mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
 	if (first_pmd_pte == pte) {
 		aligned = true;
@@ -2788,11 +2788,9 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	/*	Debug for contiguity
 	if (mm->split_hugepage == 1)
 		trace_printk("1_%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, mm = %p, pid = %d\n",
 					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm, mm->owner->pid);
-	*/
 	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
 		referenced && contiguous && 0) {
 		unsigned long haddr = address & HPAGE_PMD_MASK;
