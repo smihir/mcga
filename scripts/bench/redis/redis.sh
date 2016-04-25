@@ -10,6 +10,13 @@ SERVERLOG="redis.log"
 PIPELINE=50
 KEYSPACE=100
 NUMREQ=100
+RAM=`free | awk '/^Mem:/{print $2}'`
+ROOT=1
+
+if [ `id -u` -ne 0 ]; then
+	echo "This script must be run as root for better results" 1>&2
+	ROOT=0
+fi
 
 start_server() {
 	if [ -z "$1" ];
@@ -57,6 +64,7 @@ kill_server() {
 	fi
 }
 
+#http://stackoverflow.com/questions/1058047/wait-for-any-process-to-finish
 anywait() {
 	while kill -0 "$1" 2> /dev/null ; do
 		sleep 0.5
@@ -126,9 +134,31 @@ run_tests() {
 	esac
 }
 
+clear_cache() {
+	if [ $ROOT -ne 0 ]; then
+		echo 3 > /proc/sys/vm/drop_caches
+	fi
+}
+
+populate_test_params() {
+	if [ $RAM -ge 16000000 ]; then
+		PIPELINE=50
+		KEYSPACE=200000000
+		NUMREQ=120000000
+	fi
+}
+
+printf "System Memory is $RAM KB\n"
+populate_test_params
+printf "Test Parameters: Pipelining $PIPELINE, Keyspace $KEYSPACE, NumReq $NUMREQ\n"
+clear_cache
+sleep 10
 run_tests "nosave"
+clear_cache
 run_tests "latencynosave"
+clear_cache
 run_tests "save"
+clear_cache
 run_tests "latencysave"
 
 mkdir -p results.$$
