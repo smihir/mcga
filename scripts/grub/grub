@@ -4,9 +4,9 @@
 #   info -f grub -n 'Simple configuration'
 
 GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.1.19"
-GRUB_HIDDEN_TIMEOUT=10
-#GRUB_HIDDEN_TIMEOUT_QUIET=true
-GRUB_TIMEOUT=10
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
 GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=tty0"
 GRUB_CMDLINE_LINUX=""
