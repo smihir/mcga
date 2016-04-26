@@ -120,7 +120,7 @@ run_tests() {
 		save)
 			rm -rf *.rdb
 			mkdir -p save
-			start_server redis.nosave.conf
+			start_server redis.conf
 			run_benchmark $PIPELINE "set" $KEYSPACE $NUMREQ
 			mv $BENCHMARKLOG save
 			mv $BENCHMARKDISTLOG save
@@ -133,7 +133,7 @@ run_tests() {
 		latencysave)
 			rm -rf *.rdb
 			mkdir -p latencysave
-			start_server redis.nosave.conf
+			start_server redis.conf
 			run_pingpong &
 			run_benchmark $PIPELINE "set" $KEYSPACE $NUMREQ
 			mv $BENCHMARKLOG latencysave
@@ -161,7 +161,7 @@ populate_test_params() {
 }
 
 printf "System Memory is $RAM KB\n"
-populate_test_params
+#populate_test_params
 printf "Test Parameters: Pipelining $PIPELINE, Keyspace $KEYSPACE, NumReq $NUMREQ\n"
 clear_cache
 run_tests "nosave"
