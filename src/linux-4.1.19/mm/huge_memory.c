@@ -2789,10 +2789,10 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
 	if (mm->split_hugepage == 1)
-		trace_printk("1_%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, mm = %p, pid = %d\n",
-					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm, mm->owner->pid);
+		trace_printk("%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, pid = %d\n",
+					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm->owner->pid);
 	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
-		referenced && contiguous && 0) {
+		referenced && contiguous) {
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;
 		struct page *first_page = pfn_to_page(pte_pfn(*first_pmd_pte));
