@@ -1,25 +1,37 @@
 #!/bin/bash
-gcc fork_benchmark.c -o fork_benchmark
-sudo echo always > /sys/kernel/mm/transparent_hugepage/enabled
-./fork_benchmark 128
-./fork_benchmark 256
-./fork_benchmark 512
-./fork_benchmark 1024
-./fork_benchmark 2048
-./fork_benchmark 4096
-./fork_benchmark 8192
-#./fork_benchmark 16384
-#./fork_benchmark 32768
-#./fork_benchmark 65536
+RAM=`free -m| awk '/^Mem:/{print $2}'`
 
-sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
-./fork_benchmark 128
-./fork_benchmark 256
-./fork_benchmark 512
-./fork_benchmark 1024
-./fork_benchmark 2048
-./fork_benchmark 4096
-./fork_benchmark 8192
+if [ `id -u` -ne 0 ]; then
+	echo "This script must be run as root"
+	exit 1
+fi
 
+compile() {
+	gcc fork_benchmark.c -o fork_benchmark
+}
 
-sudo echo always > /sys/kernel/mm/transparent_hugepage/enabled
+enable_thp() {
+	sudo echo always > /sys/kernel/mm/transparent_hugepage/enabled
+	echo "Transparent Huge Pages Enabled"
+}
+
+disable_thp() {
+	sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
+	echo "Transparent Huge Pages Disabled"
+}
+
+run_benchmark() {
+	rss=128
+	RAMby3=$(($RAM / 3))
+	while [ $rss -le $RAMby3 ]; do
+		./fork_benchmark $rss
+		rss=$(($rss * 2))
+	done
+}
+
+compile
+enable_thp
+run_benchmark
+disable_thp
+run_benchmark
+enable_thp

@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 	unsigned int mb, count, i;
 	int pid;
 	struct timeval tv1, tv2;
-	size_t rss, vmsize, thpsize;
+	size_t rss, thpsize;
 
 	if (argc == 0) {
 		printf("provide the RSS Size in MB\n");
@@ -57,7 +57,6 @@ int main(int argc, char **argv) {
 	}
 	
 	rss = zmalloc_get_smap_bytes_by_field("Rss:");
-	vmsize = zmalloc_get_smap_bytes_by_field("Size:");
 	thpsize = zmalloc_get_smap_bytes_by_field("AnonHugePages:");
 
 	gettimeofday(&tv1, NULL);
@@ -77,7 +76,8 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	printf("VMSIZE: %zu RSS: %zu, Time: %llu us\n", vmsize, rss, get_gettimeofday(tv1, tv2));
-	printf("mb = %u, count = %u thpsize = %zu\n", mb, count, thpsize);
+	printf("RSS: %zu MB, THP Size: %zu, MBTime: %llu us\n",
+			rss / (1024 * 1024), thpsize / (1024 * 1024),
+			get_gettimeofday(tv1, tv2));
 	return 0;
 }
