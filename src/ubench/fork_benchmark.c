@@ -50,8 +50,10 @@ int main(int argc, char **argv) {
 	mb = strtoul(argv[1], NULL, 10);
 	count = mb / 2;
 	for (i = 0; i < count; i++) {
+		unsigned int j;
 		posix_memalign((void **)&a, _2MB, _2MB);
-		a[0] = 'a';
+		for (j = 0; j < _2MB; j++)
+			a[j] = 'a';
 	}
 	
 	rss = zmalloc_get_smap_bytes_by_field("Rss:");
