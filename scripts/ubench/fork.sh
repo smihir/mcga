@@ -1,4 +1,7 @@
 #!/bin/bash
+
+export PATH=$PWD/../../src/ubench/fork/:$PATH
+
 RAM=`free -m| awk '/^Mem:/{print $2}'`
 
 if [ `id -u` -ne 0 ]; then
@@ -7,6 +10,7 @@ if [ `id -u` -ne 0 ]; then
 fi
 
 compile() {
+    cd ../../src/ubench/fork/
 	gcc fork_benchmark.c -o fork_benchmark
 }
 
@@ -24,7 +28,7 @@ run_benchmark() {
 	rss=128
 	RAMby3=$(($RAM / 3))
 	while [ $rss -le $RAMby3 ]; do
-		./fork_benchmark $rss
+		fork_benchmark $rss
 		rss=$(($rss * 2))
 	done
 }
