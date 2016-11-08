@@ -789,7 +789,8 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 					struct page *page, gfp_t gfp)
 {
 	pmd_t _pmd;
-	pte_t *pte;
+	pte_t *pte, *pte_iter;
+        int i;
 	pgtable_t pgtable;
 	struct page *new_page = page;
 	spinlock_t *pmd_ptl, *pte_ptl;
@@ -847,7 +848,13 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	 */
 	anon_vma_unlock_write(vma->anon_vma);
 
-	pte_unmap(pte);
+        //pte_unmap(pte);
+        for(pte_iter = pte, i = 0; i < 512; i++, pte_iter++) {
+            trace_printk("1at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
+            pte_unmap(pte_iter);
+            pte_iter->pte = 0;
+            trace_printk("2at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
+        }
 	pgtable = pmd_pgtable(_pmd);
 
 	_pmd = mk_huge_pmd(new_page, vma->vm_page_prot);
@@ -1249,15 +1256,15 @@ alloc:
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
 				if (mm->split_hugepage == 1) {
-					// Set child's hugepage split here
-						//VIK		
-						struct list_head *list;
-						list_for_each(list, &current->children) {
-								ctsk = list_entry(list, struct task_struct, sibling);
-								/* task now points to one of current’s children */
-								//trace_printk("Trace5:mm/huge_memory.c %d, line :%d\n",ctsk->mm->split_hugepage,__LINE__);
-						}
-				}
+                                    // Set child's hugepage split here
+                                    //VIK		
+                                    struct list_head *list;
+                                    list_for_each(list, &current->children) {
+                                        ctsk = list_entry(list, struct task_struct, sibling);
+                                        /* task now points to one of current’s children */
+                                        //trace_printk("Trace5:mm/huge_memory.c %d, line :%d\n",ctsk->mm->split_hugepage,__LINE__);
+                                    }
+                                }
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
@@ -1894,12 +1901,15 @@ static int __split_huge_page_map(struct page *page,
 	pmd = page_check_address_pmd(page, mm, address,
 			PAGE_CHECK_ADDRESS_PMD_SPLITTING_FLAG, &ptl);
 	if (pmd) {
+                trace_printk("%s 1. PMD: %ld\n", __func__, pmd->pmd ); 
 		pgtable = pgtable_trans_huge_withdraw(mm, pmd);
 		pmd_populate(mm, &_pmd, pgtable);
 		if (pmd_write(*pmd))
 			BUG_ON(page_mapcount(page) != 1);
 
 		haddr = address;
+                trace_printk("%s HPAGE_PMD_MR: %d Haddr: %lu\n", __func__, HPAGE_PMD_NR, haddr ); 
+                trace_printk("%s 2. PMD %ld _PMD: %ld\n", __func__, pmd->pmd, _pmd.pmd ); 
 		for (i = 0; i < HPAGE_PMD_NR; i++, haddr += PAGE_SIZE) {
 			pte_t *pte, entry;
 			BUG_ON(PageCompound(page+i));
@@ -3062,12 +3072,16 @@ static void __split_huge_zero_page_pmd(struct vm_area_struct *vma,
 void __split_huge_page_pmd(struct vm_area_struct *vma, unsigned long address,
 		pmd_t *pmd)
 {
-	spinlock_t *ptl;
+	pmd_t newPmd ;
+        spinlock_t *ptl;
 	struct page *page;
+	struct page *newPage;
 	struct mm_struct *mm = vma->vm_mm;
 	unsigned long haddr = address & HPAGE_PMD_MASK;
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
+	
+        newPmd.pmd = 2000;
 
 	BUG_ON(vma->vm_start > haddr || vma->vm_end < haddr + HPAGE_PMD_SIZE);
 
@@ -3088,8 +3102,15 @@ again:
 		return;
 	}
 	page = pmd_page(*pmd);
-	VM_BUG_ON_PAGE(!page_count(page), page);
+	trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
+	
+        ///newPage = pmd_page( newPmd );
+	//trace_printk("Pmd: %ld\tPage: %p\n", newPmd.pmd, newPage );
+        
+        VM_BUG_ON_PAGE(!page_count(page), page);
 	get_page(page);
+	
+        trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
 	spin_unlock(ptl);
 	mmu_notifier_invalidate_range_end(mm, mmun_start, mmun_end);
 

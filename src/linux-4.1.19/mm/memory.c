@@ -3249,9 +3249,16 @@ static int handle_pte_fault(struct mm_struct *mm,
 	barrier();
 	if (!pte_present(entry)) {
 		if (pte_none(entry)) {
-			if (vma->vm_ops)
-				return do_fault(mm, vma, address, pte, pmd,
+			if (vma->vm_ops) {
+	                    
+	                    if ( mm->split_hugepage ) 
+                                trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
+				
+                            return do_fault(mm, vma, address, pte, pmd,
 						flags, entry);
+                        }
+	                if ( mm->split_hugepage ) 
+                            trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
 
 			return do_anonymous_page(mm, vma, address, pte, pmd,
 					flags);
@@ -3259,6 +3266,8 @@ static int handle_pte_fault(struct mm_struct *mm,
 		return do_swap_page(mm, vma, address,
 					pte, pmd, flags, entry);
 	}
+	if ( mm->split_hugepage ) 
+	    trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
 
 	if (pte_protnone(entry))
 		return do_numa_page(mm, vma, address, entry, pte, pmd);
@@ -3310,6 +3319,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	struct vm_area_struct *cvma;	//Child's vma struct
 	pmd_t *cpmd;	//Child's pmd struct
 	int ret;
+        //int lp = 0;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
 		return hugetlb_fault(mm, vma, address, flags);
@@ -3323,9 +3333,14 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		return VM_FAULT_OOM;
 	if (pmd_none(*pmd) && transparent_hugepage_enabled(vma)) {
 		int ret = VM_FAULT_FALLBACK;
-		if (!vma->vm_ops)
+		if (!vma->vm_ops) {
 			ret = do_huge_pmd_anonymous_page(mm, vma, address,
 					pmd, flags);
+
+	                if ( mm->split_hugepage ) 
+	                    trace_printk("%s %d\n",__func__, __LINE__ );
+                        //lp = 1;
+                    }
 		if (!(ret & VM_FAULT_FALLBACK))
 			return ret;
 	} else {
@@ -3349,17 +3364,17 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 
 			if (dirty && !pmd_write(orig_pmd)) {
 				if (mm->split_hugepage == 1) {
-					// Set child's hugepage split here
-						list_for_each(list, &current->children) {
-								ctsk = list_entry(list, struct task_struct, sibling);
-								/* task now points to one of current’s children */
-								cmm = ctsk->mm;
-								down_read(&cmm->mmap_sem);
-								cvma = find_vma(cmm, address);
-								ret = __handle_mm_fault(cmm, cvma, address, flags);
-								up_read(&cmm->mmap_sem);
-								return ret;
-						}
+                                    // Set child's hugepage split here
+                                    list_for_each(list, &current->children) {
+                                        ctsk = list_entry(list, struct task_struct, sibling);
+                                        /* task now points to one of current’s children */
+                                        cmm = ctsk->mm;
+                                        down_read(&cmm->mmap_sem);
+                                        cvma = find_vma(cmm, address);
+                                        ret = __handle_mm_fault(cmm, cvma, address, flags);
+                                        up_read(&cmm->mmap_sem);
+                                        return ret;
+                                    }
 				} 	
 				ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd); 
 				if (!(ret & VM_FAULT_FALLBACK))
@@ -3389,7 +3404,13 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * read mode and khugepaged takes it in write mode. So now it's
 	 * safe to run pte_offset_map().
 	 */
-	pte = pte_offset_map(pmd, address);
+	if ( mm->split_hugepage ) { 
+	    trace_printk("%s %d\n",__func__, __LINE__);
+        }
+        pte = pte_offset_map(pmd, address);
+	if ( mm->split_hugepage ) { 
+            trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
+        }
 
 	return handle_pte_fault(mm, vma, address, pte, pmd, flags);
 }
