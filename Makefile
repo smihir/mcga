@@ -9,7 +9,8 @@ for help. SSH into the machine using vagrant ssh"
 
 .bootstrap: .check
 	sudo apt-get install -y git build-essential kernel-package fakeroot \
-	    libncurses5-dev libssl-dev ccache libdw-dev vagrant virtualbox
+	    libncurses5-dev libssl-dev ccache libdw-dev vagrant virtualbox \
+	    flex bison
 	touch .bootstrap
 
 .PHONY: systemtap linux linux-deb all
@@ -26,10 +27,15 @@ systemtap: .check .bootstrap
 linux-deb: .check .bootstrap src/linux-4.1.19/.config
 	mkdir -p out/install
 	cd src/linux-4.1.19; make -j $(CPUS) deb-pkg LOCALVERSION=-mcga
+	cd src/linux-4.1.19; make -C tools/perf/
 	mv -f src/*.deb out/install
 
 linux: .check .bootstrap src/linux-4.1.19/.config
 	cd src/linux-4.1.19; make -j $(CPUS)
+	cd src/linux-4.1.19; make -C tools/perf/
+
+linux-perf:
+	cd src/linux-4.1.19; make -C tools/perf/
 
 redis: .check
 	cd src/bench/redis-3.0; make -j $(CPUS)
