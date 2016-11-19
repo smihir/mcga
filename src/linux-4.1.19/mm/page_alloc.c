@@ -940,19 +940,29 @@ static inline int check_new_page(struct page *page)
 	const char *bad_reason = NULL;
 	unsigned long bad_flags = 0;
 
-	if (unlikely(page_mapcount(page)))
+	if (unlikely(page_mapcount(page))) {
 		bad_reason = "nonzero mapcount";
-	if (unlikely(page->mapping != NULL))
+        
+		trace_printk("1 mapcount %d\n", page_mapcount(page) );
+        }
+	if (unlikely(page->mapping != NULL)) { 
 		bad_reason = "non-NULL mapping";
-	if (unlikely(atomic_read(&page->_count) != 0))
+		trace_printk("2 page->mapping %p\n", page->mapping ); 
+        }
+	if (unlikely(atomic_read(&page->_count) != 0)) {
 		bad_reason = "nonzero _count";
+		trace_printk("3 count %d\n", atomic_read(&page->_count) ); 
+        }
 	if (unlikely(page->flags & PAGE_FLAGS_CHECK_AT_PREP)) {
 		bad_reason = "PAGE_FLAGS_CHECK_AT_PREP flag set";
 		bad_flags = PAGE_FLAGS_CHECK_AT_PREP;
+		trace_printk("4 flags\n"); 
 	}
 #ifdef CONFIG_MEMCG
-	if (unlikely(page->mem_cgroup))
+	if (unlikely(page->mem_cgroup)) {
 		bad_reason = "page still charged to cgroup";
+		trace_printk("5 Cgroups\n"); 
+        }
 #endif
 	if (unlikely(bad_reason)) {
 		bad_page(page, bad_reason, bad_flags);

@@ -798,6 +798,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	unsigned long hstart, hend;
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
+	trace_printk("%s 3\n", __func__ );
 
 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
 
@@ -850,10 +851,12 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 
         //pte_unmap(pte);
         for(pte_iter = pte, i = 0; i < 512; i++, pte_iter++) {
-            trace_printk("1at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
+	    src_page = pte_page(*pte_iter);
+            //trace_printk("2: %s PTE %lu address %p, cgroup %p\n", __func__, pte_iter->pte, src_page, src_page->mem_cgroup); 
+            //trace_printk("1at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
             pte_unmap(pte_iter);
             pte_iter->pte = 0;
-            trace_printk("2at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
+            //trace_printk("2at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
         }
 	pgtable = pmd_pgtable(_pmd);
 
@@ -1908,8 +1911,8 @@ static int __split_huge_page_map(struct page *page,
 			BUG_ON(page_mapcount(page) != 1);
 
 		haddr = address;
-                trace_printk("%s HPAGE_PMD_MR: %d Haddr: %lu\n", __func__, HPAGE_PMD_NR, haddr ); 
-                trace_printk("%s 2. PMD %ld _PMD: %ld\n", __func__, pmd->pmd, _pmd.pmd ); 
+                //trace_printk("%s HPAGE_PMD_MR: %d Haddr: %lu\n", __func__, HPAGE_PMD_NR, haddr ); 
+                //trace_printk("%s 2. PMD %ld _PMD: %ld\n", __func__, pmd->pmd, _pmd.pmd ); 
 		for (i = 0; i < HPAGE_PMD_NR; i++, haddr += PAGE_SIZE) {
 			pte_t *pte, entry;
 			BUG_ON(PageCompound(page+i));
@@ -2728,8 +2731,8 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-	trace_printk("huge_mem: PID: %d vma start %lu vma end %lu\n",
-		mm->owner->pid,vma->vm_start, vma->vm_end);
+	trace_printk("LALALALAL%s huge_mem: PID: %d vma start %lu vma end %lu\n",
+		__func__,mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
 	if (first_pmd_pte == pte) {
 		aligned = true;
@@ -2798,10 +2801,12 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	if (mm->split_hugepage == 1)
+	/*
+        if (mm->split_hugepage == 1)
 		trace_printk("%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, pid = %d\n",
 					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm->owner->pid);
-	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
+	*/
+        if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
 		referenced && contiguous) {
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;
@@ -2812,6 +2817,7 @@ out_unmap:
 		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
 		prep_compound_page(first_page, 9);
 		prep_compound_mapcount(first_page, 9);
+	        trace_printk("%s 2\n", __func__ );
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
 		ret = 1;
 		goto out;
@@ -3102,7 +3108,7 @@ again:
 		return;
 	}
 	page = pmd_page(*pmd);
-	trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
+	//trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
 	
         ///newPage = pmd_page( newPmd );
 	//trace_printk("Pmd: %ld\tPage: %p\n", newPmd.pmd, newPage );
@@ -3110,7 +3116,7 @@ again:
         VM_BUG_ON_PAGE(!page_count(page), page);
 	get_page(page);
 	
-        trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
+        //trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
 	spin_unlock(ptl);
 	mmu_notifier_invalidate_range_end(mm, mmun_start, mmun_end);
 

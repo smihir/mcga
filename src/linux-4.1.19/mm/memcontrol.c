@@ -2782,8 +2782,11 @@ void mem_cgroup_promote_huge_fixup(struct page *head)
 	if (mem_cgroup_disabled())
 		return;
 
-	for (i = 1; i < HPAGE_PMD_NR; i++)
+	for (i = 0; i < HPAGE_PMD_NR; i++) {
 		head[i].mem_cgroup = NULL;
+                head[i].flags  = 0;
+                //trace_printk("1:%s PAGE iter %d address %p, cgroup %p\n", __func__, i, &head[i], head[i].mem_cgroup); 
+        }
 
 	__this_cpu_add(head->mem_cgroup->stat->count[MEM_CGROUP_STAT_RSS_HUGE],
 		       HPAGE_PMD_NR);
