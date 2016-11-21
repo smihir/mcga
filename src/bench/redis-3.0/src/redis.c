@@ -53,6 +53,8 @@
 #include <sys/utsname.h>
 #include <locale.h>
 
+#include <sys/prctl.h>
+
 /* Our shared "common" objects */
 
 struct sharedObjectsStruct shared;
@@ -3414,6 +3416,13 @@ void daemonize(void) {
 
     if (fork() != 0) exit(0); /* parent exits */
     setsid(); /* create a new session */
+    /*   
+     * MCGA CODE CHANGE
+     * Adding PRCTL
+     */
+     printf("Calling prctl(commented) in daemon child%d\n", getpid());
+     fflush(stdout);
+     //prctl(47, 1, 0, 0, 0);
 
     /* Every output goes to /dev/null. If Redis is daemonized but
      * the 'logfile' is set to 'stdout' in the configuration file
@@ -3594,6 +3603,14 @@ void redisSetProcTitle(char *title) {
 
 int main(int argc, char **argv) {
     struct timeval tv;
+
+    /*   
+     * MCGA CODE CHANGE
+     * Adding PRCTL
+     */
+     printf("Calling prctl in main parent %d\n", getpid());
+     fflush(stdout);
+     prctl(47, 1, 0, 0, 0);
 
     /* We need to initialize our libraries, and the server configuration. */
 #ifdef INIT_SETPROCTITLE_REPLACEMENT

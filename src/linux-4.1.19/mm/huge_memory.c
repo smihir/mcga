@@ -792,7 +792,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	pte_t *pte, *pte_iter;
         int i;
 	pgtable_t pgtable;
-	struct page *new_page = page;
+	struct page *new_page = page, *src_page;
 	spinlock_t *pmd_ptl, *pte_ptl;
 	struct mem_cgroup *memcg;
 	unsigned long hstart, hend;
@@ -802,9 +802,10 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 
 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
 
-	if (unlikely(mem_cgroup_try_charge(new_page, mm,
+/*	if (unlikely(mem_cgroup_try_charge(new_page, mm,
 					   gfp, &memcg)))
 		return 1;
+                */
 	mem_cgroup_promote_huge_fixup(page);
 	/*
 	 * Prevent all access to pagetables with the exception of
@@ -854,6 +855,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	    src_page = pte_page(*pte_iter);
             //trace_printk("2: %s PTE %lu address %p, cgroup %p\n", __func__, pte_iter->pte, src_page, src_page->mem_cgroup); 
             //trace_printk("1at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
+           // trace_printk("1at Address %lu, MapCount: %d\n",  address, page); 
             pte_unmap(pte_iter);
             pte_iter->pte = 0;
             //trace_printk("2at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
@@ -3081,7 +3083,7 @@ void __split_huge_page_pmd(struct vm_area_struct *vma, unsigned long address,
 	pmd_t newPmd ;
         spinlock_t *ptl;
 	struct page *page;
-	struct page *newPage;
+	//struct page *newPage;
 	struct mm_struct *mm = vma->vm_mm;
 	unsigned long haddr = address & HPAGE_PMD_MASK;
 	unsigned long mmun_start;	/* For mmu_notifiers */

@@ -46,7 +46,7 @@ venv: .bootstrap linux
 	    sudo make modules_install; sudo make install"
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
-	cp ~/.bashrc ~/git/mcga/
+	cp ~/.bashrc ~/mcga/
 	vagrant ssh -c "mv /vagrant/.bashrc ~/"
 	touch .venvinit
 	vagrant halt
@@ -63,7 +63,7 @@ venv-re: .bootstrap linux
 	    sudo cp System.map /boot/System.map-4.1.19"
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
-	cp ~/.bashrc ~/git/mcga/
+	cp ~/.bashrc ~/mcga/
 	vagrant ssh -c "mv /vagrant/.bashrc ~/"
 	vagrant halt
 	vagrant up
