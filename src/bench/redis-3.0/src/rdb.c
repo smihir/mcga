@@ -780,11 +780,11 @@ int rdbSaveBackground(char *filename) {
         retval = rdbSave(filename);
         if (retval == REDIS_OK) {
             size_t private_dirty = zmalloc_get_private_dirty();
-
+            size_t rss = zmalloc_get_smap_bytes_by_field("Rss:");
             if (private_dirty) {
                 redisLog(REDIS_NOTICE,
-                    "RDB: %zu MB of memory used by copy-on-write",
-                    private_dirty/(1024*1024));
+                    "RDB: %zu / %zu MB of memory used by copy-on-write",
+                    private_dirty/(1024*1024), rss/(1024*1024));
             }
         }
         exitFromChild((retval == REDIS_OK) ? 0 : 1);
