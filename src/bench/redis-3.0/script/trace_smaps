@@ -1,0 +1,12 @@
+i=0
+pid=`ps -ef | grep redis-ser | head -n 1 | awk '{}{print $2}{}'`
+out=/vagrant/result
+
+while [ 1 ]
+do
+    cat /proc/$pid/smaps > $out/$i 
+    sleep 1
+    i=$(( $i + 1 ))
+done
+
+

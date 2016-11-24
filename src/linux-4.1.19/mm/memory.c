@@ -3250,24 +3250,24 @@ static int handle_pte_fault(struct mm_struct *mm,
 	if (!pte_present(entry)) {
 		if (pte_none(entry)) {
 			if (vma->vm_ops) {
-	                    
+/*	                    
 	                    if ( mm->split_hugepage ) 
                                 trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
-				
+				*/
                             return do_fault(mm, vma, address, pte, pmd,
 						flags, entry);
                         }
-	                if ( mm->split_hugepage ) 
+/*	                if ( mm->split_hugepage ) 
                             trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
-
+*/
 			return do_anonymous_page(mm, vma, address, pte, pmd,
 					flags);
 		}
 		return do_swap_page(mm, vma, address,
 					pte, pmd, flags, entry);
 	}
-	if ( mm->split_hugepage ) 
-	    trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
+/*	if ( mm->split_hugepage ) 
+	    trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );*/
 
 	if (pte_protnone(entry))
 		return do_numa_page(mm, vma, address, entry, pte, pmd);
@@ -3337,8 +3337,8 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 			ret = do_huge_pmd_anonymous_page(mm, vma, address,
 					pmd, flags);
 
-	                if ( mm->split_hugepage ) 
-	                    trace_printk("%s %d\n",__func__, __LINE__ );
+/*	                if ( mm->split_hugepage ) 
+	                    trace_printk("%s %d\n",__func__, __LINE__ );*/
                         //lp = 1;
                     }
 		if (!(ret & VM_FAULT_FALLBACK))
@@ -3404,13 +3404,13 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * read mode and khugepaged takes it in write mode. So now it's
 	 * safe to run pte_offset_map().
 	 */
-	if ( mm->split_hugepage ) { 
+/*	if ( mm->split_hugepage ) { 
 	    trace_printk("%s %d\n",__func__, __LINE__);
-        }
+        }*/
         pte = pte_offset_map(pmd, address);
-	if ( mm->split_hugepage ) { 
+/*	if ( mm->split_hugepage ) { 
             trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
-        }
+        }*/
 
 	return handle_pte_fault(mm, vma, address, pte, pmd, flags);
 }

@@ -656,7 +656,31 @@ static inline int free_pages_check(struct page *page)
 	const char *bad_reason = NULL;
 	unsigned long bad_flags = 0;
 
-	if (unlikely(page_mapcount(page))){
+        /////////////////
+
+
+	if (unlikely(page_mapcount(page))) {
+		bad_reason = "nonzero mapcount";
+        
+		printk(KERN_ERR "LCD DMA channel already reserved\n");
+		printk(KERN_ERR "F1 mapcount %d\n", page_mapcount(page) );
+        }
+	if (unlikely(page->mapping != NULL)) { 
+		bad_reason = "non-NULL mapping";
+		printk(KERN_ERR "F2 page->mapping %p\n", page->mapping ); 
+        }
+	if (unlikely(atomic_read(&page->_count) != 0)) {
+		bad_reason = "nonzero _count";
+		printk(KERN_ERR "F3 count %d\n", atomic_read(&page->_count) ); 
+        }
+	if (unlikely(page->flags & PAGE_FLAGS_CHECK_AT_FREE)) {
+		bad_reason = "PAGE_FLAGS_CHECK_AT_FREE flag(s) set";
+		bad_flags = PAGE_FLAGS_CHECK_AT_FREE;
+		printk(KERN_ERR "F4 flags\n"); 
+	}
+        ///////////////////
+       /* 
+        if (unlikely(page_mapcount(page))){
 		bad_reason = "nonzero mapcount";
 	}
 	if (unlikely(page->mapping != NULL))
@@ -667,9 +691,15 @@ static inline int free_pages_check(struct page *page)
 		bad_reason = "PAGE_FLAGS_CHECK_AT_FREE flag(s) set";
 		bad_flags = PAGE_FLAGS_CHECK_AT_FREE;
 	}
+        */
 #ifdef CONFIG_MEMCG
-	if (unlikely(page->mem_cgroup))
+	if (unlikely(page->mem_cgroup)) {
 		bad_reason = "page still charged to cgroup";
+		printk(KERN_ERR "F5 Cgroups\n"); 
+                printk(KERN_ERR "F2:%s PAGE address %p, cgroup %p\n", __func__, page, 
+                        page->mem_cgroup);
+        }
+		
 #endif
 	if (unlikely(bad_reason)) {
 		bad_page(page, bad_reason, bad_flags);
@@ -940,19 +970,31 @@ static inline int check_new_page(struct page *page)
 	const char *bad_reason = NULL;
 	unsigned long bad_flags = 0;
 
-	if (unlikely(page_mapcount(page)))
+	if (unlikely(page_mapcount(page))) {
 		bad_reason = "nonzero mapcount";
-	if (unlikely(page->mapping != NULL))
+        
+		printk(KERN_ERR "1 mapcount %d\n", page_mapcount(page) );
+        }
+	if (unlikely(page->mapping != NULL)) { 
 		bad_reason = "non-NULL mapping";
-	if (unlikely(atomic_read(&page->_count) != 0))
+		printk(KERN_ERR "2 page->mapping %p\n", page->mapping ); 
+        }
+	if (unlikely(atomic_read(&page->_count) != 0)) {
 		bad_reason = "nonzero _count";
+		printk(KERN_ERR "3 count %d\n", atomic_read(&page->_count) ); 
+        }
 	if (unlikely(page->flags & PAGE_FLAGS_CHECK_AT_PREP)) {
 		bad_reason = "PAGE_FLAGS_CHECK_AT_PREP flag set";
 		bad_flags = PAGE_FLAGS_CHECK_AT_PREP;
+		printk(KERN_ERR "4 flags\n"); 
 	}
 #ifdef CONFIG_MEMCG
-	if (unlikely(page->mem_cgroup))
+	if (unlikely(page->mem_cgroup)) {
 		bad_reason = "page still charged to cgroup";
+		printk(KERN_ERR "5 Cgroups\n"); 
+                printk(KERN_ERR "2:%s PAGE address %p, cgroup %p\n", __func__, page, 
+                        page->mem_cgroup);
+        }
 #endif
 	if (unlikely(bad_reason)) {
 		bad_page(page, bad_reason, bad_flags);
