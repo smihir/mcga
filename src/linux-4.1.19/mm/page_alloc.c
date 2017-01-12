@@ -330,8 +330,8 @@ static void bad_page(struct page *page, const char *reason,
 	if (nr_shown++ == 0)
 		resume = jiffies + 60 * HZ;
 
-	printk(KERN_ALERT "BUG: Bad page state in process %s  pfn:%05lx\n",
-		current->comm, page_to_pfn(page));
+	printk(KERN_ALERT "BUG: Bad page state in process %s  pfn:%05lx current pid: %d\n",
+		current->comm, page_to_pfn(page), current->pid);
 	dump_page_badflags(page, reason, bad_flags);
 
 	print_modules();
@@ -678,6 +678,10 @@ static inline int free_pages_check(struct page *page)
 		bad_flags = PAGE_FLAGS_CHECK_AT_FREE;
 		printk(KERN_ERR "F4 flags\n"); 
 	}
+	if (page->mcga_track == 1) {
+		printk(KERN_ALERT "free_pages_check: page state in process %s  pfn:%05lx current pid: %d flags 0x%x compound %d\n",
+			current->comm, page_to_pfn(page), current->pid, page->flags, PageCompound(page));
+	}
         ///////////////////
        /* 
         if (unlikely(page_mapcount(page))){
@@ -820,7 +824,6 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 	trace_mm_page_free(page, order);
 	kmemcheck_free_shadow(page, order);
 	kasan_free_pages(page, order);
-
 	if (PageAnon(page))
 		page->mapping = NULL;
 	bad += free_pages_check(page);
@@ -846,6 +849,12 @@ static bool free_pages_prepare(struct page *page, unsigned int order)
 	}
 	arch_free_page(page, order);
 	kernel_map_pages(page, 1 << order, 0);
+	if (page->mcga_track == 1) {
+		printk(KERN_ERR "free_pages_prepare pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",
+				page_to_pfn(page),atomic_read(&page->_count),
+				atomic_read(&page->_mapcount), PageCompound(page), page->flags);
+	}
+
 
 	return true;
 }
@@ -855,15 +864,31 @@ static void __free_pages_ok(struct page *page, unsigned int order)
 	unsigned long flags;
 	int migratetype;
 	unsigned long pfn = page_to_pfn(page);
+	if (page->mcga_track == 1) {
+		printk(KERN_ERR "__free_pages_ok pfn 0x%lx count %d mapcount %d comp %d flags 0x%x order=%d\n",
+				page_to_pfn(page),atomic_read(&page->_count),
+				atomic_read(&page->_mapcount), PageCompound(page), page->flags, order);
+		dump_stack();
+	}
 
 	if (!free_pages_prepare(page, order))
 		return;
 
+	if (page->mcga_track == 1) {
+		printk(KERN_ERR "__free_pages_ok 1 pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",
+				page_to_pfn(page),atomic_read(&page->_count),
+				atomic_read(&page->_mapcount), PageCompound(page), page->flags);
+	}
 	migratetype = get_pfnblock_migratetype(page, pfn);
 	local_irq_save(flags);
 	__count_vm_events(PGFREE, 1 << order);
 	set_freepage_migratetype(page, migratetype);
 	free_one_page(page_zone(page), page, pfn, order, migratetype);
+	if (page->mcga_track == 1) {
+		printk(KERN_ERR "__free_pages_ok return pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",
+				page_to_pfn(page),atomic_read(&page->_count),
+				atomic_read(&page->_mapcount), PageCompound(page), page->flags);
+	}
 	local_irq_restore(flags);
 }
 
@@ -1012,6 +1037,9 @@ static int prep_new_page(struct page *page, unsigned int order, gfp_t gfp_flags,
 		struct page *p = page + i;
 		if (unlikely(check_new_page(p)))
 			return 1;
+		//p->mcga_track = 0;
+		p->mcga_is_hugepage = 0;
+		p->mcga_after_split = 0;
 	}
 
 	set_page_private(page, 0);
@@ -2275,8 +2303,20 @@ try_this_zone:
 		if (page) {
 			if (prep_new_page(page, order, gfp_mask, alloc_flags))
 				goto try_this_zone;
+            //if (order == 9) {
+			//	int i;
+			//	for (i = 0; i < HPAGE_PMD_NR; i++) {
+			//		if(i == 0 || i == 511 || i == 1) {
+			//			struct page *page_tail = page + i;
+			//			printk(KERN_ERR
+			//			  "New order 9 page index %d mapcount %d count %d\t",
+			//				i, atomic_read(&page_tail->_mapcount), atomic_read(&page_tail->_count));
+			//		}
+			//	}
+			//}
 			return page;
 		}
+
 this_zone_full:
 		if (IS_ENABLED(CONFIG_NUMA) && zlc_active)
 			zlc_mark_zone_full(zonelist, z);

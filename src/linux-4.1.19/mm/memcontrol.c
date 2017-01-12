@@ -2788,7 +2788,7 @@ void mem_cgroup_promote_huge_fixup(struct page *head)
                 head[i].flags  = 0;
                 trace_printk("INSIDE %s\n", __func__);
                 trace_printk("1:%s PAGE iter %d address %p, Mapcount %lu\n", __func__, i, &head[i], head[i]._mapcount ); 
-                atomic_inc( &head[i]._mapcount ); 
+                //atomic_inc( &head[i]._mapcount);
                 trace_printk("2:%s PAGE iter %d address %p, Mapcount %lu\n", __func__, i, &head[i], head[i]._mapcount ); 
                 //trace_printk("1:%s PAGE iter %d address %p, cgroup %p\n", __func__, i, &head[i], head[i].mem_cgroup ); 
             } else {

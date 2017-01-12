@@ -61,6 +61,7 @@
 #include <linux/string.h>
 #include <linux/dma-debug.h>
 #include <linux/debugfs.h>
+#include <linux/sched.h>
 
 #include <asm/io.h>
 #include <asm/pgalloc.h>
@@ -2082,6 +2083,11 @@ static int wp_page_copy(struct mm_struct *mm, struct vm_area_struct *vma,
 		cow_user_page(new_page, old_page, address, vma);
 	}
 	__SetPageUptodate(new_page);
+	if (old_page && old_page->mcga_track == 1)
+        if (new_page && mm && mm->owner)
+            printk(KERN_ERR "wp_page_copy pfn 0x%lx count %d mapcount %d comp %d owner %d\n",
+                    page_to_pfn(new_page),atomic_read(&new_page->_count),
+                    atomic_read(&new_page->_mapcount),PageCompound(new_page),mm->owner->pid);
 
 	if (mem_cgroup_try_charge(new_page, mm, GFP_KERNEL, &memcg))
 		goto oom_free_new;
@@ -2305,6 +2311,11 @@ static int do_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 		return wp_page_copy(mm, vma, address, page_table, pmd,
 				    orig_pte, old_page);
 	}
+
+	//if (old_page->mcga_track == 1)
+	//	printk(KERN_ERR "do_wp_page pfn 0x%lx count %d mapcount %d comp %d owner %d\n",
+	//			page_to_pfn(old_page),atomic_read(&old_page->_count),
+	//			atomic_read(&old_page->_mapcount),PageCompound(old_page),mm->owner->pid);
 
 	/*
 	 * Take out anonymous pages first, anonymous shared vmas are
@@ -3336,11 +3347,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		if (!vma->vm_ops) {
 			ret = do_huge_pmd_anonymous_page(mm, vma, address,
 					pmd, flags);
-
-/*	                if ( mm->split_hugepage ) 
-	                    trace_printk("%s %d\n",__func__, __LINE__ );*/
-                        //lp = 1;
-                    }
+        }
 		if (!(ret & VM_FAULT_FALLBACK))
 			return ret;
 	} else {
@@ -3349,6 +3356,25 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		barrier();
 		if (pmd_trans_huge(orig_pmd)) {
 			unsigned int dirty = flags & FAULT_FLAG_WRITE;
+
+            do {
+                if (mm->split_hugepage == 0) {
+                    break;
+                }
+
+                int i;
+                struct page *page = pmd_page(orig_pmd);
+                //VM_BUG_ON_PAGE(!PageCompound(page) || !PageHead(page), page);
+                printk(KERN_ERR "is_compound: %d, is_head: %d\n", PageCompound(page), PageHead(page));
+                for (i = 0; i < HPAGE_PMD_NR; i++) {
+                    if(i == 0 || i == 511 || i == 1) {
+                        struct page *page_tail = page + i;
+                        printk(KERN_ERR
+                            "pid %d: after fork b4 split page index %d mapcount %d count %d pfn 0x%lx\n", current->pid,
+                            i, atomic_read(&page_tail->_mapcount), atomic_read(&page_tail->_count), page_to_pfn(page_tail));
+                    }
+                }
+            } while(0);
 
 			/*
 			 * If the pmd is splitting, return and retry the
@@ -3364,18 +3390,39 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 
 			if (dirty && !pmd_write(orig_pmd)) {
 				if (mm->split_hugepage == 1) {
-                                    // Set child's hugepage split here
-                                    list_for_each(list, &current->children) {
-                                        ctsk = list_entry(list, struct task_struct, sibling);
-                                        /* task now points to one of current’s children */
-                                        cmm = ctsk->mm;
-                                        down_read(&cmm->mmap_sem);
-                                        cvma = find_vma(cmm, address);
-                                        ret = __handle_mm_fault(cmm, cvma, address, flags);
-                                        up_read(&cmm->mmap_sem);
-                                        return ret;
-                                    }
+                    // Set child's hugepage split here
+                    list_for_each(list, &current->children) {
+                        ctsk = list_entry(list, struct task_struct, sibling);
+                        /* task now points to one of current’s children */
+                        cmm = ctsk->mm;
+                        if (cmm == NULL){
+                            printk(KERN_ERR "cmm is null yo for child %d\n", ctsk->pid);
+                            //goto cmmNull;
+                            continue;
+                        } else
+                            printk(KERN_ERR "cmm is NOT null yo for child %d\n", ctsk->pid);
+                        down_read(&cmm->mmap_sem);
+                        cvma = find_vma(cmm, address);
+                        ret = __handle_mm_fault(cmm, cvma, address, flags);
+                        up_read(&cmm->mmap_sem);
+                        do {
+                            int i;
+                            struct page *page = pmd_page(orig_pmd);
+                            //VM_BUG_ON_PAGE(!PageCompound(page) || !PageHead(page), page);
+                            printk(KERN_ERR "is_compound: %d, is_head: %d\n", PageCompound(page), PageHead(page));
+                            for (i = 0; i < HPAGE_PMD_NR; i++) {
+                                if(i == 0 || i == 511 || i == 1) {
+                                    struct page *page_tail = page + i;
+                                    printk(KERN_ERR
+                                        "pid %d: after fork after split page index %d mapcount %d count %d pfn 0x%lx\n", current->pid,
+                                        i, atomic_read(&page_tail->_mapcount), atomic_read(&page_tail->_count), page_to_pfn(page_tail));
+                                }
+                            }
+                        } while(0);
+                        return ret;
+                    }
 				} 	
+cmmNull:
 				ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd); 
 				if (!(ret & VM_FAULT_FALLBACK))
 					return ret;
@@ -3404,14 +3451,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * read mode and khugepaged takes it in write mode. So now it's
 	 * safe to run pte_offset_map().
 	 */
-/*	if ( mm->split_hugepage ) { 
-	    trace_printk("%s %d\n",__func__, __LINE__);
-        }*/
-        pte = pte_offset_map(pmd, address);
-/*	if ( mm->split_hugepage ) { 
-            trace_printk("%s %d PTE: %ld\n",__func__, __LINE__, pte->pte );
-        }*/
-
+    pte = pte_offset_map(pmd, address);
 	return handle_pte_fault(mm, vma, address, pte, pmd, flags);
 }
 
@@ -3442,6 +3482,36 @@ int handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		mem_cgroup_oom_enable();
 
 	ret = __handle_mm_fault(mm, vma, address, flags);
+    //do {
+    //    int i;
+    //    pgd_t *pgd;
+    //    pud_t *pud;
+    //    pmd_t *pmd;
+    //    pte_t *pte;
+	//	pmd_t orig_pmd;
+    //    struct page *page = NULL;
+
+    //    pgd = pgd_offset(mm, address);
+    //    pud = pud_alloc(mm, pgd, address);
+    //    if (!pud)
+    //        return VM_FAULT_OOM;
+    //    pmd = pmd_alloc(mm, pud, address);
+    //    if (!pmd)
+    //        break;
+    //    orig_pmd = *pmd;
+    //    page = pmd_page(orig_pmd);
+
+    //    //VM_BUG_ON_PAGE(!PageCompound(page) || !PageHead(page), page);
+    //    printk("is_compound: %d, is_head: %d\n", PageCompound(page), PageHead(page));
+    //    for (i = 0; i < HPAGE_PMD_NR; i++) {
+    //        if(i == 0 || i == 511 || i == 1) {
+    //            struct page *page_tail = page + i;
+    //            printk(KERN_ERR
+    //                "after fork b4 split page index %d mapcount %d count %d\t",
+    //                i, atomic_read(&page_tail->_mapcount), atomic_read(&page_tail->_count));
+    //        }
+    //    }
+    //} while(0);
 
 	if (flags & FAULT_FLAG_USER) {
 		mem_cgroup_oom_disable();
