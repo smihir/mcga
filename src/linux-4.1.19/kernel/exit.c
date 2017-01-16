@@ -440,9 +440,6 @@ static void exit_mm(struct task_struct *tsk)
 	enter_lazy_tlb(mm, current);
 	task_unlock(tsk);
 	mm_update_next_owner(mm);
-	if (split_hugepage != 0) {
-		printk(KERN_ERR "exit_mm called for pid %d\n", current->pid);
-	}
 	mmput(mm);
 
 	if (tsk) {

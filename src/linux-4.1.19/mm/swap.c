@@ -85,9 +85,6 @@ static void __put_compound_page(struct page *page)
 	if (!PageHuge(page))
 		__page_cache_release(page);
 	dtor = get_compound_page_dtor(page);
-	if (page->mcga_track) {
-		printk(KERN_ERR "dtor is %p %pF \n", dtor, dtor);
-	}
 	(*dtor)(page);
 }
 
@@ -168,10 +165,6 @@ void put_unrefcounted_compound_page(struct page *page_head, struct page *page)
 static __always_inline
 void put_refcounted_compound_page(struct page *page_head, struct page *page)
 {
-	if (page_head->mcga_track)
-		printk(KERN_ERR "put_refcounted_compund_page: pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",
-				page_to_pfn(page_head),atomic_read(&page_head->_count),
-				atomic_read(&page_head->_mapcount), PageCompound(page_head), page_head->flags);
 	if (likely(page != page_head && get_page_unless_zero(page_head))) {
 		unsigned long flags;
 
@@ -278,10 +271,6 @@ static void put_compound_page(struct page *page)
 
 void put_page(struct page *page)
 {
-	if (page->mcga_track == 1)
-		printk(KERN_ERR "put_page pfn 0x%lx count %d mapcount %d comp %d\n",
-				page_to_pfn(page),atomic_read(&page->_count),
-				atomic_read(&page->_mapcount),PageCompound(page));
 	if (unlikely(PageCompound(page)))
 		put_compound_page(page);
 	else if (put_page_testzero(page))
@@ -927,13 +916,6 @@ void release_pages(struct page **pages, int nr, bool cold)
 	for (i = 0; i < nr; i++) {
 		struct page *page = pages[i];
 
-		if (page->mcga_track == 1) {
-			printk(KERN_ERR "release_pages::start i=%d pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",i,
-					page_to_pfn(page),atomic_read(&page->_count),
-					atomic_read(&page->_mapcount), PageCompound(page), page->flags);
-			if (i == 0)
-				dump_stack();
-		}
 		if (unlikely(PageCompound(page))) {
 			if (zone) {
 				spin_unlock_irqrestore(&zone->lru_lock, flags);
@@ -943,13 +925,6 @@ void release_pages(struct page **pages, int nr, bool cold)
 			continue;
 		}
 
-		if (page->mcga_track == 1) {
-			printk(KERN_ERR "release_pages::2 pfn 0x%lx count %d mapcount %d comp %d flags 0x%x\n",
-					page_to_pfn(page),atomic_read(&page->_count),
-					atomic_read(&page->_mapcount), PageCompound(page), page->flags);
-			if (i == 0)
-				dump_stack();
-		}
 		/*
 		 * Make sure the IRQ-safe lock-holding time does not get
 		 * excessive with a continuous string of pages from the
@@ -962,11 +937,6 @@ void release_pages(struct page **pages, int nr, bool cold)
 
 		if (!put_page_testzero(page))
 			continue;
-		if (page->mcga_track == 1) {
-			printk(KERN_ERR "release_pages---testzero pfn 0x%lx count %d mapcount %d comp %d\n",
-					page_to_pfn(page),atomic_read(&page->_count),
-					atomic_read(&page->_mapcount), PageCompound(page));
-		}
 
 		if (PageLRU(page)) {
 			struct zone *pagezone = page_zone(page);

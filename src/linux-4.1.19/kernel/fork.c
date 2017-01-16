@@ -686,14 +686,8 @@ EXPORT_SYMBOL_GPL(__mmdrop);
 void mmput(struct mm_struct *mm)
 {
 	might_sleep();
-	if (mm->split_hugepage != 0) {
-		printk(KERN_ERR "mmput::start called for pid %d\n", current->pid);
-	}
 
 	if (atomic_dec_and_test(&mm->mm_users)) {
-		if (mm->split_hugepage != 0) {
-			printk(KERN_ERR "mmput::if called for pid %d\n", current->pid);
-		}
 		uprobe_clear_state(mm);
 		exit_aio(mm);
 		ksm_exit(mm);
@@ -928,7 +922,6 @@ static struct mm_struct *dup_mm(struct task_struct *tsk)
 	mm->hiwater_rss = get_mm_rss(mm);
 	mm->hiwater_vm = mm->total_vm;
 	if (oldmm->split_hugepage == 1) {
-		trace_printk("mm->split_hugepage: %d\n", mm->split_hugepage);
 		mm->split_hugepage = 2;
 	}
 
