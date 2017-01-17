@@ -50,6 +50,7 @@ unsigned long transparent_hugepage_flags __read_mostly =
 /* default scan 8*512 pte (or vmas) every 30 second */
 static unsigned int khugepaged_pages_to_scan __read_mostly = HPAGE_PMD_NR*8;
 static unsigned int khugepaged_pages_collapsed;
+static unsigned int khugepaged_pages_promoted;
 static unsigned int khugepaged_full_scans;
 static unsigned int khugepaged_scan_sleep_millisecs __read_mostly = 10000;
 /* during fragmentation poll the hugepage allocator once every minute */
@@ -499,6 +500,15 @@ static ssize_t pages_collapsed_show(struct kobject *kobj,
 static struct kobj_attribute pages_collapsed_attr =
 	__ATTR_RO(pages_collapsed);
 
+static ssize_t pages_promoted_show(struct kobject *kobj,
+				    struct kobj_attribute *attr,
+				    char *buf)
+{
+	return sprintf(buf, "%u\n", khugepaged_pages_promoted);
+}
+static struct kobj_attribute pages_promoted_attr =
+	__ATTR_RO(pages_promoted);
+
 static ssize_t full_scans_show(struct kobject *kobj,
 			       struct kobj_attribute *attr,
 			       char *buf)
@@ -563,6 +573,7 @@ static struct attribute *khugepaged_attr[] = {
 	&khugepaged_max_ptes_none_attr.attr,
 	&pages_to_scan_attr.attr,
 	&pages_collapsed_attr.attr,
+	&pages_promoted_attr.attr,
 	&full_scans_attr.attr,
 	&scan_sleep_millisecs_attr.attr,
 	&alloc_sleep_millisecs_attr.attr,
@@ -767,6 +778,23 @@ static int __do_huge_pmd_anonymous_page(struct mm_struct *mm,
 	return 0;
 }
 
+void prep_compound_dtor(struct page *page, unsigned long order)
+{
+	int i;
+	int nr_pages = 1 << order;
+	struct lruvec *lruvec;
+	struct page *p;
+	struct zone *zone = page_zone(page);
+
+	lruvec = mem_cgroup_page_lruvec(page, zone);
+	for (i = 0; i < nr_pages; i++) {
+		p = page + i;
+		if (i) {
+			del_page_from_lru_list(p, lruvec, page_lru(p));
+		}
+	}
+}
+
 void prep_compound_mapcount(struct page *page, unsigned long order)
 {
 	int i;
@@ -775,7 +803,8 @@ void prep_compound_mapcount(struct page *page, unsigned long order)
 
 	for (i = 0; i < nr_pages; i++) {
 		p = page + i;
-		atomic_dec(&p->_mapcount);
+		if (i != 0)
+			atomic_set(&p->_mapcount, -1);
 		if (i) {
 			p->flags = 0;
 			p->mapping = NULL;
@@ -790,7 +819,7 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 {
 	pmd_t _pmd;
 	pte_t *pte, *pte_iter;
-        int i;
+	int i;
 	pgtable_t pgtable;
 	struct page *new_page = page, *src_page;
 	spinlock_t *pmd_ptl, *pte_ptl;
@@ -798,14 +827,9 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	unsigned long hstart, hend;
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
-	trace_printk("%s 3\n", __func__ );
 
 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
 
-/*	if (unlikely(mem_cgroup_try_charge(new_page, mm,
-					   gfp, &memcg)))
-		return 1;
-                */
 	mem_cgroup_promote_huge_fixup(page);
 	/*
 	 * Prevent all access to pagetables with the exception of
@@ -850,18 +874,12 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	 */
 	anon_vma_unlock_write(vma->anon_vma);
 
-        //pte_unmap(pte);
-        for(pte_iter = pte, i = 0; i < 512; i++, pte_iter++) {
-	    src_page = pte_page(*pte_iter);
-            //trace_printk("2: %s PTE %lu address %p, cgroup %p\n", __func__, pte_iter->pte, src_page, src_page->mem_cgroup); 
-            //trace_printk("1at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
-           // trace_printk("1at Address %lu, MapCount: %d\n",  address, page); 
-            pte_unmap(pte_iter);
-            pte_iter->pte = 0;
-            //trace_printk("2at promote pte %lu, address %lu, pmd %lu, _pmd %lu\n",  pte_iter->pte, address, pmd->pmd, _pmd.pmd); 
-        }
+	for(pte_iter = pte, i = 0; i < 512; i++, pte_iter++) {
+		src_page = pte_page(*pte_iter);
+		pte_unmap(pte_iter);
+		pte_iter->pte = 0;
+	}
 	pgtable = pmd_pgtable(_pmd);
-
 	_pmd = mk_huge_pmd(new_page, vma->vm_page_prot);
 	_pmd = maybe_pmd_mkwrite(pmd_mkdirty(_pmd), vma);
 
@@ -874,14 +892,18 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 
 	spin_lock(pmd_ptl);
 	BUG_ON(!pmd_none(*pmd));
+	atomic_dec(&page->_mapcount);
 	page_add_anon_rmap(new_page, vma, address);
+
 	mem_cgroup_commit_charge(new_page, memcg, false);
-	lru_cache_add_active_or_unevictable(new_page, vma);
+
 	pgtable_trans_huge_deposit(mm, pmd, pgtable);
 	set_pmd_at(mm, address, pmd, _pmd);
 	update_mmu_cache_pmd(vma, address, pmd);
 	spin_unlock(pmd_ptl);
 
+	count_vm_event(THP_PROMOTE);
+	khugepaged_pages_promoted++;
 
 out_up_write:
 	up_write(&mm->mmap_sem);
@@ -1216,7 +1238,6 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
 	gfp_t huge_gfp;			/* for allocation and charge */
-	struct task_struct *ctsk;		// Child Task Structure
 
 	ptl = pmd_lockptr(mm, pmd);
 	VM_BUG_ON_VMA(!vma->anon_vma, vma);
@@ -1260,16 +1281,6 @@ alloc:
 				ret |= VM_FAULT_OOM;
 			if (ret & VM_FAULT_OOM) {
 				split_huge_page(page);
-				if (mm->split_hugepage == 1) {
-                                    // Set child's hugepage split here
-                                    //VIK		
-                                    struct list_head *list;
-                                    list_for_each(list, &current->children) {
-                                        ctsk = list_entry(list, struct task_struct, sibling);
-                                        /* task now points to one of current’s children */
-                                        //trace_printk("Trace5:mm/huge_memory.c %d, line :%d\n",ctsk->mm->split_hugepage,__LINE__);
-                                    }
-                                }
 				ret |= VM_FAULT_FALLBACK;
 			}
 			put_user_huge_page(page);
@@ -1906,15 +1917,12 @@ static int __split_huge_page_map(struct page *page,
 	pmd = page_check_address_pmd(page, mm, address,
 			PAGE_CHECK_ADDRESS_PMD_SPLITTING_FLAG, &ptl);
 	if (pmd) {
-                trace_printk("%s 1. PMD: %ld\n", __func__, pmd->pmd ); 
 		pgtable = pgtable_trans_huge_withdraw(mm, pmd);
 		pmd_populate(mm, &_pmd, pgtable);
 		if (pmd_write(*pmd))
 			BUG_ON(page_mapcount(page) != 1);
 
 		haddr = address;
-                //trace_printk("%s HPAGE_PMD_MR: %d Haddr: %lu\n", __func__, HPAGE_PMD_NR, haddr ); 
-                //trace_printk("%s 2. PMD %ld _PMD: %ld\n", __func__, pmd->pmd, _pmd.pmd ); 
 		for (i = 0; i < HPAGE_PMD_NR; i++, haddr += PAGE_SIZE) {
 			pte_t *pte, entry;
 			BUG_ON(PageCompound(page+i));
@@ -2723,6 +2731,8 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	int node = NUMA_NO_NODE;
 	bool writable = false, referenced = false, aligned = false;
 	bool contiguous = true;
+	bool pte_flags_eq = true, page_shared = false;
+	pteval_t first_pte_flags;
 	unsigned long old_pfn, new_pfn;
 
 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
@@ -2733,8 +2743,6 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 
 	memset(khugepaged_node_load, 0, sizeof(khugepaged_node_load));
 	pte = pte_offset_map_lock(mm, pmd, address, &ptl);
-	trace_printk("LALALALAL%s huge_mem: PID: %d vma start %lu vma end %lu\n",
-		__func__,mm->owner->pid,vma->vm_start, vma->vm_end);
 	first_pmd_pte = (pte_t *)pmd_page_vaddr(*pmd);
 	if (first_pmd_pte == pte) {
 		aligned = true;
@@ -2743,15 +2751,12 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	new_pfn = pte_pfn(*first_pmd_pte);
 	old_pfn = new_pfn - 1;
 
+	first_pte_flags = pte_flags(*pte);
+
 	for (_address = address, _pte = pte; _pte < pte+HPAGE_PMD_NR;
 	     _pte++, _address += PAGE_SIZE) {
 		pte_t pteval = *_pte;
 		new_pfn = pte_pfn(pteval);
-#if 0
-		if (mm->split_hugepage == 1)
-			trace_printk("huge_mem: PID: %d address %lu, pmd pfn %05lx, pfn %05lx\n",
-			    mm->owner->pid, _address, pte_pfn(*first_pmd_pte), pte_pfn(pteval));
-#endif
 		if (pte_none(pteval) || is_zero_pfn(pte_pfn(pteval))) {
 			if (++none_or_zero <= khugepaged_max_ptes_none)
 				continue;
@@ -2764,10 +2769,15 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		if (pte_write(pteval))
 			writable = true;
 
+		if (pte_flags_eq == true && first_pte_flags != pte_flags(pteval))
+			pte_flags_eq = false;
+
 		page = vm_normal_page(vma, _address, pteval);
 		if (unlikely(!page)) {
 			goto out_unmap;
 		}
+		if (page_mapcount(page) != 1)
+			page_shared = true;
 		/*
 		 * Record which node the original page is from and save this
 		 * information to khugepaged_node_load[].
@@ -2803,13 +2813,9 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		ret = 1;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	/*
-        if (mm->split_hugepage == 1)
-		trace_printk("%s aligned = %d, none_or_zero = %d referenced = %d, cont = %d, pid = %d\n",
-					  __FILE__, aligned, none_or_zero, referenced, contiguous, mm->owner->pid);
-	*/
-        if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
-		referenced && contiguous) {
+	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
+		referenced && contiguous && pte_flags_eq && !page_shared) {
+
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;
 		struct page *first_page = pfn_to_page(pte_pfn(*first_pmd_pte));
@@ -2817,13 +2823,14 @@ out_unmap:
 		up_read(&mm->mmap_sem);
 
 		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
+		prep_compound_dtor(first_page, 9);
 		prep_compound_page(first_page, 9);
 		prep_compound_mapcount(first_page, 9);
-	        trace_printk("%s 2\n", __func__ );
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
 		ret = 1;
 		goto out;
 	}
+
 	if (ret) {
 		node = khugepaged_find_target_node();
 		/* collapse_huge_page will return with the mmap_sem released */
@@ -3110,15 +3117,8 @@ again:
 		return;
 	}
 	page = pmd_page(*pmd);
-	//trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
-	
-        ///newPage = pmd_page( newPmd );
-	//trace_printk("Pmd: %ld\tPage: %p\n", newPmd.pmd, newPage );
-        
-        VM_BUG_ON_PAGE(!page_count(page), page);
+	VM_BUG_ON_PAGE(!page_count(page), page);
 	get_page(page);
-	
-        //trace_printk("Pmd: %ld\tPage: %p\n", pmd->pmd, page );
 	spin_unlock(ptl);
 	mmu_notifier_invalidate_range_end(mm, mmun_start, mmun_end);
 

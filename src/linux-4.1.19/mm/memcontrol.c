@@ -2782,22 +2782,12 @@ void mem_cgroup_promote_huge_fixup(struct page *head)
 	if (mem_cgroup_disabled())
 		return;
 
-        for (i = 1; i < HPAGE_PMD_NR; i++) {
-            if ( &head[i] != NULL ) { 
-                head[i].mem_cgroup = NULL;
-                head[i].flags  = 0;
-                trace_printk("INSIDE %s\n", __func__);
-                trace_printk("1:%s PAGE iter %d address %p, Mapcount %lu\n", __func__, i, &head[i], head[i]._mapcount ); 
-                atomic_inc( &head[i]._mapcount ); 
-                trace_printk("2:%s PAGE iter %d address %p, Mapcount %lu\n", __func__, i, &head[i], head[i]._mapcount ); 
-                //trace_printk("1:%s PAGE iter %d address %p, cgroup %p\n", __func__, i, &head[i], head[i].mem_cgroup ); 
-            } else {
-                trace_printk("1:%s Iter: %d is NULL\n", __func__, i ); 
-            }	
-        }
-
-	//__this_cpu_add(head->mem_cgroup->stat->count[MEM_CGROUP_STAT_RSS_HUGE],
-	//		HPAGE_PMD_NR);
+	for (i = 1; i < HPAGE_PMD_NR; i++) {
+		if ( &head[i] != NULL ) {
+			head[i].mem_cgroup = NULL;
+			head[i].flags  = 0;
+		}
+	}
 }
 #endif /* CONFIG_TRANSPARENT_HUGEPAGE */
 

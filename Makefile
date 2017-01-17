@@ -43,11 +43,9 @@ redis: .check
 venv: .bootstrap linux
 	vagrant up --provider virtualbox
 	vagrant ssh -c "cd /vagrant/src/linux-4.1.19; \
-	    sudo make modules_install; sudo make install"
+	    sudo make -j `nproc` modules_install; sudo make -j `nproc` install"
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
-	cp ~/.bashrc ~/mcga/
-	vagrant ssh -c "mv /vagrant/.bashrc ~/"
 	touch .venvinit
 	vagrant halt
 	vagrant up
@@ -63,8 +61,6 @@ venv-re: .bootstrap linux
 	    sudo cp System.map /boot/System.map-4.1.19"
 	vagrant ssh -c "cd /vagrant/scripts/grub; \
 	    sudo cp grub /etc/default/grub; sudo update-grub2"
-	cp ~/.bashrc ~/mcga/
-	vagrant ssh -c "mv /vagrant/.bashrc ~/"
 	vagrant halt
 	vagrant up
 

@@ -922,7 +922,6 @@ static struct mm_struct *dup_mm(struct task_struct *tsk)
 	mm->hiwater_rss = get_mm_rss(mm);
 	mm->hiwater_vm = mm->total_vm;
 	if (oldmm->split_hugepage == 1) {
-		trace_printk("mm->split_hugepage: %d\n", mm->split_hugepage);
 		mm->split_hugepage = 2;
 	}
 

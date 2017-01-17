@@ -55,6 +55,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
      vb.customize ["modifyvm", :id, "--uartmode1", "file", "kmsg.log"]
   end
+
+  # proxy config for adsl machines
+  #if Vagrant.has_plugin?("vagrant-proxyconf")
+  #  config.proxy.enabled = true
+  #  config.proxy.http     = "http://squid.cs.wisc.edu:3128/"
+  #  config.proxy.https    = "https://squid.cs.wisc.edu:3128/"
+  #  config.proxy.no_proxy = "localhost,127.0.0.1,.10.0.2.15"
+  #end
   #
   # View the documentation for the provider you're using for more
   # information on available options.
