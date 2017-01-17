@@ -767,6 +767,23 @@ static int __do_huge_pmd_anonymous_page(struct mm_struct *mm,
 	return 0;
 }
 
+void prep_compound_dtor(struct page *page, unsigned long order)
+{
+	int i;
+	int nr_pages = 1 << order;
+	struct lruvec *lruvec;
+	struct page *p;
+	struct zone *zone = page_zone(page);
+
+	lruvec = mem_cgroup_page_lruvec(page, zone);
+	for (i = 0; i < nr_pages; i++) {
+		p = page + i;
+		if (i) {
+			del_page_from_lru_list(p, lruvec, page_lru(p));
+		}
+	}
+}
+
 void prep_compound_mapcount(struct page *page, unsigned long order)
 {
 	int i;
@@ -2794,6 +2811,7 @@ out_unmap:
 		up_read(&mm->mmap_sem);
 
 		gfp = alloc_hugepage_gfpmask(transparent_hugepage_defrag(vma), 0);
+		prep_compound_dtor(first_page, 9);
 		prep_compound_page(first_page, 9);
 		prep_compound_mapcount(first_page, 9);
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
