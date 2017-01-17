@@ -45,3 +45,6 @@ out/*
 # Project Files
 .vagrant/*
 .venvinit
+mfork
+smaps_out
+*.rdb
