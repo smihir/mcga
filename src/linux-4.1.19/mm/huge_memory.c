@@ -50,6 +50,7 @@ unsigned long transparent_hugepage_flags __read_mostly =
 /* default scan 8*512 pte (or vmas) every 30 second */
 static unsigned int khugepaged_pages_to_scan __read_mostly = HPAGE_PMD_NR*8;
 static unsigned int khugepaged_pages_collapsed;
+static unsigned int khugepaged_pages_promoted;
 static unsigned int khugepaged_full_scans;
 static unsigned int khugepaged_scan_sleep_millisecs __read_mostly = 10000;
 /* during fragmentation poll the hugepage allocator once every minute */
@@ -499,6 +500,15 @@ static ssize_t pages_collapsed_show(struct kobject *kobj,
 static struct kobj_attribute pages_collapsed_attr =
 	__ATTR_RO(pages_collapsed);
 
+static ssize_t pages_promoted_show(struct kobject *kobj,
+				    struct kobj_attribute *attr,
+				    char *buf)
+{
+	return sprintf(buf, "%u\n", khugepaged_pages_promoted);
+}
+static struct kobj_attribute pages_promoted_attr =
+	__ATTR_RO(pages_promoted);
+
 static ssize_t full_scans_show(struct kobject *kobj,
 			       struct kobj_attribute *attr,
 			       char *buf)
@@ -563,6 +573,7 @@ static struct attribute *khugepaged_attr[] = {
 	&khugepaged_max_ptes_none_attr.attr,
 	&pages_to_scan_attr.attr,
 	&pages_collapsed_attr.attr,
+	&pages_promoted_attr.attr,
 	&full_scans_attr.attr,
 	&scan_sleep_millisecs_attr.attr,
 	&alloc_sleep_millisecs_attr.attr,
@@ -891,6 +902,8 @@ static int __promote_to_huge_anonymous_page(struct mm_struct *mm,
 	update_mmu_cache_pmd(vma, address, pmd);
 	spin_unlock(pmd_ptl);
 
+	count_vm_event(THP_PROMOTE);
+	khugepaged_pages_promoted++;
 
 out_up_write:
 	up_write(&mm->mmap_sem);
@@ -1225,7 +1238,6 @@ int do_huge_pmd_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	unsigned long mmun_start;	/* For mmu_notifiers */
 	unsigned long mmun_end;		/* For mmu_notifiers */
 	gfp_t huge_gfp;			/* for allocation and charge */
-	struct task_struct *ctsk;		// Child Task Structure
 
 	ptl = pmd_lockptr(mm, pmd);
 	VM_BUG_ON_VMA(!vma->anon_vma, vma);

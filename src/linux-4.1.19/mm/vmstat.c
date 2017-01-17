@@ -823,6 +823,7 @@ const char * const vmstat_text[] = {
 	"thp_split",
 	"thp_zero_page_alloc",
 	"thp_zero_page_alloc_failed",
+	"thp_promote",
 #endif
 #ifdef CONFIG_MEMORY_BALLOON
 	"balloon_inflate",
