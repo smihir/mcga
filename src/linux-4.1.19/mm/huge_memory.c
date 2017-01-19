@@ -2731,7 +2731,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	int node = NUMA_NO_NODE;
 	bool writable = false, referenced = false, aligned = false;
 	bool contiguous = true;
-	bool pte_flags_eq = true, page_shared = false;
+	bool page_shared = false;
 	pteval_t first_pte_flags;
 	unsigned long old_pfn, new_pfn;
 
@@ -2768,9 +2768,6 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		}
 		if (pte_write(pteval))
 			writable = true;
-
-		if (pte_flags_eq == true && first_pte_flags != pte_flags(pteval))
-			pte_flags_eq = false;
 
 		page = vm_normal_page(vma, _address, pteval);
 		if (unlikely(!page)) {
@@ -2811,10 +2808,12 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	}
 	if (referenced && writable)
 		ret = 1;
+	if (mm->split_hugepage == 1 && aligned && !none_or_zero && referenced &&
+	    contiguous && !page_shared)
+		ret = 2;
 out_unmap:
 	pte_unmap_unlock(pte, ptl);
-	if (mm->split_hugepage == 1 && aligned && !none_or_zero &&
-		referenced && contiguous && pte_flags_eq && !page_shared) {
+	if (ret == 2) {
 
 		unsigned long haddr = address & HPAGE_PMD_MASK;
 		gfp_t gfp;

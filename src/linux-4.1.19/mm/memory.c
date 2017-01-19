@@ -3306,9 +3306,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	struct task_struct *ctsk;	//Child's task struct
 	struct mm_struct *cmm;	//Child's mm struct
 	struct vm_area_struct *cvma;	//Child's vma struct
-	pmd_t *cpmd;	//Child's pmd struct
 	int ret;
-        //int lp = 0;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
 		return hugetlb_fault(mm, vma, address, flags);
