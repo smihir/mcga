@@ -1,6 +1,10 @@
+
 __author__ = 'Sejal Chauhan'
 __author_email__ = 'sejalc@cs.wisc.edu'
 __version__ = '1.0'
+
+# run with option "3" and giving the two data files: data-thp-enabled(data1) data-thp-disabled(data2)
+#python latencyplit.py 3 data1 data2
 
 import re
 import sys
@@ -57,11 +61,51 @@ class latencyp:
         #pl.setp(labels, rotation=90)
         plt.show()
 
+class latencyboth:
+
+    def __init__(self, data1, data2):
+
+        y1=[]
+        y2=[]
+
+        for s1 in data1.split('\n'):
+            for token in s1.split():
+                try:
+                    token = int(token)
+                except ValueError:
+                    token = float(token)
+            y1.append(token)
+
+        for s2 in data2.split('\n'):
+            for token in s2.split():
+                try:
+                    x2 = re.findall("\d+", s2)
+                    if len(x2) > 0:
+                        t = int(x2[0])
+                        y2.append(t)
+                except ValueError:
+                    pass
+        fig1 = plt.figure()
+        x2 = np.arrange(len(y2))
+        ax1 = fig1.add_subplot(111)
+        ax1.set_title("Latency time series")
+        ax1.set_xlabel('Time in ms')
+        ax1.set_ylabel('Latency in ms')
+        ax1.plot(x2, y1,color='r', marker='o')
+        ax1.plot(x2, y2, color='g', marker='^')
+        frame1 = plt.gca()
+        frame1.axes.get_xaxis().set_visible(False)
+        plt.show()
+
 if __name__ == '__main__':
     with open(sys.argv[1], 'rb') as f1:
         data1 = f1.read()
 
+    with open(sys.argv[2], 'rb') as f2:
+        data2 = f2.read()
         if sys.argv[2] == '1':
             latency(data1)
         if sys.argv[2] == '2':
             latencyp(data1)
+        if sys.argv[2] == '3':
+            latencyboth(data1, data2)
