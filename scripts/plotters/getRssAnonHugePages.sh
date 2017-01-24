@@ -1,0 +1,1 @@
+while sleep 1; do a=$(cat /proc/25659/smaps | grep Rss: | awk '{SUM += $2} END { print SUM}'); b=$(cat /proc/25659/smaps | grep AnonHugePages: | awk '{SUM += $2} END { print SUM}') ; echo $a $b ; done
