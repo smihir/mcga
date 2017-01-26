@@ -8,6 +8,15 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Usage of this script:
+# python latencyplot.py <option #> <args>
+# 1. Plots latency graph for both THP disabled(red) and enabled(green)
+# Run the cmd: python latencyplot.py 1 <latencyThpDisabled.txt> <latencyThpEnabled.txt>
+# 2. Plot the area curve of the base and large pages
+# Input file format: <#Rss> <#Anon> format
+# Run cmd: python latencyplot.py 2 <rssanon.txt>
+# 3. Time taken to fork v/s RSS
+# Run cmd: python latencyplot.py 3
 
 class latencyboth:
 
@@ -24,16 +33,8 @@ class latencyboth:
                     y1.append(t)
             except ValueError:
                 pass
-            #for token in s1.split():
-                #try:
-                    #x1 = re.findall("\d+", s1)
-                    #token = int(x1[0])
-                #except ValueError:
-                 #   token = float(token)
-                #y1.append(token)
-
+            
         for s2 in data2.split('\n'):
-            #for token in s2.split():
                 try:
                     x2 = re.findall("\d+", s2)
                     if len(x2) > 0:
@@ -48,22 +49,17 @@ class latencyboth:
         ax1.set_title("Latency time series")
         ax1.set_xlabel('Time (ms)')
         ax1.set_ylabel('Latency (ms)')
-        rects1 = ax1.plot(x1, y1,color='r')#, marker='o')
-        rects2 = ax1.plot(x2, y2, color='g')#, marker='^')
+        rects1 = ax1.plot(x1, y1,color='r')
+        rects2 = ax1.plot(x2, y2, color='g')
         frame1 = plt.gca()
-        #frame1.axes.get_xaxis().set_visible(False)
         ax1.set_ylim([0, 200])
         ax1.set_xlim([0, min(len(x1),len(x2))])
         ax1.legend((rects1[0], rects2[0]), ('THP Disabled', 'THP Enabled'), shadow=False, loc='upper left')
-
         ax2 = plt.axes([.65, .6, .2, .2], axisbg='w')
         ax2.plot(x1, y1, color='r')
         ax2.plot(x2, y2, color='g')
         ax2.set_xlim([0, min(len(x1), len(x2))])
-        #y2labels = ['0', '500', '1000', '1400']
         plt.setp(ax2, xticks=[], yticks=[])
-        #ax2.yticks(y2, y2labels)
-        #ax2.set_yticklabels(y2labels)
         plt.show()
 
 class rssanon:
@@ -89,18 +85,16 @@ class rssanon:
             ax1.set_title("Rss and AnonHugePages")
             ax1.set_xlabel('Time in s')
             ax1.set_ylabel('Rss and AnonHugePages')
-            ax1.plot(x2, y1, color='r')#, marker='o')
-            ax1.plot(x2, y2, color='g')#, marker='^')
+            ax1.plot(x2, y1, color='r')
+            ax1.plot(x2, y2, color='g')
             frame1 = plt.gca()
             frame1.axes.get_xaxis().set_visible(False)
-
             plt.show()
 
 class forkplot:
 
     def __init__(self):
-        #x = [129, 258, 515, 1031, 2061, 4121, 8241]
-
+        
         y1 = [231, 400, 725, 1282, 2512]
         y2= [1263, 2427, 4881, 8589, 16973]
         x = np.arange(len(y1))

@@ -2349,6 +2349,7 @@ static int do_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	 */
 	page_cache_get(old_page);
 
+   
 	pte_unmap_unlock(page_table, ptl);
 	return wp_page_copy(mm, vma, address, page_table, pmd,
 			    orig_pte, old_page);
@@ -3363,12 +3364,13 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 						cvma = find_vma(cmm, address);
 						ret = __handle_mm_fault(cmm, cvma, address, flags);
 						up_read(&cmm->mmap_sem);
-						return ret;
+                        break;
 					}
-				}
-				ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd); 
-				if (!(ret & VM_FAULT_FALLBACK))
-					return ret;
+				} else {
+                    ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd);
+				    if (!(ret & VM_FAULT_FALLBACK))
+					    return ret;
+                }
 			} else {
 				huge_pmd_set_accessed(mm, vma, address, pmd,
 						      orig_pmd, dirty);
