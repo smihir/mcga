@@ -1,0 +1,72 @@
+## -------------------------------
+## Development + Testing Artifacts
+## -------------------------------
+files/
+*.trace
+*.trace.gz
+traces/
+*.swp
+*.jar
+*.jar-ORIG
+*.log
+*.dot
+*.pdf
+*.arff
+*.pyc
+*.png
+*.csv
+*.ods
+*.markov
+*.hprof
+.~lock*
+junitvmwatcher*
+buildstring.txt
+debugoutput
+.depcache
+new_catalog.txt
+catalog.txt
+typescript
+plannerlog.txt
+keepalive
+obj
+conf-*.html
+.DS_Store
+SourceJars
+
+## -------------------------------
+## JNI Compiler Artifacts
+## -------------------------------
+src/ee/org_voltdb_jni_ExecutionEngine.h
+src/ee/org_voltdb_utils_DBBPool.h
+src/ee/org_voltdb_utils_ThreadUtils.h
+
+## -------------------------------
+## Catalog Compiler Artifacts
+## -------------------------------
+src/catgen/out
+
+## -------------------------------
+## Kate Swap Files
+## -------------------------------
+*.kate-swp
+.#kate-*
+
+## -------------------------------
+## Backup artifacts
+## -------------------------------
+~*
+*~
+
+## -------------------------------
+## Eclipse files
+## -------------------------------
+.wtpmodules
+.classpath
+.project
+.cproject
+.settings
+
+## -------------------------------
+## cscope files
+## -------------------------------
+cscope.*

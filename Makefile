@@ -10,7 +10,7 @@ for help. SSH into the machine using vagrant ssh"
 .bootstrap: .check
 	sudo apt-get install -y git build-essential kernel-package fakeroot \
 	    libncurses5-dev libssl-dev ccache libdw-dev vagrant virtualbox \
-	    flex bison
+	    flex bison openjdk-7-jdk
 	touch .bootstrap
 
 .PHONY: systemtap linux linux-deb all
@@ -68,6 +68,9 @@ venv-de:
 	@test -f .venvinit || { echo "\nNo venv present! Exiting..."; exit 1;}
 	vagrant destroy
 	rm -rf .venvinit
+
+h-store: .bootstrap
+	cd src/bench/h-store-release-2016-06; ant build
 
 .check:
 ifneq ($(OS), Ubuntu)
