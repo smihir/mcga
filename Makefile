@@ -66,11 +66,14 @@ venv-re: .bootstrap linux
 
 venv-de:
 	@test -f .venvinit || { echo "\nNo venv present! Exiting..."; exit 1;}
-	vagrant destroy
+	vagrant destroy -f
 	rm -rf .venvinit
 
 h-store: .bootstrap
 	cd src/bench/h-store-release-2016-06; ant build
+
+clean-h-store:
+	cd src/bench/h-store-release-2016-06; ant clean-java clean-cpp
 
 .check:
 ifneq ($(OS), Ubuntu)
