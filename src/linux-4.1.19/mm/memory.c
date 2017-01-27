@@ -3307,6 +3307,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	struct mm_struct *cmm;	//Child's mm struct
 	struct vm_area_struct *cvma;	//Child's vma struct
 	int ret;
+        int zeroFlag = 0;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
 		return hugetlb_fault(mm, vma, address, flags);
@@ -3352,7 +3353,8 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 				if (mm->split_hugepage == 1) {
 					// Set child's hugepage split here
 					list_for_each(list, &current->children) {
-						ctsk = list_entry(list, struct task_struct, sibling);
+						zeroFlag = 1;
+                                                ctsk = list_entry(list, struct task_struct, sibling);
 						/* task now points to one of current’s children */
 						cmm = ctsk->mm;
 						if (cmm == NULL) {
@@ -3363,14 +3365,14 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 						cvma = find_vma(cmm, address);
 						ret = __handle_mm_fault(cmm, cvma, address, flags);
 						up_read(&cmm->mmap_sem);
-						//break;
-						return ret;
+						break;
 					}
-				} else {
+				}
+                                if ( !zeroFlag ) {
 					ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd);
 					if (!(ret & VM_FAULT_FALLBACK))
 						return ret;
-				}
+                                }
 			} else {
 				huge_pmd_set_accessed(mm, vma, address, pmd,
 						      orig_pmd, dirty);
