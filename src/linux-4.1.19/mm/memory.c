@@ -3307,7 +3307,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	struct mm_struct *cmm;	//Child's mm struct
 	struct vm_area_struct *cvma;	//Child's vma struct
 	int ret;
-        int zeroFlag = 0;
+	int zeroFlag = 0;
 	uint8_t handled = 0;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
@@ -3325,7 +3325,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		if (!vma->vm_ops) {
 			ret = do_huge_pmd_anonymous_page(mm, vma, address,
 					pmd, flags);
-        }
+		}
 		if (!(ret & VM_FAULT_FALLBACK))
 			return ret;
 	} else {
@@ -3356,7 +3356,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 					vma->vm_flags |= VM_CATCOW;
 					list_for_each(list, &current->children) {
 						zeroFlag = 1;
-                                                ctsk = list_entry(list, struct task_struct, sibling);
+						ctsk = list_entry(list, struct task_struct, sibling);
 						/* task now points to one of current’s children */
 						cmm = ctsk->mm ? ctsk->mm : ctsk->active_mm;
 						if (cmm == NULL) {
@@ -3371,11 +3371,11 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 						break;
 					}
 				}
-                                if ( !zeroFlag ) {
+				if (!zeroFlag) {
 					ret = do_huge_pmd_wp_page(mm, vma, address, pmd, orig_pmd);
 					if (!(ret & VM_FAULT_FALLBACK))
 						return ret;
-                                }
+				}
 			} else {
 				huge_pmd_set_accessed(mm, vma, address, pmd,
 						      orig_pmd, dirty);
@@ -3426,7 +3426,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * read mode and khugepaged takes it in write mode. So now it's
 	 * safe to run pte_offset_map().
 	 */
-    pte = pte_offset_map(pmd, address);
+	pte = pte_offset_map(pmd, address);
 	return handle_pte_fault(mm, vma, address, pte, pmd, flags);
 }
 
