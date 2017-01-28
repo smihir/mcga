@@ -3308,6 +3308,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	struct vm_area_struct *cvma;	//Child's vma struct
 	int ret;
         int zeroFlag = 0;
+	uint8_t handled = 0;
 
 	if (unlikely(is_vm_hugetlb_page(vma)))
 		return hugetlb_fault(mm, vma, address, flags);
@@ -3352,11 +3353,12 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 				// enter this if block
 				if (mm->split_hugepage == 1) {
 					// Set child's hugepage split here
+					vma->vm_flags |= VM_CATCOW;
 					list_for_each(list, &current->children) {
 						zeroFlag = 1;
                                                 ctsk = list_entry(list, struct task_struct, sibling);
 						/* task now points to one of current’s children */
-						cmm = ctsk->mm;
+						cmm = ctsk->mm ? ctsk->mm : ctsk->active_mm;
 						if (cmm == NULL) {
 							printk(KERN_ERR "mm is NULL for child %d\n", ctsk->pid);
 							continue;
@@ -3365,6 +3367,7 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 						cvma = find_vma(cmm, address);
 						ret = __handle_mm_fault(cmm, cvma, address, flags);
 						up_read(&cmm->mmap_sem);
+						handled = 1;
 						break;
 					}
 				}
@@ -3381,6 +3384,31 @@ static int __handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		}
 	}
 
+	// If we are here it means the fault is on a base page. To maintain
+	// memory contiguity we will handle this fault on the child's mm.
+	if (!handled && mm->split_hugepage == 1 && !vma->vm_ops &&
+	    (vma->vm_flags & VM_CATCOW)) {
+		unsigned int dirty = flags & FAULT_FLAG_WRITE;
+		pte = pte_offset_map(pmd, address);
+
+		if (dirty && pte_present(*pte) && !pte_write(*pte)) {
+			// Set child's hugepage split here
+			list_for_each(list, &current->children) {
+				ctsk = list_entry(list, struct task_struct, sibling);
+				/* task now points to one of current’s children */
+				cmm = ctsk->mm ? ctsk->mm : ctsk->active_mm;
+				if (cmm == NULL) {
+					continue;
+				}
+				down_read(&cmm->mmap_sem);
+				cvma = find_vma(cmm, address);
+				cvma->vm_flags |= VM_CATCOW;
+				ret = __handle_mm_fault(cmm, cvma, address, flags);
+				up_read(&cmm->mmap_sem);
+				break;
+			}
+		}
+	}
 	/*
 	 * Use __pte_alloc instead of pte_alloc_map, because we can't
 	 * run pte_offset_map on the pmd, if an huge pmd could
