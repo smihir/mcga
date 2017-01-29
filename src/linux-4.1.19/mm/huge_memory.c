@@ -2808,7 +2808,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 	}
 	if (referenced && writable)
 		ret = 1;
-	if (mm->split_hugepage == 1 && aligned && !none_or_zero && referenced &&
+	if (mm->promote_hugepage == 1 && aligned && !none_or_zero && referenced &&
 	    contiguous && !page_shared)
 		ret = 2;
 out_unmap:

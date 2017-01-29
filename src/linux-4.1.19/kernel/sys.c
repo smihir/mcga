@@ -2244,12 +2244,15 @@ SYSCALL_DEFINE5(prctl, int, option, unsigned long, arg2, unsigned long, arg3,
 		error = GET_FP_MODE(me);
 		break;
 	case PR_SET_THP_MCGA :
-		if (arg3 || arg4 || arg5)
+		if (arg4 || arg5)
 			return -EINVAL;
 		down_write(&me->mm->mmap_sem);
 		if (arg2)
 			//enable feature
 			me->mm->split_hugepage = 1;
+		if (arg3)
+			//enable feature
+			me->mm->promote_hugepage = 1;
 		up_write(&me->mm->mmap_sem);
 		break;
 	default:

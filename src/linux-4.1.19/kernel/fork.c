@@ -923,6 +923,7 @@ static struct mm_struct *dup_mm(struct task_struct *tsk)
 	mm->hiwater_vm = mm->total_vm;
 	if (oldmm->split_hugepage == 1) {
 		mm->split_hugepage = 2;
+		mm->promote_hugepage = 0;
 	}
 
 	if (mm->binfmt && !try_module_get(mm->binfmt->module))
