@@ -1,0 +1,35 @@
+# ~/.tmuxinator/redisbench.yml
+
+name: redisbench
+root: /home/smihir/Projects/mcga
+tmux_command: byobu
+
+windows:
+  - redis:
+      layout: main-vertical
+      root: /home/smihir/Projects/mcga/src/bench/redis-3.0/src
+      panes:
+        - server:
+            - sudo sh -c "echo 1000 > /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs"
+            - sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+            - rm -rf dump.rdb
+            - ./redis-server ../redis.conf
+        - benchmark:
+            - sleep 5
+            - ./redis-benchmark -P 50 -t set -r 200000000 -n 1200000000
+        - cli:
+            - sleep 5
+            - ./redis-cli --latency-history -i 1 | tee -a latency.log
+  - logs:
+      layout: main-vertical
+      root: /home/smihir/Projects/mcga/scripts/plotters
+      panes:
+        - khugepaged-perf:
+            - sleep 7
+            - sudo sh -c "perf stat -e cycles,instructions -p `pgrep khugepaged` 2> /tmp/khugepaged-perf"
+        - redis-perf:
+            - sleep 7
+            - sudo sh -c "perf stat -e dTLB-load-misses,dTLB-store-misses,iTLB-load-misses,cache-misses,L1-dcache-load-misses,L1-dcache-store-misses,L1-dcache-prefetch-misses,L1-icache-load-misses,LLC-load-misses,LLC-store-misses,LLC-prefetch-misses,branch-load-misses,node-load-misses,node-store-misses,node-prefetch-misses,minor-faults -p `pgrep redis-server` > /tmp/redis-perf"
+        - rss:
+            - sleep 7
+            - ./getRssAnonHugePages.sh
