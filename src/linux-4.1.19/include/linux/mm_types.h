@@ -337,6 +337,12 @@ struct mm_rss_stat {
 	atomic_long_t count[NR_MM_COUNTERS];
 };
 
+enum {
+	LINUX_DEFAULT = 0,
+	COLLAPSE_MCGA = 1,
+	PROMOTE_MCGA = 2,
+};
+
 struct kioctx_table;
 struct mm_struct {
 	struct vm_area_struct *mmap;		/* list of VMAs */
@@ -458,6 +464,7 @@ struct mm_struct {
 	void __user *bd_addr;
 #endif
 	uint8_t split_hugepage;
+	// uses enums *_MCGA
 	uint8_t promote_hugepage;
 };
 

@@ -2283,6 +2283,7 @@ static int __collapse_huge_page_isolate(struct vm_area_struct *vma,
 {
 	struct page *page;
 	pte_t *_pte;
+	struct mm_struct *mm = vma->vm_mm;
 	int none_or_zero = 0;
 	bool referenced = false, writable = false;
 	for (_pte = pte; _pte < pte+HPAGE_PMD_NR;
@@ -2354,7 +2355,7 @@ static int __collapse_huge_page_isolate(struct vm_area_struct *vma,
 		    mmu_notifier_test_young(vma->vm_mm, address))
 			referenced = true;
 	}
-	if (likely(referenced && writable))
+	if (likely(referenced && (mm->promote_hugepage != LINUX_DEFAULT || writable)))
 		return 1;
 out:
 	release_pte_pages(pte, _pte);
@@ -2806,9 +2807,9 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
 		else
 			contiguous = false;
 	}
-	if (referenced && writable)
+	if (referenced && (mm->promote_hugepage != LINUX_DEFAULT || writable))
 		ret = 1;
-	if (mm->promote_hugepage == 1 && aligned && !none_or_zero && referenced &&
+	if (mm->promote_hugepage == PROMOTE_MCGA && aligned && !none_or_zero && referenced &&
 	    contiguous && !page_shared)
 		ret = 2;
 out_unmap:
