@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '1943':
+
+     1,970,643,868      dTLB-load-misses                                              (20.00%)
+        59,218,801      dTLB-store-misses                                             (26.67%)
+        12,479,974      iTLB-load-misses                                              (26.67%)
+     3,328,025,637      cache-misses                                                  (26.67%)
+     7,663,369,223      L1-dcache-load-misses                                         (26.68%)
+     1,368,199,686      L1-dcache-store-misses                                        (26.67%)
+       785,102,108      L1-dcache-prefetch-misses                                     (26.67%)
+    10,821,169,209      L1-icache-load-misses                                         (26.67%)
+     2,570,196,139      LLC-load-misses                                               (26.66%)
+       752,714,255      LLC-store-misses                                              (26.69%)
+       385,391,642      LLC-prefetch-misses                                           (13.41%)
+   201,293,625,370      branch-load-misses                                            (20.07%)
+                 0      node-load-misses                                              (20.03%)
+                 0      node-store-misses                                             (19.99%)
+                 0      node-prefetch-misses                                          (13.34%)
+            21,389      minor-faults                                                
+
+     370.061723437 seconds time elapsed
+

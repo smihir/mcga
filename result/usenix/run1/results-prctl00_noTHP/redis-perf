@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '1901':
+
+     2,924,143,607      dTLB-load-misses                                              (19.99%)
+        76,282,702      dTLB-store-misses                                             (26.65%)
+       108,656,179      iTLB-load-misses                                              (26.65%)
+     5,747,991,051      cache-misses                                                  (26.66%)
+    12,778,936,155      L1-dcache-load-misses                                         (26.66%)
+     1,765,097,460      L1-dcache-store-misses                                        (26.66%)
+     1,133,079,149      L1-dcache-prefetch-misses                                     (26.66%)
+    17,151,482,476      L1-icache-load-misses                                         (26.67%)
+     4,660,402,732      LLC-load-misses                                               (26.67%)
+     1,072,535,170      LLC-store-misses                                              (26.71%)
+       367,859,357      LLC-prefetch-misses                                           (13.37%)
+   229,268,259,967      branch-load-misses                                            (20.04%)
+                 0      node-load-misses                                              (19.99%)
+                 0      node-store-misses                                             (20.00%)
+                 0      node-prefetch-misses                                          (13.33%)
+        15,048,615      minor-faults                                                
+
+     517.450849072 seconds time elapsed
+
