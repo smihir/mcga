@@ -40,7 +40,8 @@ out/*
 .check
 
 # Log Files
-*.log
+kmsg.log
+benchmark.log
 
 # Project Files
 .vagrant/*
