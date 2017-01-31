@@ -7,6 +7,7 @@ import re
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 # Usage of this script:
 # python latencyplot.py <option #> <args>
@@ -33,7 +34,7 @@ class latencyboth:
                     y1.append(t)
             except ValueError:
                 pass
-            
+
         for s2 in data2.split('\n'):
                 try:
                     x2 = re.findall("\d+", s2)
@@ -68,33 +69,42 @@ class rssanon:
         y1=[]
         y2=[]
         for s in data1.split('\n'):
-            for token in s.split():
-                try:
-                    x = re.findall("\d+", s)
-                    if len(x) > 0:
-                        t1 = int(x[0])
-                        t2 = int(x[1])
-                        y1.append(t1)
-                        y2.append(t2)
-                except ValueError:
-                    pass
 
-            fig1 = plt.figure()
-            x2 = np.arange(len(y2))
-            ax1 = fig1.add_subplot(111)
-            ax1.set_title("Rss and AnonHugePages")
-            ax1.set_xlabel('Time in s')
-            ax1.set_ylabel('Rss and AnonHugePages')
-            ax1.plot(x2, y1, color='r')
-            ax1.plot(x2, y2, color='g')
-            frame1 = plt.gca()
-            frame1.axes.get_xaxis().set_visible(False)
-            plt.show()
+            try:
+                x = re.findall("\d+", s)
+
+                if len(x) > 0:
+                    t1 = int(x[0])
+                    t2 = int(x[1])
+                    y1.append(t1)
+                    y2.append(t2)
+            except ValueError:
+                pass
+
+        fig1 = plt.figure()
+        x1 = np.arange(len(y1))
+        ax1 = fig1.add_subplot(111)
+        #ax1.set_title("RSS vs Time")
+        ax1.set_xlabel('Time (min)')
+        ax1.set_ylabel('RSS (GB)')
+        x1 = [x / 60 for x in x1]
+        y1 = [y / 1048576 for y in y1]
+        y2 = [y / 1048576 for y in y2]
+        ax1.plot(x1, y1, color='yellow', label='Base Pages')
+        ax1.plot(x1, y2, color='orange', label='Large Pages')
+        ax1.fill_between(x1, 0, y1, facecolor = 'yellow', interpolate=True)
+        ax1.fill_between(x1, 0, y2, facecolor = 'orange', interpolate=True)
+        ax1.set_xlim([0, 15])
+        ax1.set_ylim([0, 1.2* max(max(y1),max(y2))])
+        yellow_patch = mpatches.Patch(color='yellow', label='Base Pages')
+        orange_patch = mpatches.Patch(color='orange', label='Large Pages')
+        plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
+        plt.show()
 
 class forkplot:
-
     def __init__(self):
-        
+        #x = [129, 258, 515, 1031, 2061, 4121, 8241]
+
         y1 = [231, 400, 725, 1282, 2512]
         y2= [1263, 2427, 4881, 8589, 16973]
         x = np.arange(len(y1))
@@ -112,6 +122,7 @@ class forkplot:
         ax1.set_xticklabels(xlabel, rotation='horizontal')
         ax1.legend((rects1[0], rects2[0]), ('THP Disabled', 'THP Enabled'), shadow=False, loc='upper left')
         plt.show()
+
 
 if __name__ == '__main__':
 
