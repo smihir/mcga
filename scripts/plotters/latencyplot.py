@@ -92,26 +92,41 @@ class rssanon:
             plt.show()
 
 class forkplot:
+    def __init__(self, data1):
 
-    def __init__(self):
-        
-        y1 = [231, 400, 725, 1282, 2512]
-        y2= [1263, 2427, 4881, 8589, 16973]
-        x = np.arange(len(y1))
+        y1=[]
+        y2=[]
+        for s in data1.split('\n'):
+            try:
+                x = re.findall("\d+", s)
+
+                if len(x) > 0:
+                    t1 = int(x[0])
+                    t2 = int(x[1])
+                    y1.append(t1)
+                    y2.append(t2)
+            except ValueError:
+                pass
+
         fig1 = plt.figure()
+        x1 = np.arange(len(y1))
         ax1 = fig1.add_subplot(111)
-        ax1.set_title("Time taken to Fork v/s RSS")
-        ax1.set_ylabel('Time in ms')
-        ax1.set_xlabel('RSS')
-        y1 = [y/1000 for y in y1]
-        y2 = [y/1000 for y in y2]
-        rects1 = ax1.plot(x, y1, color='r', marker='o')
-        rects2 = ax1.plot(x, y2, color='g', marker='^')
-        xlabel = ['128MB', '256MB', '512MB', '1GB', '2GB']
-        plt.xticks(x, xlabel)
-        ax1.set_xticklabels(xlabel, rotation='horizontal')
-        ax1.legend((rects1[0], rects2[0]), ('THP Disabled', 'THP Enabled'), shadow=False, loc='upper left')
+        ax1.set_xlabel('Time (min)')
+        ax1.set_ylabel('RSS (GB)')
+        x1 = [x / 60 for x in x1]
+        y1 = [y / 1048576 for y in y1]
+        y2 = [y / 1048576 for y in y2]
+        ax1.plot(x1, y1, color='yellow', label='Base Pages')
+        ax1.plot(x1, y2, color='orange', label='Large Pages')
+        ax1.fill_between(x1, 0, y1, facecolor = 'yellow', interpolate=True)
+        ax1.fill_between(x1, 0, y2, facecolor = 'orange', interpolate=True)
+        ax1.set_xlim([0, 15])
+        ax1.set_ylim([0, 1.2* max(max(y1),max(y2))])
+        yellow_patch = mpatches.Patch(color='yellow', label='Base Pages')
+        orange_patch = mpatches.Patch(color='orange', label='Large Pages')
+        plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
         plt.show()
+
 
 if __name__ == '__main__':
 
