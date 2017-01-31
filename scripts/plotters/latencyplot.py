@@ -7,6 +7,7 @@ import re
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 # Usage of this script:
 # python latencyplot.py <option #> <args>
@@ -33,7 +34,7 @@ class latencyboth:
                     y1.append(t)
             except ValueError:
                 pass
-            
+
         for s2 in data2.split('\n'):
                 try:
                     x2 = re.findall("\d+", s2)
@@ -68,35 +69,7 @@ class rssanon:
         y1=[]
         y2=[]
         for s in data1.split('\n'):
-            for token in s.split():
-                try:
-                    x = re.findall("\d+", s)
-                    if len(x) > 0:
-                        t1 = int(x[0])
-                        t2 = int(x[1])
-                        y1.append(t1)
-                        y2.append(t2)
-                except ValueError:
-                    pass
 
-            fig1 = plt.figure()
-            x2 = np.arange(len(y2))
-            ax1 = fig1.add_subplot(111)
-            ax1.set_title("Rss and AnonHugePages")
-            ax1.set_xlabel('Time in s')
-            ax1.set_ylabel('Rss and AnonHugePages')
-            ax1.plot(x2, y1, color='r')
-            ax1.plot(x2, y2, color='g')
-            frame1 = plt.gca()
-            frame1.axes.get_xaxis().set_visible(False)
-            plt.show()
-
-class forkplot:
-    def __init__(self, data1):
-
-        y1=[]
-        y2=[]
-        for s in data1.split('\n'):
             try:
                 x = re.findall("\d+", s)
 
@@ -111,6 +84,7 @@ class forkplot:
         fig1 = plt.figure()
         x1 = np.arange(len(y1))
         ax1 = fig1.add_subplot(111)
+        #ax1.set_title("RSS vs Time")
         ax1.set_xlabel('Time (min)')
         ax1.set_ylabel('RSS (GB)')
         x1 = [x / 60 for x in x1]
@@ -125,6 +99,28 @@ class forkplot:
         yellow_patch = mpatches.Patch(color='yellow', label='Base Pages')
         orange_patch = mpatches.Patch(color='orange', label='Large Pages')
         plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
+        plt.show()
+
+class forkplot:
+    def __init__(self):
+        #x = [129, 258, 515, 1031, 2061, 4121, 8241]
+
+        y1 = [231, 400, 725, 1282, 2512]
+        y2= [1263, 2427, 4881, 8589, 16973]
+        x = np.arange(len(y1))
+        fig1 = plt.figure()
+        ax1 = fig1.add_subplot(111)
+        ax1.set_title("Time taken to Fork v/s RSS")
+        ax1.set_ylabel('Time in ms')
+        ax1.set_xlabel('RSS')
+        y1 = [y/1000 for y in y1]
+        y2 = [y/1000 for y in y2]
+        rects1 = ax1.plot(x, y1, color='r', marker='o')
+        rects2 = ax1.plot(x, y2, color='g', marker='^')
+        xlabel = ['128MB', '256MB', '512MB', '1GB', '2GB']
+        plt.xticks(x, xlabel)
+        ax1.set_xticklabels(xlabel, rotation='horizontal')
+        ax1.legend((rects1[0], rects2[0]), ('THP Disabled', 'THP Enabled'), shadow=False, loc='upper left')
         plt.show()
 
 
