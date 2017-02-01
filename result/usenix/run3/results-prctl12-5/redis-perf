@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '2003':
+
+     2,210,312,087      dTLB-load-misses                                              (20.03%)
+        66,876,510      dTLB-store-misses                                             (26.70%)
+        59,745,814      iTLB-load-misses                                              (26.68%)
+     4,272,027,350      cache-misses                                                  (26.67%)
+     9,550,267,590      L1-dcache-load-misses                                         (26.67%)
+     1,468,460,481      L1-dcache-store-misses                                        (26.66%)
+       927,722,327      L1-dcache-prefetch-misses                                     (26.67%)
+    15,073,029,481      L1-icache-load-misses                                         (26.66%)
+     3,407,604,943      LLC-load-misses                                               (26.66%)
+       874,946,674      LLC-store-misses                                              (26.66%)
+       238,925,704      LLC-prefetch-misses                                           (13.36%)
+   213,167,380,401      branch-load-misses                                            (20.02%)
+                 0      node-load-misses                                              (20.01%)
+                 0      node-store-misses                                             (20.00%)
+                 0      node-prefetch-misses                                          (13.36%)
+         7,494,997      minor-faults                                                
+
+     416.870044741 seconds time elapsed
+
