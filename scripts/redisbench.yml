@@ -53,4 +53,4 @@ windows:
         - logs:
             - sleep 3
             - ./getRssAnonHugePages.sh
-            - cp smap.out ~/results/
+            - cp *.out ~/results/
