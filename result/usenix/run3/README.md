@@ -30,3 +30,11 @@ scan_sleep_millisecs 10000
 pages_to_scan 10223616 (39G, entire RAM of the system) 
 scan_sleep_millisecs 10000
 
+## results-prctl12-8
+pages_to_scan 10223616 (39G, entire RAM of the system) 
+scan_sleep_millisecs 10000
+
+# More logs! (khugepaged ps cpu usage per 10ms)
+## results-prctl12-9
+pages_to_scan 10223616 (39G, entire RAM of the system) 
+scan_sleep_millisecs 10000
