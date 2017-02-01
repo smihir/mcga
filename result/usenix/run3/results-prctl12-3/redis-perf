@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '1935':
+
+     2,287,511,434      dTLB-load-misses                                              (20.01%)
+        82,022,762      dTLB-store-misses                                             (26.67%)
+        67,329,005      iTLB-load-misses                                              (26.68%)
+     4,321,682,924      cache-misses                                                  (26.66%)
+     9,724,140,059      L1-dcache-load-misses                                         (26.67%)
+     1,470,807,397      L1-dcache-store-misses                                        (26.67%)
+       947,967,105      L1-dcache-prefetch-misses                                     (26.66%)
+    15,425,320,134      L1-icache-load-misses                                         (26.66%)
+     3,462,141,407      LLC-load-misses                                               (26.66%)
+       843,130,225      LLC-store-misses                                              (26.67%)
+       234,534,074      LLC-prefetch-misses                                           (13.31%)
+   217,345,562,449      branch-load-misses                                            (19.98%)
+                 0      node-load-misses                                              (19.98%)
+                 0      node-store-misses                                             (19.98%)
+                 0      node-prefetch-misses                                          (13.34%)
+         7,127,075      minor-faults                                                
+
+     430.316035852 seconds time elapsed
+
