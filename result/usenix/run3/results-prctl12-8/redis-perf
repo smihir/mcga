@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '1920':
+
+     2,133,804,155      dTLB-load-misses                                              (20.04%)
+        60,982,344      dTLB-store-misses                                             (26.71%)
+        62,874,512      iTLB-load-misses                                              (26.71%)
+     4,134,307,855      cache-misses                                                  (26.71%)
+     9,524,932,060      L1-dcache-load-misses                                         (26.68%)
+     1,485,553,061      L1-dcache-store-misses                                        (26.68%)
+       915,083,490      L1-dcache-prefetch-misses                                     (26.65%)
+    13,392,454,330      L1-icache-load-misses                                         (26.64%)
+     3,290,719,559      LLC-load-misses                                               (26.66%)
+       819,618,541      LLC-store-misses                                              (26.64%)
+       221,764,896      LLC-prefetch-misses                                           (13.32%)
+   210,688,777,173      branch-load-misses                                            (19.99%)
+                 0      node-load-misses                                              (19.99%)
+                 0      node-store-misses                                             (20.01%)
+                 0      node-prefetch-misses                                          (13.36%)
+         7,100,338      minor-faults                                                
+
+     409.827081857 seconds time elapsed
+

@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '1873':
+
+     2,161,336,128      dTLB-load-misses                                              (20.03%)
+        62,463,524      dTLB-store-misses                                             (26.69%)
+        61,958,533      iTLB-load-misses                                              (26.66%)
+     4,284,300,143      cache-misses                                                  (26.64%)
+     9,525,426,019      L1-dcache-load-misses                                         (26.66%)
+     1,495,129,589      L1-dcache-store-misses                                        (26.65%)
+       938,182,921      L1-dcache-prefetch-misses                                     (26.65%)
+    15,263,942,215      L1-icache-load-misses                                         (26.65%)
+     3,414,003,923      LLC-load-misses                                               (26.65%)
+       855,894,322      LLC-store-misses                                              (26.67%)
+       231,807,704      LLC-prefetch-misses                                           (13.35%)
+   212,197,367,694      branch-load-misses                                            (20.04%)
+                 0      node-load-misses                                              (20.03%)
+                 0      node-store-misses                                             (20.04%)
+                 0      node-prefetch-misses                                          (13.37%)
+         7,392,097      minor-faults                                                
+
+     419.234936384 seconds time elapsed
+
