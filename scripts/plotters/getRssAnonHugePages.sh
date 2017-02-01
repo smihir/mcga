@@ -28,7 +28,6 @@ do
     fi
     a=$(cat /proc/$pid/smaps | grep Rss: | awk '{SUM += $2} END { print SUM}')
     b=$(cat /proc/$pid/smaps | grep AnonHugePages: | awk '{SUM += $2} END { print SUM}')
-    ps -C "khugepaged" -L -o %cpu=,psr= >> khugepagedcpu.out
     cat /proc/vmstat | grep thp >> thpvmstat.out
     cat /proc/$pid_khugepaged/stat >> cpustat.out
 
