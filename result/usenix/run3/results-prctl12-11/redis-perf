@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '2154':
+
+     2,411,069,204      dTLB-load-misses                                              (20.00%)
+        73,638,497      dTLB-store-misses                                             (26.66%)
+        60,677,467      iTLB-load-misses                                              (26.67%)
+     4,488,978,297      cache-misses                                                  (26.67%)
+    10,180,451,690      L1-dcache-load-misses                                         (26.71%)
+     1,540,815,185      L1-dcache-store-misses                                        (26.70%)
+     1,016,948,946      L1-dcache-prefetch-misses                                     (26.70%)
+    13,263,065,380      L1-icache-load-misses                                         (26.69%)
+     3,629,457,507      LLC-load-misses                                               (26.65%)
+       845,955,783      LLC-store-misses                                              (26.67%)
+       273,506,987      LLC-prefetch-misses                                           (13.33%)
+   221,564,289,189      branch-load-misses                                            (20.00%)
+                 0      node-load-misses                                              (20.02%)
+                 0      node-store-misses                                             (20.02%)
+                 0      node-prefetch-misses                                          (13.33%)
+         6,731,387      minor-faults                                                
+
+     433.797570644 seconds time elapsed
+

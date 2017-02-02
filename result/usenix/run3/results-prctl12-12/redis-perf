@@ -1,0 +1,22 @@
+
+ Performance counter stats for process id '2115':
+
+     2,640,756,422      dTLB-load-misses                                              (20.01%)
+        77,580,345      dTLB-store-misses                                             (26.68%)
+        67,563,835      iTLB-load-misses                                              (26.68%)
+     5,495,701,553      cache-misses                                                  (26.68%)
+    11,893,622,026      L1-dcache-load-misses                                         (26.67%)
+     1,797,506,441      L1-dcache-store-misses                                        (26.68%)
+     1,207,979,141      L1-dcache-prefetch-misses                                     (26.68%)
+    13,646,390,528      L1-icache-load-misses                                         (26.68%)
+     4,349,755,485      LLC-load-misses                                               (26.67%)
+     1,125,598,630      LLC-store-misses                                              (26.66%)
+       386,333,559      LLC-prefetch-misses                                           (13.33%)
+   235,927,565,551      branch-load-misses                                            (20.00%)
+                 0      node-load-misses                                              (20.01%)
+                 0      node-store-misses                                             (20.01%)
+                 0      node-prefetch-misses                                          (13.33%)
+        10,753,707      minor-faults                                                
+
+     524.138449264 seconds time elapsed
+

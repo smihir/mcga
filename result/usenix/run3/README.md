@@ -42,3 +42,16 @@ scan_sleep_millisecs 10000
 ## results-prctl12-10
 pages_to_scan 10223616 (39G, entire RAM of the system) 
 scan_sleep_millisecs 10000
+
+## cgroups to throttle khugepaged
+## results-prctl12-11
+pages_to_scan 10223616 (39G, entire RAM of the system) 
+scan_sleep_millisecs 10000
+cgroup cpu period 10s
+cgroup cpu quota 0.5s (5% cpu usage)
+
+## results-prctl12-12
+pages_to_scan 10223616 (39G, entire RAM of the system) 
+scan_sleep_millisecs 10000
+cgroup cpu period 1s
+cgroup cpu quota 0.05s (5% cpu usage)
