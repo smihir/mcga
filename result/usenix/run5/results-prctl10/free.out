@@ -1,0 +1,1652 @@
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17836400   23358100        904       8304    4783652
+-/+ buffers/cache:   13044444   28150056
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18765756   22428744        904       8304    4824472
+-/+ buffers/cache:   13932980   27261520
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19666192   21528308        904       8304    4864056
+-/+ buffers/cache:   14793832   26400668
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20534204   20660296        904       8316    4904172
+-/+ buffers/cache:   15621716   25572784
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21369508   19824992        904       8316    4944532
+-/+ buffers/cache:   16416660   24777840
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22167292   19027208        904       8316    4985052
+-/+ buffers/cache:   17173924   24020576
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22923892   18270608        904       8316    5025612
+-/+ buffers/cache:   17889964   23304536
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   23631216   17563284        904       8324    5066336
+-/+ buffers/cache:   18556556   22637944
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   24290768   16903732        904       8324    5107256
+-/+ buffers/cache:   19175188   22019312
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   24898788   16295712        904       8324    5147900
+-/+ buffers/cache:   19742564   21451936
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   25457632   15736868        900       8324    5188640
+-/+ buffers/cache:   20260668   20933832
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   25962004   15232496        904       8324    5229612
+-/+ buffers/cache:   20724068   20470432
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   26418900   14775600        904       8332    5271108
+-/+ buffers/cache:   21139460   20055040
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   26821944   14372556        904       8332    5312376
+-/+ buffers/cache:   21501236   19693264
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27178592   14015908        904       8332    5353864
+-/+ buffers/cache:   21816396   19378104
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27492688   13701812        904       8332    5395580
+-/+ buffers/cache:   22088776   19105724
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27769356   13425144        904       8340    5437504
+-/+ buffers/cache:   22323512   18870988
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28007468   13187032        900       8340    5479620
+-/+ buffers/cache:   22519508   18674992
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28209344   12985156        904       8340    5521884
+-/+ buffers/cache:   22679120   18515380
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28385588   12808912        904       8340    5564136
+-/+ buffers/cache:   22813112   18381388
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28537216   12657284        904       8340    5606396
+-/+ buffers/cache:   22922480   18272020
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28670488   12524012        904       8348    5648700
+-/+ buffers/cache:   23013440   18181060
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28788480   12406020        904       8348    5691116
+-/+ buffers/cache:   23089016   18105484
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28889076   12305424        904       8348    5733684
+-/+ buffers/cache:   23147044   18047456
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28984332   12210168        904       8348    5776764
+-/+ buffers/cache:   23199220   17995280
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29072136   12122364        904       8356    5819920
+-/+ buffers/cache:   23243860   17950640
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29152040   12042460        904       8356    5863076
+-/+ buffers/cache:   23280608   17913892
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29224408   11970092        904       8356    5906084
+-/+ buffers/cache:   23309968   17884532
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29296372   11898128        904       8360    5947620
+-/+ buffers/cache:   23340392   17854108
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29422148   11772352        904       8368    5987856
+-/+ buffers/cache:   23425924   17768576
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29505584   11688916        904       8380    6025016
+-/+ buffers/cache:   23472188   17722312
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29559620   11634880        904       8380    6067440
+-/+ buffers/cache:   23483800   17710700
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29617632   11576868        904       8380    6110808
+-/+ buffers/cache:   23498444   17696056
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29640368   11554132        904       8388    6116020
+-/+ buffers/cache:   23515960   17678540
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29696152   11498348        904       8388    6159676
+-/+ buffers/cache:   23528088   17666412
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29752076   11442424        896       8388    6202852
+-/+ buffers/cache:   23540836   17653664
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29808528   11385972        904       8388    6245812
+-/+ buffers/cache:   23554328   17640172
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29863880   11330620        904       8396    6288468
+-/+ buffers/cache:   23567016   17627484
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29918728   11275772        904       8396    6330784
+-/+ buffers/cache:   23579548   17614952
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29973580   11220920        904       8396    6373384
+-/+ buffers/cache:   23591800   17602700
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30031104   11163396        904       8396    6416044
+-/+ buffers/cache:   23606664   17587836
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30082968   11111532        904       8404    6458708
+-/+ buffers/cache:   23615856   17578644
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30139824   11054676        904       8404    6501536
+-/+ buffers/cache:   23629884   17564616
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30194928   10999572        904       8404    6543940
+-/+ buffers/cache:   23642584   17551916
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30249616   10944884        896       8404    6586640
+-/+ buffers/cache:   23654572   17539928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30304680   10889820        904       8404    6628788
+-/+ buffers/cache:   23667488   17527012
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30357208   10837292        904       8412    6671088
+-/+ buffers/cache:   23677708   17516792
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30412928   10781572        904       8412    6713944
+-/+ buffers/cache:   23690572   17503928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30467788   10726712        904       8412    6756300
+-/+ buffers/cache:   23703076   17491424
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30519784   10674716        904       8412    6798680
+-/+ buffers/cache:   23712692   17481808
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30575988   10618512        904       8420    6841044
+-/+ buffers/cache:   23726524   17467976
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30632264   10562236        904       8420    6884012
+-/+ buffers/cache:   23739832   17454668
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30687760   10506740        904       8420    6927168
+-/+ buffers/cache:   23752172   17442328
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30740544   10453956        904       8420    6970016
+-/+ buffers/cache:   23762108   17432392
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30796112   10398388        904       8420    7012776
+-/+ buffers/cache:   23774916   17419584
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30840036   10354464        904       8428    7042868
+-/+ buffers/cache:   23788740   17405760
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30851912   10342588        904       8428    7042872
+-/+ buffers/cache:   23800612   17393888
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30860456   10334044        904       8428    7042876
+-/+ buffers/cache:   23809152   17385348
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30872216   10322284        904       8428    7042876
+-/+ buffers/cache:   23820912   17373588
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30902136   10292364        904       8436    7042880
+-/+ buffers/cache:   23850820   17343680
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28536592   12657908        904       8444    4724780
+-/+ buffers/cache:   23803368   17391132
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17196028   23998472        904       8444    4724656
+-/+ buffers/cache:   12462928   28731572
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17203152   23991348        904       8444    4724656
+-/+ buffers/cache:   12470052   28724448
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17214484   23980016        904       8444    4724664
+-/+ buffers/cache:   12481376   28713124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17226168   23968332        904       8444    4724668
+-/+ buffers/cache:   12493056   28701444
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17233972   23960528        904       8456    4724676
+-/+ buffers/cache:   12500840   28693660
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17246676   23947824        904       8456    4724680
+-/+ buffers/cache:   12513540   28680960
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17254628   23939872        904       8456    4724688
+-/+ buffers/cache:   12521484   28673016
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17264248   23930252        904       8456    4724688
+-/+ buffers/cache:   12531104   28663396
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17275056   23919444        904       8464    4724684
+-/+ buffers/cache:   12541908   28652592
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17285240   23909260        904       8464    4724700
+-/+ buffers/cache:   12552076   28642424
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17297272   23897228        904       8464    4724708
+-/+ buffers/cache:   12564100   28630400
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17304704   23889796        904       8464    4724712
+-/+ buffers/cache:   12571528   28622972
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17316216   23878284        904       8472    4724708
+-/+ buffers/cache:   12583036   28611464
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17323684   23870816        904       8472    4724720
+-/+ buffers/cache:   12590492   28604008
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17333956   23860544        904       8472    4724724
+-/+ buffers/cache:   12600760   28593740
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17345432   23849068        904       8472    4724732
+-/+ buffers/cache:   12612228   28582272
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17355084   23839416        904       8472    4724736
+-/+ buffers/cache:   12621876   28572624
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17363832   23830668        904       8480    4724744
+-/+ buffers/cache:   12630608   28563892
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17375152   23819348        904       8480    4724748
+-/+ buffers/cache:   12641924   28552576
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17385144   23809356        904       8480    4724752
+-/+ buffers/cache:   12651912   28542588
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17392928   23801572        904       8480    4724756
+-/+ buffers/cache:   12659692   28534808
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17402964   23791536        904       8488    4724752
+-/+ buffers/cache:   12669724   28524776
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17415200   23779300        904       8488    4724760
+-/+ buffers/cache:   12681952   28512548
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17422516   23771984        904       8632    4724620
+-/+ buffers/cache:   12689264   28505236
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17433316   23761184        904       8632    4724812
+-/+ buffers/cache:   12699872   28494628
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17442400   23752100        904       8632    4724816
+-/+ buffers/cache:   12708952   28485548
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17450260   23744240        904       8640    4724824
+-/+ buffers/cache:   12716796   28477704
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17459572   23734928        904       8640    4724828
+-/+ buffers/cache:   12726104   28468396
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17470568   23723932        904       8640    4724832
+-/+ buffers/cache:   12737096   28457404
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17479640   23714860        904       8640    4724840
+-/+ buffers/cache:   12746160   28448340
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17490056   23704444        904       8648    4724840
+-/+ buffers/cache:   12756568   28437932
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17499360   23695140        904       8648    4724852
+-/+ buffers/cache:   12765860   28428640
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17507324   23687176        904       8648    4724852
+-/+ buffers/cache:   12773824   28420676
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17517716   23676784        904       8648    4724864
+-/+ buffers/cache:   12784204   28410296
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17527044   23667456        904       8648    4724872
+-/+ buffers/cache:   12793524   28400976
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17538004   23656496        904       8656    4724876
+-/+ buffers/cache:   12804472   28390028
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17546172   23648328        904       8656    4724880
+-/+ buffers/cache:   12812636   28381864
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17556104   23638396        904       8656    4724884
+-/+ buffers/cache:   12822564   28371936
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17562984   23631516        904       8656    4724884
+-/+ buffers/cache:   12829444   28365056
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17574332   23620168        904       8664    4724884
+-/+ buffers/cache:   12840784   28353716
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17584964   23609536        904       8664    4724924
+-/+ buffers/cache:   12851376   28343124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17593108   23601392        900       8664    4724924
+-/+ buffers/cache:   12859520   28334980
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17603276   23591224        904       8664    4724936
+-/+ buffers/cache:   12869676   28324824
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17614204   23580296        904       8664    4724940
+-/+ buffers/cache:   12880600   28313900
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17621164   23573336        904       8672    4724944
+-/+ buffers/cache:   12887548   28306952
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17630356   23564144        904       8672    4724948
+-/+ buffers/cache:   12896736   28297764
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17638016   23556484        904       8672    4724956
+-/+ buffers/cache:   12904388   28290112
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17646140   23548360        904       8672    4724960
+-/+ buffers/cache:   12912508   28281992
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17657140   23537360        904       8680    4724956
+-/+ buffers/cache:   12923504   28270996
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17668180   23526320        904       8680    4724968
+-/+ buffers/cache:   12934532   28259968
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17675180   23519320        904       8680    4724972
+-/+ buffers/cache:   12941528   28252972
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17684068   23510432        904       8680    4724980
+-/+ buffers/cache:   12950408   28244092
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17691948   23502552        904       8680    4724984
+-/+ buffers/cache:   12958284   28236216
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17702912   23491588        904       8688    4724984
+-/+ buffers/cache:   12969240   28225260
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   17889120   23305380        904       8688    4728668
+-/+ buffers/cache:   13151764   28042736
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18873480   22321020        904       8688    4752752
+-/+ buffers/cache:   14112040   27082460
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19875076   21319424        904       8688    4782004
+-/+ buffers/cache:   15084384   26110116
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20873076   20321424        904       8696    4814408
+-/+ buffers/cache:   16049972   25144528
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21876204   19318296        904       8696    4850128
+-/+ buffers/cache:   17017380   24177120
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22840508   18353992        904       8696    4886156
+-/+ buffers/cache:   17945656   23248844
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   23762520   17431980        904       8696    4923012
+-/+ buffers/cache:   18830812   22363688
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   24629984   16564516        904       8704    4960144
+-/+ buffers/cache:   19661136   21533364
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   25428344   15766156        904       8704    4996988
+-/+ buffers/cache:   20422652   20771848
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   26159900   15034600        904       8704    5034048
+-/+ buffers/cache:   21117148   20077352
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   26836720   14357780        904       8704    5071336
+-/+ buffers/cache:   21756680   19437820
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27440472   13754028        904       8712    5108668
+-/+ buffers/cache:   22323092   18871408
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27974616   13219884        904       8712    5146260
+-/+ buffers/cache:   22819644   18374856
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28438772   12755728        904       8712    5184620
+-/+ buffers/cache:   23245440   17949060
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28829504   12364996        904       8712    5222372
+-/+ buffers/cache:   23598420   17596080
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29159612   12034888        904       8724    5260760
+-/+ buffers/cache:   23890128   17304372
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29436868   11757632        904       8724    5299368
+-/+ buffers/cache:   24128776   17065724
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29666820   11527680        904       8724    5338552
+-/+ buffers/cache:   24319544   16874956
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29851044   11343456        904       8724    5376896
+-/+ buffers/cache:   24465424   16729076
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30004864   11189636        904       8740    5415200
+-/+ buffers/cache:   24580924   16613576
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30133676   11060824        904       8740    5454236
+-/+ buffers/cache:   24670700   16523800
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30251888   10942612        904       8740    5494020
+-/+ buffers/cache:   24749128   16445372
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30350628   10843872        904       8740    5533544
+-/+ buffers/cache:   24808344   16386156
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30477588   10716912        904       8756    5572060
+-/+ buffers/cache:   24896772   16297728
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30518164   10676336        904       8768    5573424
+-/+ buffers/cache:   24935972   16258528
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30552388   10642112        904       8776    5576168
+-/+ buffers/cache:   24967444   16227056
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30615960   10578540        904       8776    5615364
+-/+ buffers/cache:   24991820   16202680
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30675108   10519392        912       8784    5643452
+-/+ buffers/cache:   25022872   16171628
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30736212   10458288        904       8784    5682520
+-/+ buffers/cache:   25044908   16149592
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30792388   10402112        904       8784    5721444
+-/+ buffers/cache:   25062160   16132340
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30849808   10344692        908       8784    5760340
+-/+ buffers/cache:   25080684   16113816
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30907528   10286972        904       8792    5800216
+-/+ buffers/cache:   25098520   16095980
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30962552   10231948        904       8792    5839788
+-/+ buffers/cache:   25113972   16080528
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31018344   10176156        904       8792    5879176
+-/+ buffers/cache:   25130376   16064124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31071344   10123156        904       8792    5918576
+-/+ buffers/cache:   25143976   16050524
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31126480   10068020        900       8800    5958436
+-/+ buffers/cache:   25159244   16035256
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31175856   10018644        904       8800    5997772
+-/+ buffers/cache:   25169284   16025216
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31228808    9965692        912       8800    6036852
+-/+ buffers/cache:   25183156   16011344
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31279704    9914796        904       8800    6075912
+-/+ buffers/cache:   25194992   15999508
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31330760    9863740        912       8800    6115160
+-/+ buffers/cache:   25206800   15987700
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31380332    9814168        904       8808    6154380
+-/+ buffers/cache:   25217144   15977356
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31431364    9763136        904       8808    6193340
+-/+ buffers/cache:   25229216   15965284
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31483692    9710808        904       8808    6232496
+-/+ buffers/cache:   25242388   15952112
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31533072    9661428        904       8808    6271608
+-/+ buffers/cache:   25252656   15941844
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31582912    9611588        908       8816    6311104
+-/+ buffers/cache:   25262992   15931508
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31634124    9560376        904       8816    6350120
+-/+ buffers/cache:   25275188   15919312
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31683116    9511384        904       8816    6389096
+-/+ buffers/cache:   25285204   15909296
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31734568    9459932        904       8816    6428572
+-/+ buffers/cache:   25297180   15897320
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31781160    9413340        904       8824    6467420
+-/+ buffers/cache:   25304916   15889584
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31829528    9364972        904       8824    6506572
+-/+ buffers/cache:   25314132   15880368
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31880908    9313592        904       8824    6546036
+-/+ buffers/cache:   25326048   15868452
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31917352    9277148        908       8836    6569940
+-/+ buffers/cache:   25338576   15855924
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31961192    9233308        904       8840    6602936
+-/+ buffers/cache:   25349416   15845084
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31982972    9211528        908       8852    6609004
+-/+ buffers/cache:   25365116   15829384
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32018420    9176080        904       8860    6633984
+-/+ buffers/cache:   25375576   15818924
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32064840    9129660        908       8864    6670728
+-/+ buffers/cache:   25385248   15809252
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32111456    9083044        912       8872    6702364
+-/+ buffers/cache:   25400220   15794280
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32157252    9037248        904       8872    6741528
+-/+ buffers/cache:   25406852   15787648
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32204648    8989852        908       8872    6780528
+-/+ buffers/cache:   25415248   15779252
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32253124    8941376        904       8880    6816572
+-/+ buffers/cache:   25427672   15766828
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32279988    8914512        904       8888    6833372
+-/+ buffers/cache:   25437728   15756772
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32331572    8862928        904       8888    6872388
+-/+ buffers/cache:   25450296   15744204
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32379184    8815316        904       8888    6911280
+-/+ buffers/cache:   25459016   15735484
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32424732    8769768        912       8888    6950208
+-/+ buffers/cache:   25465636   15728864
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32468748    8725752        908       8896    6984776
+-/+ buffers/cache:   25475076   15719424
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32505580    8688920        904       8896    7014092
+-/+ buffers/cache:   25482592   15711908
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32547784    8646716        904       8896    7048532
+-/+ buffers/cache:   25490356   15704144
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32593464    8601036        908       8896    7087456
+-/+ buffers/cache:   25497112   15697388
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32643984    8550516        904       8904    7124904
+-/+ buffers/cache:   25510176   15684324
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32682556    8511944        904       8912    7156040
+-/+ buffers/cache:   25517604   15676896
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32708960    8485540        908       8920    7173088
+-/+ buffers/cache:   25526952   15667548
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32718456    8476044        900       8920    7173064
+-/+ buffers/cache:   25536472   15658028
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32651816    8542684        904       8928    7100748
+-/+ buffers/cache:   25542140   15652360
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21806652   19387848        916       8928    4854780
+-/+ buffers/cache:   16942944   24251556
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18432532   22761968        904       8928    4854772
+-/+ buffers/cache:   13568832   27625668
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18441204   22753296        896       8928    4854764
+-/+ buffers/cache:   13577512   27616988
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18451696   22742804        904       8928    4854776
+-/+ buffers/cache:   13587992   27606508
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18458124   22736376        908       8940    4854772
+-/+ buffers/cache:   13594412   27600088
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18465840   22728660        896       8940    4854780
+-/+ buffers/cache:   13602120   27592380
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18472424   22722076        908       8940    4854796
+-/+ buffers/cache:   13608688   27585812
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18480944   22713556        904       8940    4854796
+-/+ buffers/cache:   13617208   27577292
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18487428   22707072        904       8948    4854796
+-/+ buffers/cache:   13623684   27570816
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18495560   22698940        896       8948    4854804
+-/+ buffers/cache:   13631808   27562692
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18503452   22691048        904       8948    4854816
+-/+ buffers/cache:   13639688   27554812
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18511148   22683352        904       8948    4854824
+-/+ buffers/cache:   13647376   27547124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18518156   22676344        900       8956    4854844
+-/+ buffers/cache:   13654356   27540144
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18527748   22666752        900       8956    4854856
+-/+ buffers/cache:   13663936   27530564
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18535020   22659480        904       8956    4854864
+-/+ buffers/cache:   13671200   27523300
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18546120   22648380        904       8956    4854868
+-/+ buffers/cache:   13682296   27512204
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18553628   22640872        904       8956    4854872
+-/+ buffers/cache:   13689800   27504700
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18559124   22635376        904       8964    4854868
+-/+ buffers/cache:   13695292   27499208
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18569564   22624936        904       8964    4854880
+-/+ buffers/cache:   13705720   27488780
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18576368   22618132        904       8964    4854888
+-/+ buffers/cache:   13712516   27481984
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18580668   22613832        896       8964    4854884
+-/+ buffers/cache:   13716820   27477680
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18590808   22603692        904       8972    4854888
+-/+ buffers/cache:   13726948   27467552
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18600240   22594260        904       8972    4854904
+-/+ buffers/cache:   13736364   27458136
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18605796   22588704        904       8972    4854912
+-/+ buffers/cache:   13741912   27452588
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18610964   22583536        904       8972    4854916
+-/+ buffers/cache:   13747076   27447424
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18620464   22574036        904       8980    4854912
+-/+ buffers/cache:   13756572   27437928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18627448   22567052        904       8980    4854928
+-/+ buffers/cache:   13763540   27430960
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18636488   22558012        912       8980    4854940
+-/+ buffers/cache:   13772568   27421932
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18641400   22553100        904       8980    4854932
+-/+ buffers/cache:   13777488   27417012
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18649840   22544660        900       8980    4854932
+-/+ buffers/cache:   13785928   27408572
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18659252   22535248        904       8988    4854944
+-/+ buffers/cache:   13795320   27399180
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18666508   22527992        904       8988    4854948
+-/+ buffers/cache:   13802572   27391928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18673268   22521232        916       8988    4854968
+-/+ buffers/cache:   13809312   27385188
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18680928   22513572        904       8988    4854956
+-/+ buffers/cache:   13816984   27377516
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18689648   22504852        912       8996    4854964
+-/+ buffers/cache:   13825688   27368812
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18697960   22496540        904       8996    4854968
+-/+ buffers/cache:   13833996   27360504
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18705776   22488724        904       8996    4854972
+-/+ buffers/cache:   13841808   27352692
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18714792   22479708        912       8996    4854988
+-/+ buffers/cache:   13850808   27343692
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18721056   22473444        904       9004    4854980
+-/+ buffers/cache:   13857072   27337428
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18727764   22466736        904       9004    4854988
+-/+ buffers/cache:   13863772   27330728
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18738888   22455612        904       9004    4854992
+-/+ buffers/cache:   13874892   27319608
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18743804   22450696        900       9004    4854992
+-/+ buffers/cache:   13879808   27314692
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18748516   22445984        904       9004    4855000
+-/+ buffers/cache:   13884512   27309988
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18756968   22437532        904       9012    4855008
+-/+ buffers/cache:   13892948   27301552
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18764356   22430144        904       9012    4855016
+-/+ buffers/cache:   13900328   27294172
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18773092   22421408        904       9012    4855020
+-/+ buffers/cache:   13909060   27285440
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18778384   22416116        896       9012    4855024
+-/+ buffers/cache:   13914348   27280152
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18788380   22406120        904       9020    4855028
+-/+ buffers/cache:   13924332   27270168
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18795624   22398876        900       9020    4855036
+-/+ buffers/cache:   13931568   27262932
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18803888   22390612        904       9020    4855044
+-/+ buffers/cache:   13939824   27254676
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18808688   22385812        904       9020    4855048
+-/+ buffers/cache:   13944620   27249880
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18817564   22376936        896       9028    4855036
+-/+ buffers/cache:   13953500   27241000
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18825148   22369352        904       9028    4855056
+-/+ buffers/cache:   13961064   27233436
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   18948836   22245664        900       9028    4856992
+-/+ buffers/cache:   14082816   27111684
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20016564   21177936        912       9028    4879776
+-/+ buffers/cache:   15127760   26066740
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21227052   19967448        904       9036    4904220
+-/+ buffers/cache:   16313796   24880704
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22315868   18878632        896       9036    4935536
+-/+ buffers/cache:   17371296   23823204
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   23373596   17820904        904       9036    4968756
+-/+ buffers/cache:   18395804   22798696
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   24424740   16769760        904       9036    5002876
+-/+ buffers/cache:   19412828   21781672
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   25376384   15818116        900       9044    5037060
+-/+ buffers/cache:   20330280   20864220
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   26271144   14923356        908       9044    5071736
+-/+ buffers/cache:   21190364   20004136
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27074228   14120272        904       9044    5105680
+-/+ buffers/cache:   21959504   19234996
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   27804552   13389948        904       9044    5139876
+-/+ buffers/cache:   22655632   18538868
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28462808   12731692        904       9052    5174480
+-/+ buffers/cache:   23279276   17915224
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29032200   12162300        912       9052    5209156
+-/+ buffers/cache:   23813992   17380508
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29523648   11670852        904       9052    5244044
+-/+ buffers/cache:   24270552   16923948
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   29927092   11267408        916       9052    5279268
+-/+ buffers/cache:   24638772   16555728
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30262528   10931972        904       9052    5314764
+-/+ buffers/cache:   24938712   16255788
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30528496   10666004        900       9060    5350320
+-/+ buffers/cache:   25169116   16025384
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30744704   10449796        904       9060    5385796
+-/+ buffers/cache:   25349848   15844652
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   30919864   10274636        904       9060    5421720
+-/+ buffers/cache:   25489084   15705416
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31063296   10131204        892       9060    5457756
+-/+ buffers/cache:   25596480   15598020
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31179460   10015040        904       9068    5493948
+-/+ buffers/cache:   25676444   15518056
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31286848    9907652        912       9068    5530256
+-/+ buffers/cache:   25747524   15446976
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31378484    9816016        904       9068    5566600
+-/+ buffers/cache:   25802816   15391684
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31463412    9731088        904       9068    5604240
+-/+ buffers/cache:   25850104   15344396
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31546288    9648212        904       9076    5635556
+-/+ buffers/cache:   25901656   15292844
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31600848    9593652        904       9076    5663220
+-/+ buffers/cache:   25928552   15265948
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31652128    9542372        912       9076    5690424
+-/+ buffers/cache:   25952628   15241872
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31707564    9486936        900       9076    5718440
+-/+ buffers/cache:   25980048   15214452
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31755208    9439292        904       9076    5746036
+-/+ buffers/cache:   26000096   15194404
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31794964    9399536        908       9092    5756908
+-/+ buffers/cache:   26028964   15165536
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31821432    9373068        908       9100    5758060
+-/+ buffers/cache:   26054272   15140228
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31849276    9345224        904       9112    5759312
+-/+ buffers/cache:   26080852   15113648
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   31898708    9295792        904       9116    5786180
+-/+ buffers/cache:   26103412   15091088
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32014700    9179800        916       9124    5855140
+-/+ buffers/cache:   26150436   15044064
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32073000    9121500        908       9124    5892200
+-/+ buffers/cache:   26171676   15022824
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32131204    9063296        912       9124    5929028
+-/+ buffers/cache:   26193052   15001448
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32187360    9007140        904       9132    5965356
+-/+ buffers/cache:   26212872   14981628
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32244636    8949864        900       9132    6002160
+-/+ buffers/cache:   26233344   14961156
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32298456    8896044        908       9132    6038540
+-/+ buffers/cache:   26250784   14943716
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32354900    8839600        904       9132    6075576
+-/+ buffers/cache:   26270192   14924308
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32410752    8783748        904       9132    6112156
+-/+ buffers/cache:   26289464   14905036
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32461808    8732692        904       9140    6148984
+-/+ buffers/cache:   26303684   14890816
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32514816    8679684        912       9140    6185348
+-/+ buffers/cache:   26320328   14874172
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32570444    8624056        908       9140    6223564
+-/+ buffers/cache:   26337740   14856760
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32621644    8572856        900       9140    6259932
+-/+ buffers/cache:   26352572   14841928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32669276    8525224        904       9148    6293336
+-/+ buffers/cache:   26366792   14827708
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32706196    8488304        904       9148    6320900
+-/+ buffers/cache:   26376148   14818352
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32744668    8449832        916       9148    6348916
+-/+ buffers/cache:   26386604   14807896
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32780948    8413552        904       9148    6376412
+-/+ buffers/cache:   26395388   14799112
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32820124    8374376        912       9148    6403960
+-/+ buffers/cache:   26407016   14787484
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32856128    8338372        904       9156    6431444
+-/+ buffers/cache:   26415528   14778972
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32895180    8299320        904       9156    6459388
+-/+ buffers/cache:   26426636   14767864
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32931944    8262556        892       9156    6486864
+-/+ buffers/cache:   26435924   14758576
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   32969660    8224840        904       9156    6514056
+-/+ buffers/cache:   26446448   14748052
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33004588    8189912        900       9164    6541564
+-/+ buffers/cache:   26453860   14740640
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33041916    8152584        904       9164    6569556
+-/+ buffers/cache:   26463196   14731304
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33077276    8117224        904       9164    6597152
+-/+ buffers/cache:   26470960   14723540
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33112948    8081552        908       9164    6624744
+-/+ buffers/cache:   26479040   14715460
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33137180    8057320        904       9176    6636216
+-/+ buffers/cache:   26491788   14702712
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33167712    8026788        904       9192    6655660
+-/+ buffers/cache:   26502860   14691640
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33206256    7988244        912       9196    6684196
+-/+ buffers/cache:   26512864   14681636
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33246932    7947568        904       9200    6714904
+-/+ buffers/cache:   26522828   14671672
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33290712    7903788        904       9204    6747588
+-/+ buffers/cache:   26533920   14660580
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33302668    7891832        904       9212    6748040
+-/+ buffers/cache:   26545416   14649084
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33351276    7843224        904       9212    6784744
+-/+ buffers/cache:   26557320   14637180
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33400204    7794296        904       9212    6821676
+-/+ buffers/cache:   26569316   14625184
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33445144    7749356        904       9212    6858648
+-/+ buffers/cache:   26577284   14617216
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33493148    7701352        904       9220    6895152
+-/+ buffers/cache:   26588776   14605724
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33534764    7659736        904       9228    6926520
+-/+ buffers/cache:   26599016   14595484
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33580356    7614144        904       9228    6962960
+-/+ buffers/cache:   26608168   14586332
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33627824    7566676        904       9228    6999408
+-/+ buffers/cache:   26619188   14575312
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33673248    7521252        904       9236    7036220
+-/+ buffers/cache:   26627792   14566708
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33720508    7473992        904       9236    7072980
+-/+ buffers/cache:   26638292   14556208
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33764968    7429532        904       9236    7109252
+-/+ buffers/cache:   26646480   14548020
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33812236    7382264        904       9236    7145912
+-/+ buffers/cache:   26657088   14537412
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33856484    7338016        904       9244    7181592
+-/+ buffers/cache:   26665648   14528852
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33890324    7304176        904       9244    7208604
+-/+ buffers/cache:   26672476   14522024
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33923792    7270708        904       9244    7236376
+-/+ buffers/cache:   26678172   14516328
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33958144    7236356        904       9244    7264524
+-/+ buffers/cache:   26684376   14510124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   33992764    7201736        904       9244    7291848
+-/+ buffers/cache:   26691672   14502828
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   34025084    7169416        904       9252    7319316
+-/+ buffers/cache:   26696516   14497984
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   34059768    7134732        904       9252    7346792
+-/+ buffers/cache:   26703724   14490776
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   34089984    7104516        900       9256    7370832
+-/+ buffers/cache:   26709896   14484604
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   34100024    7094476        904       9264    7370952
+-/+ buffers/cache:   26719808   14474692
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   34113008    7081492        904       9276    7370952
+-/+ buffers/cache:   26732780   14461720
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   28215752   12978748        904       9284    4923464
+-/+ buffers/cache:   23283004   17911496
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19414256   21780244        904       9284    4923468
+-/+ buffers/cache:   14481504   26712996
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19421232   21773268        904       9284    4923476
+-/+ buffers/cache:   14488472   26706028
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19428228   21766272        904       9284    4923480
+-/+ buffers/cache:   14495464   26699036
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19432824   21761676        904       9296    4923472
+-/+ buffers/cache:   14500056   26694444
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19440324   21754176        904       9296    4923488
+-/+ buffers/cache:   14507540   26686960
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19446584   21747916        904       9296    4923500
+-/+ buffers/cache:   14513788   26680712
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19452396   21742104        904       9296    4923504
+-/+ buffers/cache:   14519596   26674904
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19459492   21735008        904       9296    4923508
+-/+ buffers/cache:   14526688   26667812
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19466248   21728252        904       9304    4923508
+-/+ buffers/cache:   14533436   26661064
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19471948   21722552        904       9304    4923512
+-/+ buffers/cache:   14539132   26655368
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19480292   21714208        904       9304    4923516
+-/+ buffers/cache:   14547472   26647028
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19487444   21707056        904       9304    4923524
+-/+ buffers/cache:   14554616   26639884
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19493184   21701316        904       9312    4923532
+-/+ buffers/cache:   14560340   26634160
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19498312   21696188        904       9312    4923536
+-/+ buffers/cache:   14565464   26629036
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19506232   21688268        904       9312    4923540
+-/+ buffers/cache:   14573380   26621120
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19510868   21683632        904       9312    4923544
+-/+ buffers/cache:   14578012   26616488
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19520892   21673608        904       9320    4923540
+-/+ buffers/cache:   14588032   26606468
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19524144   21670356        904       9320    4923556
+-/+ buffers/cache:   14591268   26603232
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19529512   21664988        904       9320    4923560
+-/+ buffers/cache:   14596632   26597868
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19538140   21656360        904       9320    4923564
+-/+ buffers/cache:   14605256   26589244
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19543736   21650764        904       9320    4923568
+-/+ buffers/cache:   14610848   26583652
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19550972   21643528        904       9328    4923572
+-/+ buffers/cache:   14618072   26576428
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19557224   21637276        904       9328    4923576
+-/+ buffers/cache:   14624320   26570180
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19566148   21628352        904       9328    4923576
+-/+ buffers/cache:   14633244   26561256
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19567684   21626816        904       9328    4923584
+-/+ buffers/cache:   14634772   26559728
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19576272   21618228        904       9336    4923596
+-/+ buffers/cache:   14643340   26551160
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19603936   21590564        904       9336    4947340
+-/+ buffers/cache:   14647260   26547240
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19644528   21549972        904       9336    4987636
+-/+ buffers/cache:   14647556   26546944
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19690268   21504232        904       9336    5031656
+-/+ buffers/cache:   14649276   26545224
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19737308   21457192        904       9344    5077424
+-/+ buffers/cache:   14650540   26543960
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19783720   21410780        904       9344    5122660
+-/+ buffers/cache:   14651716   26542784
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19829732   21364768        904       9344    5167680
+-/+ buffers/cache:   14652708   26541792
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19876696   21317804        908       9344    5213124
+-/+ buffers/cache:   14654228   26540272
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19922712   21271788        904       9344    5258460
+-/+ buffers/cache:   14654908   26539592
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19945132   21249368        904       9352    5281000
+-/+ buffers/cache:   14654780   26539720
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19986672   21207828        904       9352    5320924
+-/+ buffers/cache:   14656396   26538104
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20030720   21163780        904       9352    5363916
+-/+ buffers/cache:   14657452   26537048
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20077920   21116580        904       9352    5409348
+-/+ buffers/cache:   14659220   26535280
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20117924   21076576        904       9368    5448288
+-/+ buffers/cache:   14660268   26534232
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20155992   21038508        904       9372    5485348
+-/+ buffers/cache:   14661272   26533228
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20194044   21000456        904       9376    5523024
+-/+ buffers/cache:   14661644   26532856
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20232824   20961676        904       9380    5560484
+-/+ buffers/cache:   14662960   26531540
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20274280   20920220        904       9380    5600516
+-/+ buffers/cache:   14664384   26530116
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20314428   20880072        904       9388    5640300
+-/+ buffers/cache:   14664740   26529760
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20355688   20838812        904       9388    5680560
+-/+ buffers/cache:   14665740   26528760
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20402724   20791776        904       9388    5725948
+-/+ buffers/cache:   14667388   26527112
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20442424   20752076        904       9392    5765796
+-/+ buffers/cache:   14667236   26527264
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20461272   20733228        904       9404    5783468
+-/+ buffers/cache:   14668400   26526100
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20502592   20691908        904       9404    5823704
+-/+ buffers/cache:   14669484   26525016
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20545432   20649068        904       9404    5864508
+-/+ buffers/cache:   14671520   26522980
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20591576   20602924        904       9404    5910036
+-/+ buffers/cache:   14672136   26522364
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20637020   20557480        904       9412    5953988
+-/+ buffers/cache:   14673620   26520880
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20678864   20515636        908       9412    5994516
+-/+ buffers/cache:   14674936   26519564
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20760380   20434120        904       9412    6051076
+-/+ buffers/cache:   14699892   26494608
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20841268   20353232        904       9412    6129824
+-/+ buffers/cache:   14702032   26492468
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20952236   20242264        904       9420    6179192
+-/+ buffers/cache:   14763624   26430876
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21046496   20148004        904       9420    6215944
+-/+ buffers/cache:   14821132   26373368
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21202644   19991856        904       9420    6253212
+-/+ buffers/cache:   14940012   26254488
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21241544   19952956        904       9420    6290988
+-/+ buffers/cache:   14941136   26253364
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21280200   19914300        904       9420    6328836
+-/+ buffers/cache:   14941944   26252556
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21554524   19639976        904       9428    6365992
+-/+ buffers/cache:   15179104   26015396
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21592268   19602232        904       9428    6402784
+-/+ buffers/cache:   15180056   26014444
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21631756   19562744        904       9428    6440380
+-/+ buffers/cache:   15181948   26012552
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21668956   19525544        904       9428    6478236
+-/+ buffers/cache:   15181292   26013208
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   21709252   19485248        904       9436    6516264
+-/+ buffers/cache:   15183552   26010948
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22217728   18976772        904       9436    6552540
+-/+ buffers/cache:   15655752   25538748
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22255408   18939092        900       9436    6590488
+-/+ buffers/cache:   15655484   25539016
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22294584   18899916        904       9436    6628368
+-/+ buffers/cache:   15656780   25537720
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22332680   18861820        904       9444    6666240
+-/+ buffers/cache:   15656996   25537504
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22371676   18822824        904       9444    6704276
+-/+ buffers/cache:   15657956   25536544
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22409108   18785392        904       9444    6741508
+-/+ buffers/cache:   15658156   25536344
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22449296   18745204        904       9444    6779696
+-/+ buffers/cache:   15660156   25534344
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22488760   18705740        904       9452    6817712
+-/+ buffers/cache:   15661596   25532904
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22527088   18667412        904       9460    6855508
+-/+ buffers/cache:   15662120   25532380
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22564448   18630052        904       9464    6892960
+-/+ buffers/cache:   15662024   25532476
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   22603396   18591104        904       9464    6930108
+-/+ buffers/cache:   15663824   25530676
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   23578996   17615504        904       9472    6966140
+-/+ buffers/cache:   16603384   24591116
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19850020   21344480        904       9604    7005296
+-/+ buffers/cache:   12835120   28359380
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19888220   21306280        904       9604    7042680
+-/+ buffers/cache:   12835936   28358564
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19928296   21266204        904       9604    7081284
+-/+ buffers/cache:   12837408   28357092
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   19968288   21226212        900       9612    7120244
+-/+ buffers/cache:   12838432   28356068
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20008020   21186480        904       9612    7158032
+-/+ buffers/cache:   12840376   28354124
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20040120   21154380        904       9616    7189024
+-/+ buffers/cache:   12841480   28353020
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20071524   21122976        904       9624    7220328
+-/+ buffers/cache:   12841572   28352928
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20102440   21092060        904       9640    7249816
+-/+ buffers/cache:   12842984   28351516
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500   20136504   21057996        904       9648    7285492
+-/+ buffers/cache:   12841364   28353136
+Swap:     41930748          0   41930748
+             total       used       free     shared    buffers     cached
+Mem:      41194500    7724896   33469604        904       9656    7317152
+-/+ buffers/cache:     398088   40796412
+Swap:     41930748          0   41930748
