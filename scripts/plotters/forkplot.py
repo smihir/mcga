@@ -8,6 +8,18 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
+SIZE = 14
+MEDIUM_SIZE = 14
+BIGGER_SIZE = 16
+
+plt.rc('font', size=SIZE)                # controls default text sizes
+plt.rc('axes', titlesize=SIZE)           # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SIZE)          # fontsize of the tick labels
+plt.rc('ytick', labelsize=SIZE)          # fontsize of the tick labels
+plt.rc('legend', fontsize=SIZE)          # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+
 class forkplot:
     def __init__(self):
         #x = [129, 258, 515, 1031, 2061, 4121, 8241]

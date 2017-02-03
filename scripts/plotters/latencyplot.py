@@ -1,5 +1,4 @@
 from __future__ import division
-
 __author__ = 'Sejal Chauhan'
 __author_email__ = 'sejalc@cs.wisc.edu'
 __version__ = '1.0'
@@ -22,6 +21,14 @@ import matplotlib.pyplot as plt
 SIZE = 14
 MEDIUM_SIZE = 14
 BIGGER_SIZE = 16
+
+plt.rc('font', size=SIZE)                # controls default text sizes
+plt.rc('axes', titlesize=SIZE)           # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SIZE)          # fontsize of the tick labels
+plt.rc('ytick', labelsize=SIZE)          # fontsize of the tick labels
+plt.rc('legend', fontsize=SIZE)          # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 class latencyboth:
     def __init__(self, data1, data2):
