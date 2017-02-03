@@ -5,12 +5,14 @@
 smap=smap.out
 khugepagedcpu=khugepagedcpu.out
 thpvmstat=thpvmstat.out
+freeout=free.out
 
 rm -rf $smap
 rm -rf $khugepagedcpu
 rm -rf $thpvmstat
+rm -rf $freeout
 
-pid=`pgrep redis-server`
+pid=`pgrep redis-server | sort -n | head -1`
 pid_khugepaged=`pgrep hugepaged`
 while true
 do
@@ -30,6 +32,8 @@ do
     b=$(cat /proc/$pid/smaps | grep AnonHugePages: | awk '{SUM += $2} END { print SUM}')
     cat /proc/vmstat | grep thp >> thpvmstat.out
     cat /proc/$pid_khugepaged/stat >> cpustat.out
+    cat /proc/$pid/stat >> redisstat.out
+    free -k >> free.out
 
     echo $a $b | tee -a $smap
     sleep 1
