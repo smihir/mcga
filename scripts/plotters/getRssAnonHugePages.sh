@@ -10,7 +10,7 @@ rm -rf $smap
 rm -rf $khugepagedcpu
 rm -rf $thpvmstat
 
-pid=`pgrep redis-server`
+pid=`pgrep redis-server | sort -n | head -1`
 pid_khugepaged=`pgrep hugepaged`
 while true
 do

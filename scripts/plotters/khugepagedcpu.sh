@@ -1,6 +1,6 @@
 # This script requires redis server to be running
 
-pid=`pgrep redis-server`
+pid=`pgrep redis-server | sort -n | head -1`
 while true
 do
     if [ ! -d /proc/$pid ];
