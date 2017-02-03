@@ -19,7 +19,7 @@ plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
 plt.rc('xtick', labelsize=SIZE)          # fontsize of the tick labels
 plt.rc('ytick', labelsize=SIZE)          # fontsize of the tick labels
 plt.rc('legend', fontsize=SIZE)          # legend fontsize
-plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+#plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 class rssvstime:
 
@@ -33,7 +33,7 @@ class rssvstime:
 
                 if len(x) > 0:
                     t1 = int(x[0])
-                    t2 = int(x[1])
+                    t2 = t1 - int(x[1])
                     y1.append(t1)
                     y2.append(t2)
             except ValueError:
@@ -55,7 +55,9 @@ class rssvstime:
         ax1.set_ylim([0, 1.2* max(max(y1),max(y2))])
         yellow_patch = mpatches.Patch(color='yellow', label='Base Pages')
         orange_patch = mpatches.Patch(color='orange', label='Large Pages')
-        plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
+        #plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
+        plt.legend([yellow_patch, orange_patch], ["Memory backed by Large Pages", "Memory backed by Base Pages"], loc='upper left')
+        plt.savefig("rssPlot.png")
         plt.show()
 
 if __name__ == '__main__':
