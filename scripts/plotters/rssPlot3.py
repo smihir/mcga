@@ -1,6 +1,6 @@
 from __future__ import division
-__author__ = 'Sejal Chauhan'
-__author_email__ = 'sejalc@cs.wisc.edu'
+__author__ = 'Vikas Goel'
+__author_email__ = 'vikasgoel@cs.wisc.edu'
 __version__ = '1.0'
 
 import re
@@ -119,8 +119,19 @@ class rssvstime:
         plt.show()
 
 if __name__ == '__main__':
-    with open(sys.argv[1], 'rb') as f1:
+    if len( sys.argv)  >= 3:
+        print "python rssPlot3.py <path to the directory of result>"
+        
+    arg = sys.argv[1]
+    if arg.endswith("/"):
+        smap = arg + "smap.out"
+        promote = arg + "thppromote.out"
+    else:
+        smap = arg + "/smap.out"
+        promote = arg + "/thppromote.out"
+
+    with open(smap, 'rb') as f1:
         data1 = f1.read()
-        with open( sys.argv[2], 'rb') as f2:
+        with open( promote, 'rb') as f2:
             data2 = f2.read()
             rssvstime(data1, data2)
