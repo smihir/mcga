@@ -1,0 +1,8 @@
+
+ Performance counter stats for process id '97':
+
+    18,610,573,824      cycles                                                      
+     7,742,430,166      instructions              #    0.42  insns per cycle        
+
+     448.951087658 seconds time elapsed
+

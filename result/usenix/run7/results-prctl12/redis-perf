@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4283':
+
+     2,637,242,065      dTLB-load-misses                                              (28.61%)
+       112,345,671      dTLB-store-misses                                             (28.62%)
+        83,395,974      iTLB-load-misses                                              (28.63%)
+     4,767,239,198      cache-misses                                                  (28.60%)
+    11,294,786,807      L1-dcache-load-misses                                         (28.57%)
+     1,318,736,115      L1-dcache-store-misses                                        (28.58%)
+       966,013,152      L1-dcache-prefetch-misses                                     (28.58%)
+    13,741,130,087      L1-icache-load-misses                                         (28.57%)
+     3,998,198,156      LLC-load-misses                                               (28.57%)
+       751,377,331      LLC-store-misses                                              (28.57%)
+       264,684,297      LLC-prefetch-misses                                           (14.28%)
+   210,213,420,666      branch-load-misses                                            (21.42%)
+ 1,450,412,006,457      cycles                                                        (28.56%)
+         8,700,395      minor-faults                                                
+   208,172,943,612      r408                                                          (28.58%)
+
+     438.939592585 seconds time elapsed
+
