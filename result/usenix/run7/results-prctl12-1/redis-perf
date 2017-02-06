@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4360':
+
+     2,613,752,974      dTLB-load-misses                                              (28.61%)
+       103,709,900      dTLB-store-misses                                             (28.58%)
+        78,783,982      iTLB-load-misses                                              (28.56%)
+     4,695,658,925      cache-misses                                                  (28.58%)
+    11,078,552,072      L1-dcache-load-misses                                         (28.56%)
+     1,290,548,242      L1-dcache-store-misses                                        (28.56%)
+       946,242,079      L1-dcache-prefetch-misses                                     (28.56%)
+    16,242,956,680      L1-icache-load-misses                                         (28.57%)
+     3,945,135,410      LLC-load-misses                                               (28.57%)
+       741,365,867      LLC-store-misses                                              (28.58%)
+       259,876,646      LLC-prefetch-misses                                           (14.30%)
+   208,220,454,521      branch-load-misses                                            (21.46%)
+ 1,458,759,732,633      cycles                                                        (28.61%)
+         8,650,197      minor-faults                                                
+   208,124,513,636      r408                                                          (28.61%)
+
+     445.132831085 seconds time elapsed
+

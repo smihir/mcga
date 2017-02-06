@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4269':
+
+     2,614,398,435      dTLB-load-misses                                              (28.57%)
+       120,497,804      dTLB-store-misses                                             (28.57%)
+        69,492,111      iTLB-load-misses                                              (28.60%)
+     4,942,178,884      cache-misses                                                  (28.63%)
+    11,388,032,373      L1-dcache-load-misses                                         (28.63%)
+     1,332,328,954      L1-dcache-store-misses                                        (28.63%)
+     1,006,142,102      L1-dcache-prefetch-misses                                     (28.60%)
+    16,272,264,337      L1-icache-load-misses                                         (28.56%)
+     4,146,207,912      LLC-load-misses                                               (28.58%)
+       759,787,085      LLC-store-misses                                              (28.57%)
+       269,590,370      LLC-prefetch-misses                                           (14.28%)
+   219,948,468,367      branch-load-misses                                            (21.42%)
+ 1,522,392,605,525      cycles                                                        (28.56%)
+         8,694,800      minor-faults                                                
+   204,239,538,209      r408                                                          (28.56%)
+
+     454.581123796 seconds time elapsed
+
