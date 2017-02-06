@@ -1,0 +1,198 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.6  0.0  33484  3992 ?        Ss   17:48   0:05 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    17:48   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/0]
+root         4  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/0:0]
+root         5  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/0:0H]
+root         7  0.5  0.0      0     0 ?        S    17:48   0:04 [rcu_sched]
+root         8  0.0  0.0      0     0 ?        S    17:48   0:00 [rcu_bh]
+root         9  0.2  0.0      0     0 ?        S    17:48   0:02 [rcuos/0]
+root        10  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/0]
+root        11  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/0]
+root        12  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/0]
+root        13  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/1]
+root        14  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/1]
+root        15  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/1]
+root        16  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/1:0]
+root        17  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/1:0H]
+root        18  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuos/1]
+root        19  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/1]
+root        20  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/2]
+root        21  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/2]
+root        22  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/2]
+root        24  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/2:0H]
+root        25  0.1  0.0      0     0 ?        S    17:48   0:01 [rcuos/2]
+root        26  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/2]
+root        27  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/3]
+root        28  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/3]
+root        29  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/3]
+root        31  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/3:0H]
+root        32  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuos/3]
+root        33  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/3]
+root        34  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/4]
+root        35  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/4]
+root        36  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/4]
+root        37  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/4:0]
+root        38  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/4:0H]
+root        39  0.2  0.0      0     0 ?        S    17:48   0:02 [rcuos/4]
+root        40  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/4]
+root        41  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/5]
+root        42  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/5]
+root        43  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/5]
+root        44  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/5:0]
+root        45  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/5:0H]
+root        46  0.1  0.0      0     0 ?        S    17:48   0:01 [rcuos/5]
+root        47  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/5]
+root        48  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/6]
+root        49  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/6]
+root        50  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/6]
+root        52  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/6:0H]
+root        53  0.1  0.0      0     0 ?        S    17:48   0:00 [rcuos/6]
+root        54  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/6]
+root        55  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/7]
+root        56  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/7]
+root        57  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/7]
+root        58  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/7:0]
+root        59  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/7:0H]
+root        60  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuos/7]
+root        61  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/7]
+root        62  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/8]
+root        63  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/8]
+root        64  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/8]
+root        65  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/8:0]
+root        66  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/8:0H]
+root        67  0.2  0.0      0     0 ?        S    17:48   0:02 [rcuos/8]
+root        68  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/8]
+root        69  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/9]
+root        70  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/9]
+root        71  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/9]
+root        72  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/9:0]
+root        73  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/9:0H]
+root        74  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuos/9]
+root        75  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/9]
+root        76  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/10]
+root        77  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/10]
+root        78  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/10]
+root        79  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/10:0]
+root        80  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/10:0H]
+root        81  0.1  0.0      0     0 ?        S    17:48   0:00 [rcuos/10]
+root        82  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/10]
+root        83  0.0  0.0      0     0 ?        S    17:48   0:00 [watchdog/11]
+root        84  0.0  0.0      0     0 ?        S    17:48   0:00 [migration/11]
+root        85  0.0  0.0      0     0 ?        S    17:48   0:00 [ksoftirqd/11]
+root        86  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/11:0]
+root        87  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/11:0H]
+root        88  0.1  0.0      0     0 ?        S    17:48   0:00 [rcuos/11]
+root        89  0.0  0.0      0     0 ?        S    17:48   0:00 [rcuob/11]
+root        90  0.0  0.0      0     0 ?        S<   17:48   0:00 [khelper]
+root        91  0.0  0.0      0     0 ?        S    17:48   0:00 [kdevtmpfs]
+root        92  0.0  0.0      0     0 ?        S<   17:48   0:00 [netns]
+root        93  0.0  0.0      0     0 ?        S<   17:48   0:00 [perf]
+root        94  0.0  0.0      0     0 ?        S    17:48   0:00 [khungtaskd]
+root        95  0.0  0.0      0     0 ?        S<   17:48   0:00 [writeback]
+root        96  0.0  0.0      0     0 ?        SN   17:48   0:00 [ksmd]
+root        98  0.0  0.0      0     0 ?        S<   17:48   0:00 [crypto]
+root        99  0.0  0.0      0     0 ?        S<   17:48   0:00 [kintegrityd]
+root       100  0.0  0.0      0     0 ?        S<   17:48   0:00 [bioset]
+root       101  0.0  0.0      0     0 ?        S<   17:48   0:00 [kblockd]
+root       102  0.0  0.0      0     0 ?        S<   17:48   0:00 [ata_sff]
+root       103  0.0  0.0      0     0 ?        S<   17:48   0:00 [md]
+root       104  0.0  0.0      0     0 ?        S<   17:48   0:00 [devfreq_wq]
+root       106  0.6  0.0      0     0 ?        S    17:48   0:05 [kworker/0:1]
+root       108  0.0  0.0      0     0 ?        S    17:48   0:00 [kswapd0]
+root       109  0.0  0.0      0     0 ?        S    17:48   0:00 [fsnotify_mark]
+root       110  0.0  0.0      0     0 ?        S    17:48   0:00 [ecryptfs-kthrea]
+root       122  0.0  0.0      0     0 ?        S<   17:48   0:00 [kthrotld]
+root       123  0.0  0.0      0     0 ?        S<   17:48   0:00 [acpi_thermal_pm]
+root       124  0.0  0.0      0     0 ?        S    17:48   0:00 [scsi_eh_0]
+root       125  0.0  0.0      0     0 ?        S<   17:48   0:00 [scsi_tmf_0]
+root       126  0.0  0.0      0     0 ?        S    17:48   0:00 [scsi_eh_1]
+root       127  0.0  0.0      0     0 ?        S<   17:48   0:00 [scsi_tmf_1]
+root       129  0.0  0.0      0     0 ?        S    17:48   0:00 [scsi_eh_2]
+root       130  0.0  0.0      0     0 ?        S<   17:48   0:00 [scsi_tmf_2]
+root       131  0.0  0.0      0     0 ?        S    17:48   0:00 [scsi_eh_3]
+root       132  0.0  0.0      0     0 ?        S<   17:48   0:00 [scsi_tmf_3]
+root       135  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/3:1]
+root       140  0.0  0.0      0     0 ?        S<   17:48   0:00 [ipv6_addrconf]
+root       141  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/4:1]
+root       160  0.0  0.0      0     0 ?        S<   17:48   0:00 [deferwq]
+root       161  0.0  0.0      0     0 ?        S<   17:48   0:00 [charger_manager]
+root       164  0.1  0.0      0     0 ?        S    17:48   0:01 [kworker/u48:8]
+root       165  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/2:1]
+root       166  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/3:2]
+root       168  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/1:1]
+root       169  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/11:1]
+root       170  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/2:2]
+root       171  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/9:1]
+root       172  0.0  0.0      0     0 ?        S<   17:48   0:00 [kworker/5:1H]
+root       174  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/8:1]
+root       175  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/7:1]
+root       176  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/5:1]
+root       177  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/10:1]
+root       233  0.0  0.0      0     0 ?        S    17:48   0:00 [scsi_eh_4]
+root       234  0.0  0.0      0     0 ?        S<   17:48   0:00 [scsi_tmf_4]
+root       235  0.0  0.0      0     0 ?        S<   17:48   0:00 [fw_event0]
+root       238  0.0  0.0      0     0 ?        S<   17:48   0:00 [kpsmoused]
+root       247  0.0  0.0      0     0 ?        S    17:48   0:00 [kworker/6:1]
+root       259  0.0  0.0      0     0 ?        S<   17:48   0:00 [kdmflush]
+root       260  0.0  0.0      0     0 ?        S<   17:48   0:00 [bioset]
+root       261  0.0  0.0      0     0 ?        S<   17:48   0:00 [kdmflush]
+root       263  0.0  0.0      0     0 ?        S<   17:48   0:00 [bioset]
+root       280  0.0  0.0      0     0 ?        S    17:49   0:00 [jbd2/dm-0-8]
+root       281  0.0  0.0      0     0 ?        S<   17:49   0:00 [ext4-rsv-conver]
+root       287  0.0  0.0      0     0 ?        S<   17:49   0:00 [poll_0_status]
+root       459  0.0  0.0  20804  3464 ?        S    17:49   0:00 upstart-udev-bridge --daemon
+root       465  0.1  0.0  52028  3932 ?        Ss   17:49   0:00 /lib/systemd/systemd-udevd --daemon
+root       481  0.0  0.0      0     0 ?        S<   17:49   0:00 [kworker/1:1H]
+root       486  0.0  0.0      0     0 ?        S<   17:49   0:00 [kworker/0:1H]
+root       521  0.0  0.0      0     0 ?        S<   17:49   0:00 [ext4-rsv-conver]
+root       592  0.0  0.0      0     0 ?        S<   17:49   0:00 [edac-poller]
+root       684  0.0  0.0      0     0 ?        S<   17:49   0:00 [kvm-irqfd-clean]
+root       701  0.0  0.0      0     0 ?        S<   17:49   0:00 [kworker/3:1H]
+root       705  0.0  0.0  15808  2352 ?        S    17:49   0:00 upstart-file-bridge --daemon
+root       714  0.0  0.0      0     0 ?        S<   17:49   0:00 [kworker/2:1H]
+message+   715  0.0  0.0  39228  2420 ?        Ss   17:49   0:00 dbus-daemon --system --fork
+syslog     717  0.0  0.0 255844  2912 ?        Ssl  17:49   0:00 rsyslogd
+root       761  0.0  0.0  15264   212 ?        S    17:49   0:00 upstart-socket-bridge --daemon
+root       773  0.0  0.0  43452  3200 ?        Ss   17:49   0:00 /lib/systemd/systemd-logind
+root       964  0.0  0.0  10232  3176 ?        Ss   17:49   0:00 dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases eth0
+root      1180  0.0  0.0  14540  2072 tty4     Ss+  17:49   0:00 /sbin/getty -8 38400 tty4
+root      1183  0.0  0.0  14540  2096 tty5     Ss+  17:49   0:00 /sbin/getty -8 38400 tty5
+root      1188  0.0  0.0  14540  2040 tty2     Ss+  17:49   0:00 /sbin/getty -8 38400 tty2
+root      1189  0.0  0.0  14540  2092 tty3     Ss+  17:49   0:00 /sbin/getty -8 38400 tty3
+root      1191  0.0  0.0  14540  2068 tty6     Ss+  17:49   0:00 /sbin/getty -8 38400 tty6
+root      1207  0.0  0.0  61384  5404 ?        Ss   17:49   0:00 /usr/sbin/sshd -D
+root      1215  0.0  0.0   4372  1720 ?        Ss   17:49   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+root      1231  0.0  0.0  23656  2460 ?        Ss   17:49   0:00 cron
+daemon    1232  0.0  0.0  19140   164 ?        Ss   17:49   0:00 atd
+root      1258  0.0  0.0  19196  2108 ?        Ss   17:49   0:00 /usr/sbin/irqbalance
+root      1315  0.0  0.0      0     0 ?        S<   17:49   0:00 [kworker/6:1H]
+root      1493  0.2  0.0  64084 25020 ?        Ss   17:49   0:01 /usr/bin/perl -w /usr/bin/collectl -D
+root      1512  0.0  0.0  41612  2144 ?        Ssl  17:49   0:00 /usr/sbin/cpufreqd -f /etc/cpufreqd.conf
+root      1547  0.0  0.0      0     0 ?        S<   17:49   0:00 [iprt]
+root      1618  0.0  0.0  14540  2076 tty1     Ss+  17:49   0:00 /sbin/getty -8 38400 tty1
+root      1644  0.0  0.0 105652  6600 ?        Ss   17:50   0:00 sshd: vikas [priv]  
+root      1646  0.0  0.0      0     0 ?        S    17:50   0:00 [kauditd]
+root      1664  0.0  0.0      0     0 ?        S    17:50   0:00 [kworker/6:2]
+vikas     1711  0.5  0.0 105784  3972 ?        S    17:50   0:03 sshd: vikas@pts/0   
+vikas     1712  0.0  0.0  22840  6920 pts/0    Ss   17:50   0:00 -bash
+vikas     1747  0.0  0.0   4452  1680 pts/0    S+   17:51   0:00 sh -c #!/bin/bash  # Clear rbenv variables before starting tmux unset RBENV_VERSION unset RBENV_DIR  byobu start-server;    cd /home/vikas/mcga    # Run pre command.       # Create the session and the first window. Manually switch to root   # directory if required to support tmux < 1.9   TMUX= byobu new-session -d -s redisbench -n redis   byobu send-keys -t redisbench:0 cd\ /home/vikas/mcga/src/bench/redis-3.0/src C-m     # Create other windows.   byobu new-window -c /home/vikas/mcga/src/linux-4.1.19/tools/perf -t redisbench:1 -n perflogs   byobu new-window -c /home/vikas/mcga/scripts/plotters -t redisbench:2 -n kernellogs     # Window "redis"   byobu send-keys -t redisbench:0.0 mkdir\ -p\ \~/results C-m   byobu send-keys -t redisbench:0.0 rm\ -rf\ \~/results/\* C-m   byobu send-keys -t redisbench:0.0 sudo\ cpufreq-set\ -g\ performance C-m   byobu send-keys -t redisbench:0.0 sudo\ sh\ -c\ \"echo\ 10000\ \>\ /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs\" C-m   byobu send-keys -t redisbench:0.0 sudo\ sh\ -c\ \"echo\ never\ \>\ /sys/kernel/mm/transparent_hugepage/enabled\" C-m   byobu send-keys -t redisbench:0.0 sudo\ sh\ -c\ \"echo\ 10223616\ \>\ /sys/kernel/mm/transparent_hugepage/khugepaged/pages_to_scan\" C-m   byobu send-keys -t redisbench:0.0 sudo\ sh\ -c\ \"sync\;\ echo\ 3\ \>\ /proc/sys/vm/drop_caches\" C-m   byobu send-keys -t redisbench:0.0 rm\ -rf\ dump.rdb C-m   byobu send-keys -t redisbench:0.0 cp\ \~/redisdb/dump10g.rdb\ dump.rdb C-m   byobu send-keys -t redisbench:0.0 ./redis-server\ ../redis.conf C-m    byobu splitw -c /home/vikas/mcga/src/bench/redis-3.0/src -t redisbench:0   byobu select-layout -t redisbench:0 tiled   byobu send-keys -t redisbench:0.1 rm\ -rf\ benchmark.log C-m   byobu send-keys -t redisbench:0.1 rm\ -rf\ benchmark-stats.log C-m   byobu send-keys -t redisbench:0.1 sleep\ 180 C-m   byobu send-keys -t redisbench:0.1 ./redis-benchmark\ -P\ 50\ -t\ set\ -r\ 120000000\ -n\ 240000000\ \|\ grep\ -v\ \"SET:\"\ \|\ tee\ -a\ benchmark-stats.log C-m   byobu send-keys -t redisbench:0.1 sleep\ 2 C-m   byobu send-keys -t redisbench:0.1 cp\ benchmark-stats.log\ \~/results/ C-m   byobu send-keys -t redisbench:0.1 kill\ -9\ \`pgrep\ redis-cli\` C-m   byobu send-keys -t redisbench:0.1 sudo\ ps\ ef\ \|\ grep\ perf\ \|\ grep\ dTLB\ \|\ awk\ \'\{print\ \$1\}\'\ \|\ xargs\ sudo\ kill\ -2 C-m   byobu send-keys -t redisbench:0.1 sleep\ 10 C-m   byobu send-keys -t redisbench:0.1 sudo\ killall\ -2\ perf C-m   byobu send-keys -t redisbench:0.1 ps\ aux\ \>\ \~/results/ps-after.out C-m   byobu send-keys -t redisbench:0.1 kill\ -9\ \`pgrep\ redis-server\` C-m    byobu splitw -c /home/vikas/mcga/src/bench/redis-3.0/src -t redisbench:0   byobu select-layout -t redisbench:0 tiled   byobu send-keys -t redisbench:0.2 rm\ -rf\ latency.log C-m   byobu send-keys -t redisbench:0.2 sleep\ 180 C-m   byobu send-keys -t redisbench:0.2 ./redis-cli\ --latency-history\ -i\ 1\ \|\ tee\ -a\ latency.log C-m   byobu send-keys -t redisbench:0.2 cp\ latency.log\ \~/results/ C-m    byobu select-layout -t redisbench:0 tiled    byobu select-layout -t redisbench:0 main-vertical   byobu select-pane -t redisbench:0.0     # Window "perflogs"   byobu send-keys -t redisbench:1.0 sleep\ 180 C-m   byobu send-keys -t redisbench:1.0 sudo\ sh\ -c\ \"./perf\ stat\ -e\ cycles,instructions\ -p\ \`pgrep\ khugepaged\`\ 2\>\ /tmp/khugepaged-perf\" C-m   byobu send-keys -t redisbench:1.0 sudo\ mv\ /tmp/khugepaged-perf\ \~/results/ C-m    byobu splitw -c /home/vikas/mcga/src/linux-4.1.19/tools/perf -t redisbench:1   byobu select-layout -t redisbench:1 tiled   byobu send-keys -t redisbench:1.1 sleep\ 180 C-m   byobu send-keys -t redisbench:1.1 sudo\ sh\ -c\ \"./perf\ stat\ -e\ dTLB-load-misses,dTLB-store-misses,iTLB-load-misses,cache-misses,L1-dcache-load-misses,L1-dcache-store-misses,L1-dcache-prefetch-misses,L1-icache-load-misses,LLC-load-misses,LLC-store-misses,LLC-prefetch-misses,branch-load-misses,cycles,minor-faults\ -e\ r408\ -p\ \`pgrep\ redis-server\`\ 2\>\ /tmp/redis-perf\" C-m   byobu send-keys -t redisbench:1.1 sudo\ mv\ /tmp/re
+vikas     1935  2.1  0.0  32064 11032 ?        Ss   17:51   0:14 tmux -2 -f /usr/share/byobu/profiles/tmuxrc new-session -d -s redisbench -n redis
+vikas     1938  0.0  0.0  19940  3984 pts/2    Ss   17:51   0:00 /bin/bash
+vikas     2000  0.0  0.0  19940  3968 pts/1    Ss+  17:51   0:00 /bin/bash
+vikas     2031  0.0  0.0  19940  3884 pts/3    Ss   17:51   0:00 /bin/bash
+vikas     2357  0.0  0.0  19964  3836 pts/4    Ss   17:51   0:00 /bin/bash
+vikas     2755  0.0  0.0  19940  3888 pts/6    Ss+  17:51   0:00 /bin/bash
+vikas     3097  0.0  0.0  19940  3876 pts/7    Ss+  17:51   0:00 /bin/bash
+vikas     3410  0.0  0.0  19940  3988 pts/8    Ss   17:51   0:00 /bin/bash
+vikas     3694  0.0  0.0  15804  2444 pts/0    S+   17:51   0:00 tmux -2 -f /usr/share/byobu/profiles/tmuxrc -u attach-session -t redisbench
+vikas     4076 86.5 30.0 12427240 12391800 pts/2 Sl+ 17:51   9:04 ./redis-server *:6379       
+vikas     5763  0.1  0.0  20008  2884 pts/3    S+   17:54   0:00 /bin/bash
+vikas     5781  3.5  0.0  20908  3744 pts/8    S+   17:54   0:17 /bin/bash
+root      5822  0.0  0.0      0     0 ?        S    17:54   0:00 [kworker/u48:0]
+vikas     6088  0.0  0.0   5920   684 pts/3    S+   18:02   0:00 sleep 1
+vikas     6099  0.0  0.0  17168  2568 pts/4    R+   18:02   0:00 ps aux
+root     10003  0.0  0.0      0     0 ?        S<   17:54   0:00 [kworker/4:1H]
+root     15482  0.0  0.0      0     0 ?        S    17:59   0:00 [kworker/u48:1]
+root     30688  0.0  0.0      0     0 ?        S<   17:57   0:00 [kworker/11:1H]
+vikas    31429 87.9 30.0 12427244 12388636 pts/2 R+ 18:01   0:46 redis-rdb-bgsave *:6379     

@@ -15,6 +15,10 @@ scan_sleep_millisecs 10000
 pages_to_scan 10223616 (39G, entire RAM of the system)  
 scan_sleep_millisecs 10000
 
-## results-prctl11
+## results-prctl12
+pages_to_scan 10223616 (39G, entire RAM of the system)  
+scan_sleep_millisecs 10000
+
+## results-prctl00-nothp
 pages_to_scan 10223616 (39G, entire RAM of the system)  
 scan_sleep_millisecs 10000
