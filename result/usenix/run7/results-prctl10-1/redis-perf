@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4228':
+
+     2,843,162,194      dTLB-load-misses                                              (28.59%)
+        80,634,071      dTLB-store-misses                                             (28.59%)
+        97,350,713      iTLB-load-misses                                              (28.57%)
+     5,321,813,785      cache-misses                                                  (28.57%)
+    12,210,369,320      L1-dcache-load-misses                                         (28.57%)
+     1,314,733,037      L1-dcache-store-misses                                        (28.56%)
+       955,676,081      L1-dcache-prefetch-misses                                     (28.56%)
+    13,259,680,567      L1-icache-load-misses                                         (28.56%)
+     4,559,316,382      LLC-load-misses                                               (28.57%)
+       748,590,810      LLC-store-misses                                              (28.60%)
+       270,138,033      LLC-prefetch-misses                                           (14.31%)
+   213,595,523,526      branch-load-misses                                            (21.45%)
+ 1,601,679,742,110      cycles                                                        (28.61%)
+         8,775,428      minor-faults                                                
+   333,024,460,709      r408                                                          (28.58%)
+
+     472.975639565 seconds time elapsed
+

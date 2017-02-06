@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4364':
+
+     2,112,924,288      dTLB-load-misses                                              (28.58%)
+       106,466,302      dTLB-store-misses                                             (28.57%)
+        10,692,634      iTLB-load-misses                                              (28.57%)
+     3,572,572,134      cache-misses                                                  (28.58%)
+     8,571,231,556      L1-dcache-load-misses                                         (28.57%)
+     1,099,042,250      L1-dcache-store-misses                                        (28.57%)
+       811,602,891      L1-dcache-prefetch-misses                                     (28.62%)
+    13,526,006,675      L1-icache-load-misses                                         (28.62%)
+     2,993,099,053      LLC-load-misses                                               (28.62%)
+       573,906,532      LLC-store-misses                                              (28.63%)
+       392,393,140      LLC-prefetch-misses                                           (14.28%)
+   196,355,374,909      branch-load-misses                                            (21.44%)
+ 1,175,757,322,030      cycles                                                        (28.58%)
+            15,698      minor-faults                                                
+    60,943,949,213      r408                                                          (28.57%)
+
+     378.150360676 seconds time elapsed
+

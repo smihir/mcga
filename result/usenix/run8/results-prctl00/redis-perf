@@ -1,0 +1,21 @@
+
+ Performance counter stats for process id '4094':
+
+     1,788,446,425      dTLB-load-misses                                              (28.57%)
+       181,973,434      dTLB-store-misses                                             (28.58%)
+        16,990,928      iTLB-load-misses                                              (28.58%)
+     2,613,485,595      cache-misses                                                  (28.57%)
+     6,552,029,484      L1-dcache-load-misses                                         (28.58%)
+     1,025,193,569      L1-dcache-store-misses                                        (28.57%)
+       577,555,542      L1-dcache-prefetch-misses                                     (28.57%)
+    12,009,292,486      L1-icache-load-misses                                         (28.64%)
+     2,044,848,211      LLC-load-misses                                               (28.64%)
+       563,054,313      LLC-store-misses                                              (28.64%)
+       461,157,457      LLC-prefetch-misses                                           (14.27%)
+   144,093,434,944      branch-load-misses                                            (21.43%)
+   851,597,938,510      cycles                                                        (28.57%)
+            18,998      minor-faults                                                
+    47,604,219,796      r408                                                          (28.57%)
+
+     375.638077633 seconds time elapsed
+

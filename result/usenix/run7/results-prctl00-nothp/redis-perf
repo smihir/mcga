@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4076':
+
+     3,227,761,873      dTLB-load-misses                                              (28.57%)
+        92,125,621      dTLB-store-misses                                             (28.60%)
+       124,685,168      iTLB-load-misses                                              (28.60%)
+     5,342,320,131      cache-misses                                                  (28.60%)
+    12,421,493,384      L1-dcache-load-misses                                         (28.60%)
+     1,304,132,144      L1-dcache-store-misses                                        (28.56%)
+       941,708,697      L1-dcache-prefetch-misses                                     (28.58%)
+    15,865,345,260      L1-icache-load-misses                                         (28.58%)
+     4,585,131,273      LLC-load-misses                                               (28.58%)
+       737,553,635      LLC-store-misses                                              (28.58%)
+       255,463,091      LLC-prefetch-misses                                           (14.29%)
+   211,560,517,959      branch-load-misses                                            (21.43%)
+ 1,600,948,857,172      cycles                                                        (28.57%)
+         8,720,872      minor-faults                                                
+   352,307,947,232      r408                                                          (28.57%)
+
+     473.048318670 seconds time elapsed
+

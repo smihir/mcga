@@ -1,0 +1,20 @@
+ Performance counter stats for process id '4423':
+
+     2,578,729,809      dTLB-load-misses                                              (28.53%)
+       123,044,056      dTLB-store-misses                                             (28.55%)
+        83,665,198      iTLB-load-misses                                              (28.55%)
+     4,727,293,215      cache-misses                                                  (28.57%)
+    11,011,049,371      L1-dcache-load-misses                                         (28.58%)
+     1,307,950,817      L1-dcache-store-misses                                        (28.59%)
+       950,707,028      L1-dcache-prefetch-misses                                     (28.59%)
+    16,193,637,054      L1-icache-load-misses                                         (28.58%)
+     3,971,805,215      LLC-load-misses                                               (28.58%)
+       751,739,246      LLC-store-misses                                              (28.61%)
+       257,332,928      LLC-prefetch-misses                                           (14.35%)
+   210,549,859,252      branch-load-misses                                            (21.49%)
+ 1,465,163,827,704      cycles                                                        (28.62%)
+         8,702,062      minor-faults                                                
+   208,549,956,314      r408                                                          (28.57%)
+
+     449.943475423 seconds time elapsed
+
