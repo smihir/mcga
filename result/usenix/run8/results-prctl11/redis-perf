@@ -1,0 +1,21 @@
+
+ Performance counter stats for process id '4131':
+
+     2,085,514,288      dTLB-load-misses                                              (28.57%)
+       143,569,515      dTLB-store-misses                                             (28.55%)
+        53,170,705      iTLB-load-misses                                              (28.57%)
+     3,320,557,487      cache-misses                                                  (28.56%)
+     8,430,527,020      L1-dcache-load-misses                                         (28.57%)
+     1,100,716,208      L1-dcache-store-misses                                        (28.59%)
+       711,787,070      L1-dcache-prefetch-misses                                     (28.58%)
+    11,972,451,034      L1-icache-load-misses                                         (28.62%)
+     2,662,077,411      LLC-load-misses                                               (28.63%)
+       649,406,923      LLC-store-misses                                              (28.63%)
+       256,318,356      LLC-prefetch-misses                                           (14.28%)
+   152,811,296,231      branch-load-misses                                            (21.45%)
+ 1,010,342,460,808      cycles                                                        (28.59%)
+         8,878,698      minor-faults                                                
+   132,069,071,844      r408                                                          (28.57%)
+
+     444.830523889 seconds time elapsed
+

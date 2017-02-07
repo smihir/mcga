@@ -49,6 +49,8 @@ unsigned long transparent_hugepage_flags __read_mostly =
 
 /* default scan 8*512 pte (or vmas) every 30 second */
 static unsigned int khugepaged_pages_to_scan __read_mostly = HPAGE_PMD_NR*8;
+static unsigned int khugepaged_promote_cost __read_mostly = 0;
+static unsigned int khugepaged_collapse_cost __read_mostly = 0;
 static unsigned int khugepaged_pages_collapsed;
 static unsigned int khugepaged_pages_promoted;
 static unsigned int khugepaged_full_scans;
@@ -491,6 +493,56 @@ static struct kobj_attribute pages_to_scan_attr =
 	__ATTR(pages_to_scan, 0644, pages_to_scan_show,
 	       pages_to_scan_store);
 
+static ssize_t promote_cost_show(struct kobject *kobj,
+				  struct kobj_attribute *attr,
+				  char *buf)
+{
+	return sprintf(buf, "%u\n", khugepaged_promote_cost);
+}
+static ssize_t promote_cost_store(struct kobject *kobj,
+				   struct kobj_attribute *attr,
+				   const char *buf, size_t count)
+{
+	int err;
+	unsigned long cost;
+
+	err = kstrtoul(buf, 10, &cost);
+	if (err || !cost || cost > UINT_MAX)
+		return -EINVAL;
+
+	khugepaged_promote_cost = cost;
+
+	return count;
+}
+static struct kobj_attribute promote_cost_attr =
+	__ATTR(promote_cost, 0644, promote_cost_show,
+	       promote_cost_store);
+
+static ssize_t collapse_cost_show(struct kobject *kobj,
+				  struct kobj_attribute *attr,
+				  char *buf)
+{
+	return sprintf(buf, "%u\n", khugepaged_collapse_cost);
+}
+static ssize_t collapse_cost_store(struct kobject *kobj,
+				   struct kobj_attribute *attr,
+				   const char *buf, size_t count)
+{
+	int err;
+	unsigned long cost;
+
+	err = kstrtoul(buf, 10, &cost);
+	if (err || !cost || cost > UINT_MAX)
+		return -EINVAL;
+
+	khugepaged_collapse_cost = cost;
+
+	return count;
+}
+static struct kobj_attribute collapse_cost_attr =
+	__ATTR(collapse_cost, 0644, collapse_cost_show,
+	       collapse_cost_store);
+
 static ssize_t pages_collapsed_show(struct kobject *kobj,
 				    struct kobj_attribute *attr,
 				    char *buf)
@@ -577,6 +629,8 @@ static struct attribute *khugepaged_attr[] = {
 	&full_scans_attr.attr,
 	&scan_sleep_millisecs_attr.attr,
 	&alloc_sleep_millisecs_attr.attr,
+	&promote_cost_attr.attr,
+	&collapse_cost_attr.attr,
 	NULL,
 };
 
@@ -2827,7 +2881,6 @@ out_unmap:
 		prep_compound_page(first_page, 9);
 		prep_compound_mapcount(first_page, 9);
 		__promote_to_huge_anonymous_page(mm, vma, haddr, pmd, first_page, gfp);
-		ret = 1;
 		goto out;
 	}
 
@@ -2931,7 +2984,17 @@ skip:
 						  hpage);
 			/* move to next address */
 			khugepaged_scan.address += HPAGE_PMD_SIZE;
-			progress += HPAGE_PMD_NR;
+			switch (ret) {
+				case 0:
+					progress += HPAGE_PMD_NR;
+					break;
+				case 1:
+					progress += HPAGE_PMD_NR + khugepaged_collapse_cost;
+					break;
+				case 2:
+					progress += HPAGE_PMD_NR + khugepaged_promote_cost;
+					break;
+			}
 			if (ret)
 				/* we released mmap_sem so break loop */
 				goto breakouterloop_mmap_sem;
