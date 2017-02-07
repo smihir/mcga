@@ -38,9 +38,12 @@ def forkplot():
     rects2 = ax1.plot(x, y2, color=(217/255,95/255,2/255), marker='^', markersize=8)
     xlabel = ['128MB', '256MB', '512MB', '1GB', '2GB']
     plt.xticks(x, xlabel)
+    ax1.set_xlim([-0.10, 4.10])
+    plt.locator_params(axis='y', nbins=6)
     ax1.set_xticklabels(xlabel, rotation='horizontal')
-    ax1.legend((rects1[0], rects2[0]), ('THP Disabled', 'THP Enabled'), shadow=False, loc='upper left')
+    ax1.legend((rects1[0], rects2[0]), ('THP Enabled', 'THP Disabled'), shadow=False, loc='upper left')
     plt.tight_layout()
+    plt.grid()
     plt.show()
 
 if __name__ == '__main__':
