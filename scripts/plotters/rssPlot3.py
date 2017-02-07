@@ -91,13 +91,19 @@ class rssvstime:
         y2 = [y / 1048576 for y in y2]
         y3 = [y / 1048576 for y in y3]
        
-        color1 = "#ffd699"
-        color2 = "#ffb84d"
-        #color3 = "#b30000"
-        color3 = "#990000"
+        #color1 = "#ffd699"
+        #color2 = "#ffb84d"
+        ##color3 = "#b30000"
+        #color3 = "#990000"
+        #light
+        color3=(254/255,232/255,200/255)
+        #middle
+        color2=(253/255,187/255,132/255)
+        #dark
+        color1=(227/255,74/255,51/255)
         ax1.plot(x1, y1, color=color1, label='Base Pages')
-        ax1.plot(x1, y2, color=color3, label='Large Pages')
         ax1.plot(x1, y3, color=color2, label='Allocation Pages')
+        ax1.plot(x1, y2, color=color3, label='Large Pages')
         
         ax1.fill_between(x1, 0, y1, facecolor = color1, interpolate=True)
         #ax1.fill_between(x1, 0, y3, facecolor = 'blue', interpolate=True)
@@ -105,7 +111,7 @@ class rssvstime:
         ax1.fill_between(x1, 0, y2, facecolor = color3, interpolate=True)
         
         ax1.set_xlim([0, x1[-1]])
-        ax1.set_ylim([0, 1.2* max(max(y1),max(y2))])
+        ax1.set_ylim([0, 1.3* max(max(y1),max(y2))])
         
         yellow_patch = mpatches.Patch(color=color1 )
         orange_patch = mpatches.Patch(color=color3 )
@@ -114,7 +120,7 @@ class rssvstime:
         #yellow_patch = mpatches.Patch(color='yellow', label ='Base Pages' )
         #orange_patch = mpatches.Patch(color='orange', label ='Large Pages')
         #plt.legend([yellow_patch, orange_patch], ["Memory backed by Base Pages", "Memory backed by Large Pages"], loc='upper left')
-        plt.legend([yellow_patch, blue_patch, orange_patch], ["Allocation (Large Pages)","Promotion (Large Pages)", "Memory backed by Base Pages"], loc='upper left')
+        plt.legend([yellow_patch, blue_patch, orange_patch], ["Memory backed by Allocated Large Pages","Memory backed by Promoted Large Pages", "Memory backed by Base Pages"], loc='upper left')
         plt.savefig("rssPlot.png")
         plt.show()
 

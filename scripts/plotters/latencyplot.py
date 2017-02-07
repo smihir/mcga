@@ -12,11 +12,6 @@ import matplotlib.pyplot as plt
 # python latencyplot.py <option #> <args>
 # 1. Plots latency graph for both THP disabled(red) and enabled(green)
 # Run the cmd: python latencyplot.py 1 <latencyThpDisabled.txt> <latencyThpEnabled.txt>
-# 2. Plot the area curve of the base and large pages
-# Input file format: <#Rss> <#Anon> format
-# Run cmd: python latencyplot.py 2 <rssanon.txt>
-# 3. Time taken to fork v/s RSS
-# Run cmd: python latencyplot.py 3
 
 SIZE = 14
 MEDIUM_SIZE = 14
@@ -77,9 +72,10 @@ class latencyboth:
         ax2.set_xlim([0, time])
         for label in (ax2.get_xticklabels() + ax2.get_yticklabels()):
             label.set_fontsize(12)  # Size here overrides font_prop
-        ax2.xaxis.set_ticks([0, 350])
-        ax2.yaxis.set_ticks([700, 1400])
+        ax2.xaxis.set_ticks([0, time])
 
+        maxyby10 = max(y2) - max(y2)%10
+        ax2.yaxis.set_ticks([maxyby10/2, maxyby10])
 
         plt.rc('font', size=SIZE)  # controls default text sizes
         plt.rc('axes', titlesize=SIZE)  # fontsize of the axes title
