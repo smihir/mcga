@@ -1169,6 +1169,135 @@ static const struct file_operations proc_fault_inject_operations = {
 };
 #endif
 
+static ssize_t proc_split_mcga_read(struct file * file, char __user * buf,
+				      size_t count, loff_t *ppos)
+{
+	struct task_struct *task = get_proc_task(file_inode(file));
+	char buffer[PROC_NUMBUF];
+	size_t len;
+	int split_mcga;
+
+	if (!task)
+		return -ESRCH;
+	if (!task->mm) {
+		printk("pid %d, mm is NULL\n", task->pid);
+		return -ESRCH;
+	}
+	down_read(&task->mm->mmap_sem);
+	split_mcga = task->mm->split_hugepage;
+	up_read(&task->mm->mmap_sem);
+	put_task_struct(task);
+
+	len = snprintf(buffer, sizeof(buffer), "%i\n", split_mcga);
+
+	return simple_read_from_buffer(buf, count, ppos, buffer, len);
+}
+
+static ssize_t proc_split_mcga_write(struct file * file,
+			const char __user * buf, size_t count, loff_t *ppos)
+{
+	struct task_struct *task;
+	char buffer[PROC_NUMBUF], *end;
+	int split_mcga;
+
+	if (!capable(CAP_SYS_RESOURCE))
+		return -EPERM;
+	memset(buffer, 0, sizeof(buffer));
+	if (count > sizeof(buffer) - 1)
+		count = sizeof(buffer) - 1;
+	if (copy_from_user(buffer, buf, count))
+		return -EFAULT;
+	split_mcga = simple_strtol(strstrip(buffer), &end, 0);
+	if (*end)
+		return -EINVAL;
+	if (split_mcga < 0 || split_mcga > 1)
+		return -EINVAL;
+
+	task = get_proc_task(file_inode(file));
+	if (!task)
+		return -ESRCH;
+	if (!task->mm) {
+		printk("pid %d, mm is NULL\n", task->pid);
+		return -ESRCH;
+	}
+	down_write(&task->mm->mmap_sem);
+	task->mm->split_hugepage = split_mcga;
+	up_write(&task->mm->mmap_sem);
+	put_task_struct(task);
+
+	return count;
+}
+
+static const struct file_operations proc_split_mcga_operations = {
+	.read		= proc_split_mcga_read,
+	.write		= proc_split_mcga_write,
+	.llseek		= generic_file_llseek,
+};
+
+static ssize_t proc_promote_mcga_read(struct file * file, char __user * buf,
+				      size_t count, loff_t *ppos)
+{
+	struct task_struct *task = get_proc_task(file_inode(file));
+	char buffer[PROC_NUMBUF];
+	size_t len;
+	int promote_mcga;
+
+	if (!task)
+		return -ESRCH;
+	if (!task->mm) {
+		printk("pid %d, mm is NULL\n", task->pid);
+		return -ESRCH;
+	}
+	down_read(&task->mm->mmap_sem);
+	promote_mcga = task->mm->promote_hugepage;
+	up_read(&task->mm->mmap_sem);
+	put_task_struct(task);
+
+	len = snprintf(buffer, sizeof(buffer), "%i\n", promote_mcga);
+
+	return simple_read_from_buffer(buf, count, ppos, buffer, len);
+}
+
+static ssize_t proc_promote_mcga_write(struct file * file,
+			const char __user * buf, size_t count, loff_t *ppos)
+{
+	struct task_struct *task;
+	char buffer[PROC_NUMBUF], *end;
+	int promote_mcga;
+
+	if (!capable(CAP_SYS_RESOURCE))
+		return -EPERM;
+	memset(buffer, 0, sizeof(buffer));
+	if (count > sizeof(buffer) - 1)
+		count = sizeof(buffer) - 1;
+	if (copy_from_user(buffer, buf, count))
+		return -EFAULT;
+	promote_mcga = simple_strtol(strstrip(buffer), &end, 0);
+	if (*end)
+		return -EINVAL;
+	if (promote_mcga < 0 || promote_mcga > 2)
+		return -EINVAL;
+
+	task = get_proc_task(file_inode(file));
+	if (!task)
+		return -ESRCH;
+	if (!task->mm) {
+		printk("pid %d, mm is NULL\n", task->pid);
+		return -ESRCH;
+	}
+	down_write(&task->mm->mmap_sem);
+	task->mm->promote_hugepage = promote_mcga;
+	up_write(&task->mm->mmap_sem);
+	put_task_struct(task);
+
+	return count;
+}
+
+static const struct file_operations proc_promote_mcga_operations = {
+	.read		= proc_promote_mcga_read,
+	.write		= proc_promote_mcga_write,
+	.llseek		= generic_file_llseek,
+};
 
 #ifdef CONFIG_SCHED_DEBUG
 /*
@@ -2637,6 +2766,8 @@ static const struct pid_entry tgid_base_stuff[] = {
 #ifdef CONFIG_CHECKPOINT_RESTORE
 	REG("timers",	  S_IRUGO, proc_timers_operations),
 #endif
+	REG("split_mcga", S_IRUGO|S_IWUSR, proc_split_mcga_operations),
+	REG("promote_mcga", S_IRUGO|S_IWUSR, proc_promote_mcga_operations),
 };
 
 static int proc_tgid_base_readdir(struct file *file, struct dir_context *ctx)
