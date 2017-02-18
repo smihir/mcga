@@ -15,13 +15,11 @@ BIGGER_SIZE = 16
 
 plt.rc('font', size=SIZE)  # controls default text sizes
 plt.rc('axes', titlesize=SIZE)  # fontsize of the axes title
-plt.rc('axes', labelsize=BIGGER_SIZE)  # fontsize of the x and y labels
+plt.rc('axes', labelsize=SIZE)  # fontsize of the x and y labels
 plt.rc('xtick', labelsize=SIZE)  # fontsize of the tick labels
 plt.rc('ytick', labelsize=SIZE)  # fontsize of the tick labels
 plt.rc('legend', fontsize=SIZE)  # legend fontsize
-
-
-# plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 class rssvstime:
     def __init__(self, data1, data2, data3, data4):
@@ -153,9 +151,9 @@ class rssvstime:
         ax1.plot(x1, y2, color=color3, label='Large Pages')
         ax1.plot(x1, y3, color=color2, label='Allocation Pages')
 
-        ax1.fill_between(x1, 0, y1, facecolor=color1, interpolate=True)
-        ax1.fill_between(x1, 0, y3, facecolor=color2, interpolate=True)
-        ax1.fill_between(x1, 0, y2, facecolor=color3, interpolate=True)
+        ax1.fill_between(x1, 0, y1, facecolor=color1, interpolate=True, linewidth=0)
+        ax1.fill_between(x1, 0, y3, facecolor=color2, interpolate=True, linewidth=0)
+        ax1.fill_between(x1, 0, y2, facecolor=color3, interpolate=True, linewidth=0)
 
         ax1.set_xlim([0, x1[-1]])
         ax1.set_ylim([0, 1.2 * max(max(y1), max(y2))])
@@ -173,9 +171,9 @@ class rssvstime:
         ax11.plot(x11, y21, color=color3, label='Memory backed by Promoted Large Pages')
         ax11.plot(x11, y31, color=color2, label='Memory backed by Allocated Large Pages')
 
-        ax11.fill_between(x11, 0, y11, facecolor=color1, interpolate=True)
-        ax11.fill_between(x11, 0, y31, facecolor=color2, interpolate=True)
-        ax11.fill_between(x11, 0, y21, facecolor=color3, interpolate=True)
+        ax11.fill_between(x11, 0, y11, facecolor=color1, interpolate=True, linewidth=0)
+        ax11.fill_between(x11, 0, y31, facecolor=color2, interpolate=True, linewidth=0)
+        ax11.fill_between(x11, 0, y21, facecolor=color3, interpolate=True, linewidth=0)
 
         ax11.set_xlim([0, x11[-1]])
         ax11.set_ylim([0, 1.2 * max(max(y11), max(y21))])
@@ -184,15 +182,11 @@ class rssvstime:
         orange_patch = mpatches.Patch(color=color3)
         blue_patch = mpatches.Patch(color=color2)
 
-        fontP = FontProperties()
-        fontP.set_size('large')
-
-        #plt.legend([yellow_patch, blue_patch, orange_patch],
-                   #["Memory backed by Allocated Large Pages", "Memory backed by Promoted Large Pages", "Memory backed by Base Pages"], fancybox=True, bbox_to_anchor=(-0.60, 1.25),prop=fontP)
-        #plt.legend([yellow_patch, blue_patch, orange_patch],
-                    #["Memory backed by Allocated Large Pages", "Promoted Large Pages", "Base Pages"], bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.)
-        plt.legend([yellow_patch, blue_patch, orange_patch], ["Memory backed by Allocated Large Pages", "Promoted Large Pages", "Base Pages"], bbox_to_anchor=(0., 1.02, 1., .102), mode="expand", borderaxespad=0.)
-        plt.savefig("rssPlot.png")
+        legend = plt.legend([yellow_patch, blue_patch, orange_patch], ["Allocated Large Pages", "Promoted Large Pages", "Base Pages"], 
+                loc='upper center', bbox_to_anchor=(-0.2, 1.18), ncol=3)
+        legend.get_frame().set_linewidth(0.0)
+        ax1.text(3.7, -3.0, '(a) Large Page Split', horizontalalignment='center', fontsize=SIZE)
+        ax11.text(3.7, -3.0, '(b) CATCoW: Split + In-Place Promote', horizontalalignment='center', fontsize=SIZE)
         plt.show()
 
 
