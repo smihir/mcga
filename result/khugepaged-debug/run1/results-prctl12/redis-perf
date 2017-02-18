@@ -1,21 +1,21 @@
 
- Performance counter stats for process id '4485':
+ Performance counter stats for process id '4486':
 
-     1,897,190,856      dTLB-load-misses                                              (28.57%)
-        96,144,732      dTLB-store-misses                                             (28.63%)
-        62,922,444      iTLB-load-misses                                              (28.64%)
-     3,315,342,047      cache-misses                                                  (28.64%)
-     8,693,701,602      L1-dcache-load-misses                                         (28.64%)
-     1,117,641,574      L1-dcache-store-misses                                        (28.58%)
-       727,021,203      L1-dcache-prefetch-misses                                     (28.56%)
-    11,935,826,982      L1-icache-load-misses                                         (28.58%)
-     2,657,186,461      LLC-load-misses                                               (28.57%)
-       650,961,398      LLC-store-misses                                              (28.57%)
-       257,534,608      LLC-prefetch-misses                                           (14.28%)
-   153,699,952,177      branch-load-misses                                            (21.41%)
- 1,022,401,270,428      cycles                                                        (28.56%)
-         8,881,843      minor-faults                                                
-   131,868,650,299      r408                                                          (28.55%)
+     2,006,708,012      dTLB-load-misses                                              (28.60%)
+        94,651,369      dTLB-store-misses                                             (28.64%)
+        54,110,577      iTLB-load-misses                                              (28.65%)
+     3,303,361,033      cache-misses                                                  (28.64%)
+     8,575,185,813      L1-dcache-load-misses                                         (28.62%)
+     1,061,759,560      L1-dcache-store-misses                                        (28.56%)
+       701,562,598      L1-dcache-prefetch-misses                                     (28.54%)
+    14,246,188,405      L1-icache-load-misses                                         (28.57%)
+     2,653,542,471      LLC-load-misses                                               (28.57%)
+       644,528,580      LLC-store-misses                                              (28.57%)
+       262,895,866      LLC-prefetch-misses                                           (14.28%)
+   151,230,829,496      branch-load-misses                                            (21.42%)
+ 1,012,366,111,880      cycles                                                        (28.57%)
+         8,874,544      minor-faults                                                
+   129,022,636,797      r408                                                          (28.58%)
 
-     444.547615537 seconds time elapsed
+     440.580978809 seconds time elapsed
 
