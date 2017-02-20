@@ -1,0 +1,21 @@
+
+ Performance counter stats for process id '4425':
+
+     1,954,405,156      dTLB-load-misses                                              (28.58%)
+        99,067,122      dTLB-store-misses                                             (28.58%)
+        51,566,755      iTLB-load-misses                                              (28.58%)
+     3,302,276,349      cache-misses                                                  (28.57%)
+     8,923,976,899      L1-dcache-load-misses                                         (28.61%)
+     1,110,260,717      L1-dcache-store-misses                                        (28.63%)
+       717,764,490      L1-dcache-prefetch-misses                                     (28.62%)
+    15,153,505,985      L1-icache-load-misses                                         (28.62%)
+     2,642,862,840      LLC-load-misses                                               (28.56%)
+       648,440,966      LLC-store-misses                                              (28.56%)
+       262,542,919      LLC-prefetch-misses                                           (14.28%)
+   150,831,419,004      branch-load-misses                                            (21.43%)
+ 1,023,076,928,544      cycles                                                        (28.57%)
+         8,869,828      minor-faults                                                
+   128,717,968,144      r408                                                          (28.58%)
+
+     443.738618516 seconds time elapsed
+
