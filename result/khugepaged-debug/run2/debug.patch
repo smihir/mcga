@@ -1,0 +1,224 @@
+diff --git a/src/bench/h-store-release-2016-06/graphs/datautil.py b/src/bench/h-store-release-2016-06/graphs/datautil.py
+index eb42136..1d22c46 100755
+--- a/src/bench/h-store-release-2016-06/graphs/datautil.py
++++ b/src/bench/h-store-release-2016-06/graphs/datautil.py
+@@ -149,8 +149,16 @@ def loadHStoreData(datapath):
+     for dataFile in matches:
+         
+         #LOG.info("processing data file: " + dataFile)
+-        
+-        tags = dataFile.replace(datapath, "").split("/")[1:-1]
++       
++        print type(dataFile)
++        a= dataFile.replace(datapath, "")
++        print a
++        print a.split("/")
++        print a.split("/")[1]
++        tags = dataFile.replace(datapath, "").split("/")[1]
++        print dataFile
++        print type(tags)
++        print (tags)
+         benchmark = tags.pop(0)
+         attrs = {"file": dataFile}
+         
+@@ -389,4 +397,4 @@ def loadMySQLData(memcached = False):
+     ## FOR
+     
+     return (data)
+-## DEF
+\ No newline at end of file
++## DEF
+diff --git a/src/bench/h-store-release-2016-06/graphs/throughput-timeline.py b/src/bench/h-store-release-2016-06/graphs/throughput-timeline.py
+index 4bf6dec..3db8607 100755
+--- a/src/bench/h-store-release-2016-06/graphs/throughput-timeline.py
++++ b/src/bench/h-store-release-2016-06/graphs/throughput-timeline.py
+@@ -173,7 +173,7 @@ def createThroughputGraph(benchmark, memorySizes, read_pct, hstoreData, mysqlDat
+ ## ==============================================
+ if __name__ == '__main__':
+     
+-    hstoreData = datautil.loadHStoreData()
++    hstoreData = datautil.loadHStoreData("dataDir")
+     #pprint(hstoreData)
+     #print "="*150
+     
+@@ -211,4 +211,4 @@ if __name__ == '__main__':
+         ## FOR
+     ## FOR
+ 
+-## MAIN
+\ No newline at end of file
++## MAIN
+diff --git a/src/bench/h-store-release-2016-06/src/benchmarks/org/voltdb/benchmark/tpcc/ScaleParameters.java b/src/bench/h-store-release-2016-06/src/benchmarks/org/voltdb/benchmark/tpcc/ScaleParameters.java
+index a0dc221..b291e4e 100644
+--- a/src/bench/h-store-release-2016-06/src/benchmarks/org/voltdb/benchmark/tpcc/ScaleParameters.java
++++ b/src/bench/h-store-release-2016-06/src/benchmarks/org/voltdb/benchmark/tpcc/ScaleParameters.java
+@@ -62,7 +62,8 @@ public class ScaleParameters {
+         
+         // WAREHOUSES
+         assert warehouses > 0;
+-        this.warehouses = warehouses;
++        //this.warehouses = warehouses;
++        this.warehouses = 10;
+         this.starting_warehouse = firstWarehouse;
+         this.last_warehouse = (this.warehouses + this.starting_warehouse - 1);
+         
+diff --git a/src/bench/redis-3.0/src/redis.c b/src/bench/redis-3.0/src/redis.c
+index 667d117..ee8f014 100644
+--- a/src/bench/redis-3.0/src/redis.c
++++ b/src/bench/redis-3.0/src/redis.c
+@@ -3610,7 +3610,7 @@ int main(int argc, char **argv) {
+      */
+      printf("Calling prctl in main parent %d\n", getpid());
+      fflush(stdout);
+-     prctl(47, 1, 0, 0, 0);
++     prctl(47, 1, 2, 0, 0);
+ 
+     /* We need to initialize our libraries, and the server configuration. */
+ #ifdef INIT_SETPROCTITLE_REPLACEMENT
+diff --git a/src/linux-4.1.19/mm/huge_memory.c b/src/linux-4.1.19/mm/huge_memory.c
+index 21437fb..32f34f5 100644
+--- a/src/linux-4.1.19/mm/huge_memory.c
++++ b/src/linux-4.1.19/mm/huge_memory.c
+@@ -2789,6 +2789,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 	bool page_shared = false;
+ 	pteval_t first_pte_flags;
+ 	unsigned long old_pfn, new_pfn;
++	int brk = 0;
+ 
+ 	VM_BUG_ON(address & ~HPAGE_PMD_MASK);
+ 
+@@ -2815,10 +2816,13 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 		if (pte_none(pteval) || is_zero_pfn(pte_pfn(pteval))) {
+ 			if (++none_or_zero <= khugepaged_max_ptes_none)
+ 				continue;
+-			else
++			else {
++				brk = 1;
+ 				goto out_unmap;
++			}
+ 		}
+ 		if (!pte_present(pteval)) {
++			brk = 2;
+ 			goto out_unmap;
+ 		}
+ 		if (pte_write(pteval))
+@@ -2826,6 +2830,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 
+ 		page = vm_normal_page(vma, _address, pteval);
+ 		if (unlikely(!page)) {
++			brk = 3;
+ 			goto out_unmap;
+ 		}
+ 		if (page_mapcount(page) != 1)
+@@ -2838,11 +2843,13 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 		 */
+ 		node = page_to_nid(page);
+ 		if (khugepaged_scan_abort(node)) {
++			brk = 4;
+ 			goto out_unmap;
+ 		}
+ 		khugepaged_node_load[node]++;
+ 		VM_BUG_ON_PAGE(PageCompound(page), page);
+ 		if (!PageLRU(page) || PageLocked(page) || !PageAnon(page)) {
++			brk = 5;
+ 			goto out_unmap;
+ 		}
+ 		/*
+@@ -2851,6 +2858,7 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 		 * and page swap cache.
+ 		 */
+ 		if (page_count(page) != 1 + !!PageSwapCache(page)) {
++			brk = 6;
+ 			goto out_unmap;
+ 		}
+ 		if (pte_young(pteval) || PageReferenced(page) ||
+@@ -2867,6 +2875,10 @@ static int khugepaged_scan_pmd(struct mm_struct *mm,
+ 	    contiguous && !page_shared)
+ 		ret = 2;
+ out_unmap:
++	if (mm->split_hugepage == 1) {
++		trace_printk("referenced %d, promote_hugepage %d, aligned %d, none_or_zero %d, contiguous %d, page_shared %d ret %d, brk %d\n",
++				referenced, mm->promote_hugepage, aligned, none_or_zero, contiguous, page_shared, ret, brk);
++	}
+ 	pte_unmap_unlock(pte, ptl);
+ 	if (ret == 2) {
+ 
+@@ -2925,6 +2937,7 @@ static unsigned int khugepaged_scan_mm_slot(unsigned int pages,
+ 	struct mm_struct *mm;
+ 	struct vm_area_struct *vma;
+ 	int progress = 0;
++	int scanned = 0, promoted = 0, collapsed = 0;
+ 
+ 	VM_BUG_ON(!pages);
+ 	VM_BUG_ON(NR_CPUS != 1 && !spin_is_locked(&khugepaged_mm_lock));
+@@ -2986,12 +2999,15 @@ skip:
+ 			khugepaged_scan.address += HPAGE_PMD_SIZE;
+ 			switch (ret) {
+ 				case 0:
++					scanned++;
+ 					progress += HPAGE_PMD_NR;
+ 					break;
+ 				case 1:
++					collapsed++;
+ 					progress += HPAGE_PMD_NR + khugepaged_collapse_cost;
+ 					break;
+ 				case 2:
++					promoted++;
+ 					progress += HPAGE_PMD_NR + khugepaged_promote_cost;
+ 					break;
+ 			}
+@@ -3006,6 +3022,8 @@ breakouterloop:
+ 	up_read(&mm->mmap_sem); /* exit_mmap will destroy ptes after this */
+ breakouterloop_mmap_sem:
+ 
++	trace_printk("scan mm slot %p, split %d::: progress %d, pages %d::: scanned %d, promoted %d, collapsed %d\n",
++			mm, mm->split_hugepage, progress, pages, scanned, promoted, collapsed);
+ 	spin_lock(&khugepaged_mm_lock);
+ 	VM_BUG_ON(khugepaged_scan.mm_slot != mm_slot);
+ 	/*
+@@ -3018,6 +3036,8 @@ breakouterloop_mmap_sem:
+ 		 * khugepaged runs here, khugepaged_exit will find
+ 		 * mm_slot not pointing to the exiting mm.
+ 		 */
++		trace_printk("collecting mm slot %p, split %d, vma %p, test exit %d\n",
++				mm, mm->split_hugepage, vma, khugepaged_test_exit(mm));
+ 		if (mm_slot->mm_node.next != &khugepaged_scan.mm_head) {
+ 			khugepaged_scan.mm_slot = list_entry(
+ 				mm_slot->mm_node.next,
+@@ -3085,17 +3105,36 @@ static void khugepaged_wait_work(void)
+ 	try_to_freeze();
+ 
+ 	if (khugepaged_has_work()) {
++		struct list_head *mm_slot_node;
++		int count = 0;
++		int sp_pos = -1;
++
+ 		if (!khugepaged_scan_sleep_millisecs)
+ 			return;
+ 
++		list_for_each(mm_slot_node, &khugepaged_scan.mm_head) {
++			struct mm_slot *mm_slot;
++
++			mm_slot = list_entry(mm_slot_node,
++						struct mm_slot, mm_node);
++			if (mm_slot->mm->split_hugepage == 1) {
++				sp_pos = count;
++			}
++			count++;
++        }
++		trace_printk("khugepaged has work, waiting for timeout, list len %d (redis pos %d)\n",
++				count, sp_pos);
+ 		wait_event_freezable_timeout(khugepaged_wait,
+ 					     kthread_should_stop(),
+ 			msecs_to_jiffies(khugepaged_scan_sleep_millisecs));
++		trace_printk("khugepaged woke up from timeout\n");
+ 		return;
+ 	}
+ 
++	trace_printk("khugepaged has no work, waiting on event\n");
+ 	if (khugepaged_enabled())
+ 		wait_event_freezable(khugepaged_wait, khugepaged_wait_event());
++	trace_printk("khugepaged woke up on event\n");
+ }
+ 
+ static int khugepaged(void *none)
