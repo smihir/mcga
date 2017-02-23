@@ -12,27 +12,50 @@ windows:
         - server:
             - mkdir -p ~/results
             - rm -rf ~/results/*
-            #- cat /proc/vmstat | grep thp > ~/results/thp_begin
-            - sudo sh -c "echo 1000 > /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs"
+              #- sudo cgcreate -g cpu,cpuacct:/cg-khugepaged
+              #- sudo sh -c "echo `pgrep khugepaged` > /sys/fs/cgroup/cpu/cg-khugepaged/tasks"
+              #- sudo sh -c "echo 1000000 > /sys/fs/cgroup/cpu/cg-khugepaged/cpu.cfs_period_us"
+              #- sudo sh -c "echo 50000 > /sys/fs/cgroup/cpu/cg-khugepaged/cpu.cfs_quota_us"
+            - sudo cpufreq-set -c 0 -g performance
+              #- sudo cpufreq-set -c 1 -g performance
+              #- sudo cpufreq-set -c 2 -g performance
+              #- sudo cpufreq-set -c 3 -g performance
+              #- sudo cpufreq-set -c 4 -g performance
+              #- sudo cpufreq-set -c 5 -g performance
+              #- sudo cpufreq-set -c 6 -g performance
+              #- sudo cpufreq-set -c 7 -g performance
+              #- sudo cpufreq-set -c 8 -g performance
+              #- sudo cpufreq-set -c 9 -g performance
+              #- sudo cpufreq-set -c 10 -g performance
+              #- sudo cpufreq-set -c 11 -g performance
+            - sudo sh -c "echo 10000 > /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs"
+              #- sudo sh -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
+            - sudo sh -c "echo 10223616 > /sys/kernel/mm/transparent_hugepage/khugepaged/pages_to_scan"
             - sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
             - rm -rf dump.rdb
+            - cp ~/redisdb/dump10g.rdb dump.rdb
             - ./redis-server ../redis.conf
         - benchmark:
             - rm -rf benchmark.log
             - rm -rf benchmark-stats.log
-            - sleep 5
-            - ./redis-benchmark -P 50 -t set -r 200000000 -n 240000000 | grep -v "SET:" | tee -a benchmark-stats.log
-            - cp benchmark.log ~/results/
+            - sleep 180
+            - ./redis-benchmark -P 50 -t set -r 120000000 -n 240000000 | grep -v "SET:" | tee -a benchmark-stats.log
+              #- cp benchmark.log ~/results/
+            - sleep 2
             - cp benchmark-stats.log ~/results/
             - kill -9 `pgrep redis-cli`
             - sudo ps ef | grep perf | grep dTLB | awk '{print $1}' | xargs sudo kill -2
-            - sleep 240
+            - sleep 10
             - sudo killall -2 perf
+            - ps aux > ~/results/ps-after.out
             - kill -9 `pgrep redis-server`
-            #- cat /proc/vmstat | grep thp > ~/results/thp_end
+            - sudo killall -9 cat
+              #- sudo sh -c "cat /sys/fs/cgroup/cpu/cg-khugepaged/cpu.cfs_period_us" > ~/results/cfs_period
+              #- sudo sh -c "cat /sys/fs/cgroup/cpu/cg-khugepaged/cpu.cfs_quota_us" > ~/results/cfs_quota
+              #- sudo sh -c "cat /sys/fs/cgroup/cpu/cg-khugepaged/cpu.stat" > ~/results/cgcpustats
         - cli:
             - rm -rf latency.log
-            - sleep 5
+            - sleep 180
             - ./redis-cli --latency-history -i 1 | tee -a latency.log
             - cp latency.log ~/results/
   - perflogs:
@@ -40,17 +63,26 @@ windows:
       root: /home/vikas/mcga/src/linux-4.1.19/tools/perf
       panes:
         - khugepaged-perf:
-            - sleep 7
-            - sudo sh -c "./perf stat -e cycles,instructions -p `pgrep khugepaged` 2> /tmp/khugepaged-perf"
+            - sleep 180
+            - sudo sh -c "./perf stat -i -e cycles,instructions -p `pgrep khugepaged` 2> /tmp/khugepaged-perf"
             - sudo mv /tmp/khugepaged-perf ~/results/
         - redis-perf:
-            - sleep 7
-            - sudo sh -c "./perf stat -e dTLB-load-misses,dTLB-store-misses,iTLB-load-misses,cache-misses,L1-dcache-load-misses,L1-dcache-store-misses,L1-dcache-prefetch-misses,L1-icache-load-misses,LLC-load-misses,LLC-store-misses,LLC-prefetch-misses,branch-load-misses,node-load-misses,node-store-misses,node-prefetch-misses,minor-faults -p `pgrep redis-server` 2> /tmp/redis-perf"
+            - sleep 177
+            - sudo sh -c "./perf stat -i -e dTLB-load-misses,dTLB-store-misses,iTLB-load-misses,cache-misses,L1-dcache-load-misses,L1-dcache-store-misses,L1-dcache-prefetch-misses,L1-icache-load-misses,LLC-load-misses,LLC-store-misses,LLC-prefetch-misses,branch-load-misses,cycles,minor-faults -e r408 -p `pgrep redis-server` 2> /tmp/redis-perf"
             - sudo mv /tmp/redis-perf ~/results/
-  - rss:
+  - kernellogs:
       root: /home/vikas/mcga/scripts/plotters
       panes:
         - logs:
-            - sleep 3
+            - sleep 150
             - ./getRssAnonHugePages.sh
             - cp *.out ~/results/
+        - khugepaged:
+            - sleep 180
+            - ./khugepagedcpu.sh
+            - sleep 1
+            - cp *.out ~/results/
+        - trace:
+            - sleep 180
+            - sudo sh -c "echo > /sys/kernel/debug/tracing/trace"
+            - sudo sh -c "cat /sys/kernel/debug/tracing/trace_pipe" | tee ~/results/trace.out
