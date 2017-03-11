@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '4092':
+
+     1,432,840,249      dTLB-load-misses                                              (57.19%)
+       100,324,799      dTLB-store-misses                                             (57.11%)
+   851,752,746,520      cycles                                                        (57.11%)
+   744,471,002,681      cycles:u                                                      (57.11%)
+   107,631,643,911      cycles:k                                                      (57.15%)
+   851,663,905,062      cycles:uk                                                     (57.16%)
+            15,567      minor-faults                                                
+    41,830,013,191      r408                                                          (57.18%)
+
+     419.799538974 seconds time elapsed
+

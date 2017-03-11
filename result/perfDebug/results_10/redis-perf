@@ -1,1 +1,14 @@
-sh: 2: 5716: not found
+
+ Performance counter stats for process id '4035':
+
+     1,600,594,336      dTLB-load-misses                                              (57.22%)
+        94,648,197      dTLB-store-misses                                             (57.21%)
+ 1,120,254,612,090      cycles                                                        (57.04%)
+   800,866,256,664      cycles:u                                                      (57.12%)
+   318,146,749,503      cycles:k                                                      (57.14%)
+ 1,119,793,015,333      cycles:uk                                                     (57.21%)
+        11,573,898      minor-faults                                                
+   107,495,382,287      r408                                                          (57.19%)
+
+     565.548800820 seconds time elapsed
+

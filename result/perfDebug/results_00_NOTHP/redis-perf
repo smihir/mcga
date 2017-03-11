@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '4153':
+
+     1,955,608,957      dTLB-load-misses                                              (57.15%)
+        72,057,975      dTLB-store-misses                                             (57.19%)
+ 1,083,137,713,813      cycles                                                        (57.19%)
+   928,781,435,898      cycles:u                                                      (57.16%)
+   154,484,003,818      cycles:k                                                      (57.15%)
+ 1,083,464,118,847      cycles:uk                                                     (57.08%)
+         9,377,036      minor-faults                                                
+   207,330,768,159      r408                                                          (57.15%)
+
+     520.555803279 seconds time elapsed
+

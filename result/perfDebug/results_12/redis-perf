@@ -1,1 +1,14 @@
-sh: 2: 5794: not found
+
+ Performance counter stats for process id '4233':
+
+     2,228,898,991      dTLB-load-misses                                              (57.19%)
+        91,699,842      dTLB-store-misses                                             (57.15%)
+   985,942,809,494      cycles                                                        (57.09%)
+   798,508,426,515      cycles:u                                                      (57.08%)
+   187,629,040,891      cycles:k                                                      (57.11%)
+   985,693,702,946      cycles:uk                                                     (57.18%)
+         8,858,719      minor-faults                                                
+   116,326,445,026      r408                                                          (57.20%)
+
+     479.064281300 seconds time elapsed
+

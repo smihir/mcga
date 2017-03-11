@@ -1,1 +1,14 @@
-sh: 2: 5743: not found
+
+ Performance counter stats for process id '4068':
+
+     1,761,570,080      dTLB-load-misses                                              (57.14%)
+       113,717,787      dTLB-store-misses                                             (57.14%)
+ 1,152,869,098,327      cycles                                                        (57.19%)
+   807,955,662,390      cycles:u                                                      (57.18%)
+   345,322,489,837      cycles:k                                                      (57.18%)
+ 1,152,915,556,827      cycles:uk                                                     (57.19%)
+        11,682,205      minor-faults                                                
+   113,671,476,476      r408                                                          (57.08%)
+
+     555.296241050 seconds time elapsed
+
