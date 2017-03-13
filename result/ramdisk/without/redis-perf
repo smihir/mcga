@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '4219':
+
+     1,540,416,857      dTLB-load-misses                                              (57.13%)
+        84,074,895      dTLB-store-misses                                             (57.16%)
+ 1,026,571,029,288      cycles                                                        (57.17%)
+   801,472,087,119      cycles:u                                                      (57.13%)
+   225,359,227,746      cycles:k                                                      (57.15%)
+ 1,026,680,721,828      cycles:uk                                                     (57.10%)
+         8,852,139      minor-faults                                                
+   105,389,902,253      r408                                                          (57.17%)
+
+     498.895390629 seconds time elapsed
+

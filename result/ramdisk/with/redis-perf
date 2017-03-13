@@ -1,0 +1,14 @@
+
+ Performance counter stats for process id '4176':
+
+   <not supported>      dTLB-load-misses         
+   <not supported>      dTLB-store-misses        
+   <not supported>      cycles                   
+   <not supported>      cycles:u                 
+   <not supported>      cycles:k                 
+   <not supported>      cycles:uk                
+        11,700,889      minor-faults                                                
+   <not supported>      r408                     
+
+     485.111334530 seconds time elapsed
+
