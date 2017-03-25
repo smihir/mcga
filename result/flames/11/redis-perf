@@ -1,0 +1,8 @@
+Warning:
+PID/TID switch overriding SYSTEM[ perf record: Woken up 2112 times to write data ]
+Warning:
+Processed 6205423 events and lost 9 chunks!
+
+Check IO/CPU overload!
+
+[ perf record: Captured and wrote 529.687 MB perf.data (6201078 samples) ]
