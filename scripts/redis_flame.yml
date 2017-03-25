@@ -1,0 +1,68 @@
+# ~/.tmuxinator/redisbench.yml
+
+name: vikas
+root: /home/vikas/mcga
+tmux_command: byobu
+
+windows:
+  - redis:
+      layout: main-vertical
+      root: /home/vikas/mcga/src/bench/redis-3.0/src
+      panes:
+        - server:
+            - mkdir -p ~/results
+            - rm -rf ~/results/*
+            - sudo cpufreq-set -c 0 -g performance
+            - sudo sh -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
+            - sudo sh -c "echo 10000 > /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs"
+            - sudo sh -c "echo 10223616 > /sys/kernel/mm/transparent_hugepage/khugepaged/pages_to_scan"
+            - sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
+            - rm -rf dump.rdb
+            - cp ~/redisdb/dump10g.rdb dump.rdb
+            - ./redis-server ../redis.conf
+        - benchmark:
+            - rm -rf benchmark.log
+            - rm -rf benchmark-stats.log
+            - sleep 180
+            - ./redis-benchmark -P 50 -t set -r 120000000 -n 240000000 | grep -v "SET:" | tee -a benchmark-stats.log
+            - cp benchmark-stats.log ~/results/
+            - kill -9 `pgrep redis-cli`
+            - sudo killall -2 perf
+              #- sleep 1
+            - kill -9 `pgrep redis-server`
+        - cli:
+            - rm -rf latency.log
+            - sleep 180
+            - ./redis-cli --latency-history -i 1 | tee -a latency.log
+            - cp latency.log ~/results/
+  - perflogs:
+      layout: main-vertical
+      root: /home/vikas/mcga/src/linux-4.1.19/tools/perf
+      panes:
+        - khugepaged-perf:
+            - sleep 180
+            - sudo sh -c "./perf stat -i -e cycles,instructions -p `pgrep khugepaged` 2> /tmp/khugepaged-perf"
+            - sudo mv /tmp/khugepaged-perf ~/results/
+        #- redis-perf:
+        #    - sleep 180
+        #    - sudo sh -c "./perf stat -i -e dTLB-load-misses,dTLB-store-misses,cycles,cycles:u,cycles:k,cycles:uk,minor-faults -e r408 -p `pgrep redis-server | head -n 1` 2> /tmp/redis-perf"
+        #    - sudo mv /tmp/redis-perf ~/results/
+        - redis-flame:
+            - sleep 180
+            - sudo sh -c "./perf record -F 9999 -a -g -p `pgrep redis-server | head -n 1` 2> /tmp/redis-perf"
+            - sudo sh -c "./perf script | /home/vikas/FlameGraph/stackcollapse-perf.pl > out.perf-folded"
+            - /home/vikas/FlameGraph/flamegraph.pl out.perf-folded > perf-kernel.svg
+            - sudo mv /tmp/redis-perf ~/results/
+            - sudo mv perf-kernel.svg ~/results/
+  - kernellogs:
+      root: /home/vikas/mcga/scripts/plotters
+      panes:
+        - logs:
+            - sleep 180
+            - ./getRssAnonHugePages.sh
+            - cp *.out ~/results/
+        - khugepaged:
+            - sleep 180
+            - ./khugepagedcpu.sh
+            - sleep 1
+            - cp *.out ~/results/
