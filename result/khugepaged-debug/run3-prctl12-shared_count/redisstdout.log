@@ -1,0 +1,23 @@
+4516:M 17 Apr 12:48:25.040 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+4516:M 17 Apr 12:48:25.040 # Server started, Redis version 3.0.7
+4516:M 17 Apr 12:48:25.040 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+4516:M 17 Apr 12:48:25.040 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+4516:M 17 Apr 12:50:26.659 * DB loaded from disk: 121.619 seconds
+4516:M 17 Apr 12:50:26.659 * The server is now ready to accept connections on port 6379
+4516:M 17 Apr 12:50:32.246 * 10000 changes in 60 seconds. Saving...
+4516:M 17 Apr 12:50:32.250 * Background saving started by pid 6457
+6457:C 17 Apr 12:51:45.500 * DB saved on disk
+6457:C 17 Apr 12:51:45.625 * RDB: 11575 / 11642 MB of memory used by copy-on-write
+4516:M 17 Apr 12:51:46.177 * Background saving terminated with success
+4516:M 17 Apr 12:52:47.075 * 10000 changes in 60 seconds. Saving...
+4516:M 17 Apr 12:52:47.079 * Background saving started by pid 23605
+23605:C 17 Apr 12:54:12.872 * DB saved on disk
+23605:C 17 Apr 12:54:13.020 * RDB: 11607 / 11678 MB of memory used by copy-on-write
+4516:M 17 Apr 12:54:13.660 * Background saving terminated with success
+4516:M 17 Apr 12:55:14.106 * 10000 changes in 60 seconds. Saving...
+4516:M 17 Apr 12:55:14.111 * Background saving started by pid 10317
+10317:C 17 Apr 12:56:44.146 * DB saved on disk
+10317:C 17 Apr 12:56:44.305 * RDB: 11878 / 11978 MB of memory used by copy-on-write
+4516:M 17 Apr 12:56:44.932 * Background saving terminated with success
+4516:M 17 Apr 12:57:45.066 * 10000 changes in 60 seconds. Saving...
+4516:M 17 Apr 12:57:45.071 * Background saving started by pid 29858
