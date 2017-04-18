@@ -1,0 +1,562 @@
+      khugepaged-97    [002] ....   243.359944: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   243.359960: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   243.359960: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   243.360032: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   243.360033: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   243.360046: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   243.360046: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   243.360117: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   243.360120: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   243.360123: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   243.360124: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   243.360124: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [004] ....   253.368220: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   253.368237: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   253.368239: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   253.368354: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   253.368359: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   253.368379: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   253.368379: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   253.368456: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   253.368458: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   253.368462: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   253.368462: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   253.368463: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [004] ....   263.376235: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   263.376250: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   263.376251: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   263.376381: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   263.376387: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   263.376410: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   263.376412: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   263.376542: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   263.376546: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   263.376551: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   263.376551: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   263.376552: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [010] ....   273.384453: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [010] ....   273.384472: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.384473: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.384543: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.384544: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.384557: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.384558: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.384628: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.384628: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.384632: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.384632: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.385306: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 518, pages 3777327::: scanned 0, promoted 0, collapsed 1
+      khugepaged-97    [010] ....   273.385310: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 54, pages 3776809::: scanned 0, promoted 0, collapsed 0
+      khugepaged-97    [010] ....   273.385311: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [010] ....   273.385311: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [000] ....   283.392636: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [000] ....   283.392651: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392652: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392723: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392726: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392739: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392740: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392812: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392814: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392817: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392818: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392823: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 571, pages 3777327::: scanned 1, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   283.392823: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   283.392824: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [002] ....   293.400839: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   293.400854: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.400855: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.400926: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.400927: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.400942: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.400942: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.401013: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.401016: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.401019: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.401020: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.401025: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 571, pages 3777327::: scanned 1, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   293.401025: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   293.401026: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [003] ....   303.408995: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   303.409011: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409012: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409106: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409110: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409123: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409125: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409205: khugepaged: scan mm slot ffff880a0a050000, split 0::: progress 2983457, pages 6762861::: scanned 5827, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409209: khugepaged: collecting mm slot ffff880a0a050000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409213: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 3779404::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409214: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409220: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 571, pages 3777327::: scanned 1, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   303.409222: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   303.409223: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [004] ....   313.417061: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   313.417075: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   313.417075: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   313.417146: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   313.417147: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   313.417162: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   313.417162: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   313.417165: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6762861::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   313.417166: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   313.417864: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1030, pages 6760784::: scanned 1, promoted 0, collapsed 1
+      khugepaged-97    [004] ....   313.417871: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 54, pages 6759754::: scanned 0, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   313.417871: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   313.417872: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [004] ....   323.425175: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   323.425188: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   323.425188: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   323.425259: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   323.425260: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   323.425274: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   323.425274: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   323.425931: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 518, pages 6762861::: scanned 0, promoted 0, collapsed 1
+      khugepaged-97    [004] ....   323.425937: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 1560, pages 6762343::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   323.425937: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   323.425942: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1083, pages 6760783::: scanned 2, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   323.425942: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   323.425943: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [002] ....   333.433484: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   333.433499: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   333.433501: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   333.433573: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2984480, pages 10218406::: scanned 5829, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   333.433577: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   333.433591: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7233926::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   333.433591: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   333.433595: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6762861::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   333.433595: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   333.433600: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1083, pages 6760784::: scanned 2, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   333.433601: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   333.433601: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [002] ....   343.441576: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   343.441590: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   343.441591: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   343.441662: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2986528, pages 10218406::: scanned 5833, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   343.441665: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   343.441679: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7231878::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   343.441680: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   343.442369: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 518, pages 6760813::: scanned 0, promoted 0, collapsed 1
+      khugepaged-97    [002] ....   343.442375: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 1560, pages 6760295::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   343.442376: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   343.443098: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1542, pages 6758735::: scanned 2, promoted 0, collapsed 1
+      khugepaged-97    [002] ....   343.443105: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 54, pages 6757193::: scanned 0, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   343.443105: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   343.443106: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [002] ....   353.449720: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   353.449735: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   353.449736: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   353.449808: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 2995744, pages 10218406::: scanned 5851, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   353.449809: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   353.449823: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7222662::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   353.449824: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   353.449827: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6751597::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   353.449827: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   353.449832: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6749520::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   353.449833: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   353.449833: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [003] ....   363.457870: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   363.457884: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   363.457884: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   363.457956: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3003936, pages 10218406::: scanned 5867, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   363.457957: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   363.457971: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7214470::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   363.457972: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   363.457975: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6743405::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   363.457976: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   363.457981: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6741328::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   363.457982: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   363.457983: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [004] ....   373.466008: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   373.466022: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   373.466023: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   373.466094: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3012128, pages 10218406::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   373.466095: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   373.466110: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7206278::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   373.466110: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   373.466113: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6735213::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   373.466114: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   373.466119: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6733136::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   373.466120: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   373.466120: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [004] ....   383.474191: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   383.474205: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474205: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474277: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3017248, pages 10218406::: scanned 5893, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474279: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474292: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7201158::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474293: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474296: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6730093::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474297: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474302: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6728016::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474303: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474373: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6726420::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   383.474377: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   383.474378: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [004] ....   393.482293: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   393.482308: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482309: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482440: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3025440, pages 10218406::: scanned 5909, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482442: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482466: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7192966::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482466: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482471: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6721901::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482472: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482479: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6719824::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482479: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482611: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6718228::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   393.482615: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   393.482616: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [004] ....   403.490449: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   403.490463: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490464: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490597: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3031584, pages 10218406::: scanned 5921, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490603: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490627: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7186822::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490629: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490634: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6715757::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490635: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490642: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6713680::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490643: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490775: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6712084::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   403.490780: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   403.490780: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [004] ....   413.498664: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   413.498680: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498681: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498753: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3038752, pages 10218406::: scanned 5935, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498754: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498768: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7179654::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498769: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498773: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6708589::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498773: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498778: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6706512::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498779: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498851: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6704916::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   413.498853: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   413.498854: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [004] ....   423.506823: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [004] ....   423.506839: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.506840: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.506920: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3043872, pages 10218406::: scanned 5945, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.506922: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.506935: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7174534::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.506936: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.506940: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6703469::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.506940: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.506945: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6701392::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.506946: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.507017: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6699796::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [004] ....   423.507020: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [004] ....   423.507021: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [005] ....   433.514977: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   433.514992: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.514994: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515090: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3050016, pages 10218406::: scanned 5957, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.515095: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515117: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7168390::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.515119: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515125: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6697325::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.515125: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515132: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6695248::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.515133: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515217: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6693652::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   433.515220: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   433.515220: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [000] ....   443.523141: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [000] ....   443.523157: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523159: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523232: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3055136, pages 10218406::: scanned 5967, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523235: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523249: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7163270::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523250: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523253: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6692205::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523254: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523259: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6690128::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523259: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523330: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6688532::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   443.523332: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   443.523333: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [001] ....   453.531343: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   453.531360: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531361: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531434: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3060256, pages 10218406::: scanned 5977, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531435: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531449: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7158150::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531450: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531453: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6687085::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531454: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531459: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6685008::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531460: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531532: khugepaged: scan mm slot ffff880a0a057440, split 0::: progress 3012129, pages 6683412::: scanned 5883, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   453.531535: khugepaged: collecting mm slot ffff880a0a057440, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   453.531535: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [001] ....   463.539457: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   463.539473: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   463.539474: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   463.539547: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3065376, pages 10218406::: scanned 5987, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   463.539549: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   463.539563: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7153030::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   463.539563: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   463.539566: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6681965::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   463.539567: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   463.539572: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6679888::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   463.539573: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   463.539573: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [003] ....   473.547607: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   473.547621: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   473.547622: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   473.547695: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3069472, pages 10218406::: scanned 5995, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   473.547696: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   473.547710: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7148934::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   473.547710: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   473.547714: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6677869::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   473.547714: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   473.547720: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6675792::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   473.547721: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   473.547721: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [005] ....   483.555861: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   483.555879: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   483.555881: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   483.555975: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3073568, pages 10218406::: scanned 6003, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   483.555978: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   483.556001: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7144838::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   483.556003: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   483.556007: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6673773::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   483.556008: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   483.556014: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6671696::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   483.556015: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   483.556016: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [005] ....   493.563935: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   493.563949: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   493.563952: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   493.564065: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3077664, pages 10218406::: scanned 6011, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   493.564070: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   493.564093: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7140742::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   493.564095: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   493.564099: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6669677::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   493.564100: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   493.564106: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6667600::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   493.564107: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   493.564108: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [000] ....   503.572093: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [000] ....   503.572108: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   503.572109: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   503.572182: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3081760, pages 10218406::: scanned 6019, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   503.572184: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   503.572198: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7136646::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   503.572198: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   503.572202: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6665581::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   503.572202: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   503.572208: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 1596, pages 6663504::: scanned 3, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   503.572208: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   503.572209: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [000] ....   513.580225: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [000] ....   513.580239: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   513.580240: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   513.580313: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3084832, pages 10218406::: scanned 6025, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   513.580314: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   513.580330: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7133574::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   513.580331: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   513.580335: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6662509::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   513.580336: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   513.581206: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2054, pages 6660432::: scanned 3, promoted 0, collapsed 1
+      khugepaged-97    [000] ....   513.581214: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 55, pages 6658378::: scanned 0, promoted 0, collapsed 0
+      khugepaged-97    [000] ....   513.581215: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [000] ....   513.581215: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [001] ....   523.588447: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   523.588462: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588463: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588536: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3086880, pages 10218406::: scanned 6029, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588537: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588551: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7131526::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588552: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588555: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6660461::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588555: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588560: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6658384::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588561: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588636: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6656276::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   523.588640: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   523.588641: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [002] ....   533.596568: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   533.596582: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596583: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596656: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3089952, pages 10218406::: scanned 6035, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596657: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596671: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7128454::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596672: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596675: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6657389::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596676: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596681: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6655312::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596682: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596754: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6653204::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   533.596757: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   533.596758: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [002] ....   543.604727: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   543.604743: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604744: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604818: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3093024, pages 10218406::: scanned 6041, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604821: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604835: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7125382::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604836: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604840: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6654317::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604840: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604846: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6652240::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604847: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604919: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6650132::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   543.604921: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   543.604922: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [002] ....   553.612892: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   553.612909: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.612910: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613027: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3096096, pages 10218406::: scanned 6047, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.613030: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613053: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7122310::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.613055: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613060: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6651245::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.613060: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613067: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6649168::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.613067: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613153: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6647060::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   553.613155: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   553.613156: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [003] ....   563.621110: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   563.621125: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621126: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621199: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3098144, pages 10218406::: scanned 6051, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621202: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621216: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7120262::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621217: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621221: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6649197::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621221: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621227: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6647120::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621227: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621299: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6645012::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   563.621302: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   563.621302: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [001] ....   573.629265: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   573.629281: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629283: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629356: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3101216, pages 10218406::: scanned 6057, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629359: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629373: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7117190::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629373: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629377: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6646125::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629377: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629383: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6644048::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629383: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629455: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6641940::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   573.629458: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   573.629458: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [001] ....   583.637295: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   583.637306: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637307: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637382: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637382: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637396: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637397: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637400: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637401: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637406: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637406: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637478: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6639892::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   583.637481: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   583.637481: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [005] ....   593.645508: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   593.645521: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645521: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645596: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645597: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645611: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645611: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645615: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645615: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645619: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645620: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645692: khugepaged: scan mm slot ffff880a0a560000, split 0::: progress 3085857, pages 6639892::: scanned 6027, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   593.645695: khugepaged: collecting mm slot ffff880a0a560000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   593.645695: khugepaged: khugepaged has work, waiting for timeout, list len 6 (redis pos -1)
+      khugepaged-97    [005] ....   603.653675: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   603.653689: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   603.653690: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   603.653764: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   603.653765: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   603.653779: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   603.653780: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   603.653783: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   603.653784: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   603.653787: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   603.653788: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   603.653788: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [001] ....   613.661935: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   613.661951: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   613.661952: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   613.662026: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   613.662031: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   613.662045: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   613.662045: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   613.662048: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   613.662049: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   613.662053: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   613.662053: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   613.662054: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [001] ....   623.670011: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [001] ....   623.670025: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   623.670025: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   623.670100: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   623.670101: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   623.670115: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   623.670115: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   623.670119: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   623.670119: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   623.670123: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [001] ....   623.670123: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [001] ....   623.670124: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [002] ....   633.678216: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [002] ....   633.678231: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   633.678232: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   633.678307: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   633.678310: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   633.678334: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 939545, pages 7115142::: scanned 1835, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   633.678335: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   633.678339: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6175597::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   633.678340: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   633.678344: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6173520::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [002] ....   633.678345: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [002] ....   633.678345: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [003] ....   643.686352: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   643.686367: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   643.686367: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   643.686442: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   643.686443: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   643.686468: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 939545, pages 7115142::: scanned 1835, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   643.686468: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   643.686471: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6175597::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   643.686472: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   643.686475: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6173520::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   643.686476: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   643.686476: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [003] ....   653.694414: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [003] ....   653.694429: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   653.694430: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   653.694554: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   653.694560: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   653.694582: khugepaged: scan mm slot ffff880a0a580000, split 0::: progress 471065, pages 7115142::: scanned 920, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   653.694583: khugepaged: collecting mm slot ffff880a0a580000, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   653.694587: khugepaged: scan mm slot ffff880a09b92580, split 0::: progress 2077, pages 6644077::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   653.694588: khugepaged: collecting mm slot ffff880a09b92580, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   653.694594: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 6642000::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [003] ....   653.694594: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [003] ....   653.694595: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)
+      khugepaged-97    [005] ....   663.702647: khugepaged: khugepaged woke up from timeout
+      khugepaged-97    [005] ....   663.702673: khugepaged: scan mm slot ffff880a0a6bb480, split 0::: progress 5210, pages 10223616::: scanned 10, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   663.702675: khugepaged: collecting mm slot ffff880a0a6bb480, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   663.702776: khugepaged: scan mm slot ffff880a0a566180, split 0::: progress 3103264, pages 10218406::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   663.702779: khugepaged: collecting mm slot ffff880a0a566180, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   663.702786: khugepaged: scan mm slot ffff880a0a565280, split 0::: progress 2108, pages 7115142::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   663.702786: khugepaged: collecting mm slot ffff880a0a565280, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   663.702879: khugepaged: scan mm slot ffff880a0d4e9680, split 0::: progress 3103265, pages 7113034::: scanned 6061, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   663.702882: khugepaged: collecting mm slot ffff880a0d4e9680, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   663.702886: khugepaged: scan mm slot ffff880a0d4e83c0, split 0::: progress 2108, pages 4009769::: scanned 4, promoted 0, collapsed 0
+      khugepaged-97    [005] ....   663.702887: khugepaged: collecting mm slot ffff880a0d4e83c0, split 0, vma           (null), test exit 0
+      khugepaged-97    [005] ....   663.702889: khugepaged: khugepaged has work, waiting for timeout, list len 5 (redis pos -1)

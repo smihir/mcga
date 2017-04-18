@@ -1,0 +1,36 @@
+4399:M 18 Apr 01:14:52.288 # WARNING: The TCP backlog setting of 511 cannot be
+enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+4399:M 18 Apr 01:14:52.288 # Server started, Redis version 3.0.7
+4399:M 18 Apr 01:14:52.289 # WARNING overcommit_memory is set to 0! Background
+save may fail under low memory condition. To fix this issue add
+'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the
+command 'sysctl vm.overcommit_memory=1' for this to take effect.
+4399:M 18 Apr 01:14:52.289 # WARNING you have Transparent Huge Pages (THP)
+support enabled in your kernel. This will create latency and memory usage
+issues with Redis. To fix this issue run the command 'echo never >
+/sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your
+/etc/rc.local in order to retain the setting after a reboot. Redis must be
+restarted after THP is disabled.
+4399:M 18 Apr 01:16:53.045 * DB loaded from disk: 120.757 seconds
+4399:M 18 Apr 01:16:53.045 * The server is now ready to accept connections on
+port 6379
+4399:M 18 Apr 01:17:02.881 * 10000 changes in 60 seconds. Saving...
+4399:M 18 Apr 01:17:02.886 * Background saving started by pid 6357
+6357:C 18 Apr 01:18:17.004 * DB saved on disk
+6357:C 18 Apr 01:18:17.006 * RDB: 11640 / 11642 MB of memory used by
+copy-on-write
+4399:M 18 Apr 01:18:17.073 * Background saving terminated with success
+4399:M 18 Apr 01:19:18.088 * 10000 changes in 60 seconds. Saving...
+4399:M 18 Apr 01:19:18.094 * Background saving started by pid 23337
+23337:C 18 Apr 01:20:39.631 * DB saved on disk
+23337:C 18 Apr 01:20:39.633 * RDB: 11752 / 11754 MB of memory used by
+copy-on-write
+4399:M 18 Apr 01:20:39.747 * Background saving terminated with success
+4399:M 18 Apr 01:21:40.036 * 10000 changes in 60 seconds. Saving...
+4399:M 18 Apr 01:21:40.042 * Background saving started by pid 8764
+8764:C 18 Apr 01:23:05.426 * DB saved on disk
+8764:C 18 Apr 01:23:05.428 * RDB: 12038 / 12040 MB of memory used by
+copy-on-write
+4399:M 18 Apr 01:23:05.527 * Background saving terminated with success
+4399:M 18 Apr 01:24:06.009 * 10000 changes in 60 seconds. Saving...
+4399:M 18 Apr 01:24:06.015 * Background saving started by pid 26822

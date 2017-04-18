@@ -1,0 +1,30 @@
+4295:M 18 Apr 01:31:00.116 # WARNING: The TCP backlog setting of 511 cannot be
+enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+4295:M 18 Apr 01:31:00.116 # Server started, Redis version 3.0.7
+4295:M 18 Apr 01:31:00.116 # WARNING overcommit_memory is set to 0! Background
+save may fail under low memory condition. To fix this issue add
+'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the
+command 'sysctl vm.overcommit_memory=1' for this to take effect.
+4295:M 18 Apr 01:33:25.271 * DB loaded from disk: 145.155 seconds
+4295:M 18 Apr 01:33:25.271 * The server is now ready to accept connections on
+port 6379
+4295:M 18 Apr 01:33:25.386 * 10000 changes in 60 seconds. Saving...
+4295:M 18 Apr 01:33:25.497 * Background saving started by pid 7196
+7196:C 18 Apr 01:34:51.773 * DB saved on disk
+7196:C 18 Apr 01:34:51.893 * RDB: 11572 / 11634 MB of memory used by
+copy-on-write
+4295:M 18 Apr 01:34:52.432 * Background saving terminated with success
+4295:M 18 Apr 01:35:53.029 * 10000 changes in 60 seconds. Saving...
+4295:M 18 Apr 01:35:53.220 * Background saving started by pid 26380
+26380:C 18 Apr 01:37:28.250 * DB saved on disk
+26380:C 18 Apr 01:37:28.534 * RDB: 11627 / 11692 MB of memory used by
+copy-on-write
+4295:M 18 Apr 01:37:29.542 * Background saving terminated with success
+4295:M 18 Apr 01:38:30.047 * 10000 changes in 60 seconds. Saving...
+4295:M 18 Apr 01:38:30.246 * Background saving started by pid 14286
+14286:C 18 Apr 01:40:15.018 * DB saved on disk
+14286:C 18 Apr 01:40:15.309 * RDB: 11898 / 11981 MB of memory used by
+copy-on-write
+4295:M 18 Apr 01:40:16.418 * Background saving terminated with success
+4295:M 18 Apr 01:41:17.105 * 10000 changes in 60 seconds. Saving...
+4295:M 18 Apr 01:41:17.313 * Background saving started by pid 3568
