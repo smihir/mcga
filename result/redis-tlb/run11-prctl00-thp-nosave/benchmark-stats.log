@@ -1,0 +1,16 @@
+  900000000 requests completed in 1304.96 seconds
+  50 parallel clients
+  3 bytes payload
+  keep alive: 1
+
+0.00% <= 1 milliseconds
+0.01% <= 2 milliseconds
+22.68% <= 3 milliseconds
+81.82% <= 4 milliseconds
+95.15% <= 5 milliseconds
+99.95% <= 6 milliseconds
+100.00% <= 7 milliseconds
+100.00% <= 7 milliseconds
+689677.88 requests per second
+
+
